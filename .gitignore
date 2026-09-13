@@ -6,4 +6,5 @@
 !/.claude/launch.json
 !/.gitignore
 !/README.md
+!/.github/
 .DS_Store
