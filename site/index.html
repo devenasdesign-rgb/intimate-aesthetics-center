@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Центр интимной эстетики — сексология как эстетика</title>
+  <meta name="description" content="Платформа женского здоровья: БОС-терапия, фитнес мышц тазового дна, аудиотренировки, книги и Музей Кегеля.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/img/logo.svg">
+</head>
+<body data-page="home">
+  <div data-header style="height:99px"></div>
+
+  <main>
+    <!-- 1. Первый экран -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <h1 class="display hero__title">
+            <span class="split-line"><span>Сексология</span></span>
+            <span class="split-line"><span style="--d:.12s">как эстетика</span></span>
+          </h1>
+          <p class="hero__sub" data-reveal style="--d:.35s">Тренировка интимных мышц как искусство</p>
+          <a class="btn" href="directions.html" data-reveal style="--d:.5s">Выбрать направление <span class="arr">→</span></a>
+        </div>
+        <div class="hero__media" data-reveal="zoom" style="--d:.15s">
+          <div class="hero__plate"></div>
+          <img class="hero__photo" src="assets/img/hero-main.png" alt="Екатерина Паньшина" data-parallax="0.04" data-pointer="10">
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Навигатор направлений -->
+    <section class="dirs" id="directions">
+      <div class="container">
+        <h2 class="h-section"><span class="split-line"><span>Выбери путь к себе</span></span></h2>
+        <p class="lead" data-reveal style="--d:.15s;margin-top:10px">Выберите тему, которая сейчас важна именно вам</p>
+
+        <div class="dirs__layout">
+          <div class="dirs__aside">
+            <div class="dirs__aside-bg" data-reveal="left"></div>
+            <span class="badge-free dirs__badge">Free внутри каждого направления</span>
+            <div class="dirs__photo" data-reveal="zoom">
+              <img src="assets/img/lotus-card.png" alt="Цветок лотоса">
+            </div>
+            <div class="dirs__hint" data-reveal style="--d:.2s">
+              <b>Не знаете, с чего начать?</b>
+              <p>Попробуйте бесплатные материалы и выберите направление без спешки.</p>
+            </div>
+          </div>
+          <div class="dir-grid" data-dir-grid></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Популярные материалы -->
+    <section class="materials">
+      <div class="container">
+        <div class="section-head section-head--row">
+          <div data-reveal>
+            <p class="eyebrow">Контент</p>
+            <h2 class="h-card">Популярные материалы</h2>
+          </div>
+          <a class="link-arrow" href="directions.html" data-reveal>Все материалы <span class="arr">→</span></a>
+        </div>
+        <div class="mat-grid">
+          <a class="mat-card" href="soon.html?s=fitness" data-reveal style="--d:0s">
+            <div class="mat-card__thumb" style="--g:linear-gradient(123deg,#d7e3ec,#e2e6f4)"><span class="mat-card__type">ВИДЕО</span><span class="mat-card__play mat-card__play--pulse"></span></div>
+            <div class="mat-card__body"><h3>Дыхание для тазового дна</h3><p>Фитнес · 12 мин</p></div>
+          </a>
+          <a class="mat-card" href="soon.html?s=audio" data-reveal style="--d:.08s">
+            <div class="mat-card__thumb" style="--g:linear-gradient(123deg,#f2dce2,#f3e4ef)"><span class="mat-card__type">АУДИО</span><span class="mat-card__play"></span></div>
+            <div class="mat-card__body"><h3>Медитация на расслабление</h3><p>Аудио · 18 мин</p></div>
+          </a>
+          <a class="mat-card" href="soon.html?s=libido" data-reveal style="--d:.16s">
+            <div class="mat-card__thumb" style="--g:linear-gradient(123deg,#eebfde,#f3d3e6)"><span class="mat-card__type">PDF</span></div>
+            <div class="mat-card__body"><h3>Рацион для либидо</h3><p>Питание · чек-лист</p></div>
+          </a>
+          <a class="mat-card" href="bos.html" data-reveal style="--d:.24s">
+            <div class="mat-card__thumb" style="--g:linear-gradient(123deg,#e6dbe0,#ece2ee)"><span class="mat-card__type">ВИДЕО</span><span class="mat-card__play"></span></div>
+            <div class="mat-card__body"><h3>БОС: первая сессия</h3><p>БОС-терапия · 15 мин</p></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Книги -->
+    <section class="section" id="books">
+      <div class="container">
+        <div class="books">
+          <div class="books__visual" data-reveal="left">
+            <span class="badge-free">Первая глава — free</span>
+            <img src="assets/img/photo-06739.jpg" alt="Екатерина Паньшина с книгой">
+          </div>
+          <div class="books__content">
+            <div class="g-card books__lead" style="--g:var(--g-rose);--bd:var(--b-rose)" data-reveal>
+              <p class="eyebrow">Книги</p>
+              <h2 class="h-section" style="margin-top:10px">Читайте<br>о теле с&nbsp;любовью</h2>
+              <p>Авторские издания о женском здоровье, мышцах тазового дна и сексуальности. Начните с ознакомительной главы — бесплатно.</p>
+            </div>
+            <div class="steps">
+              <div class="step" style="--g:var(--g-sand);--d:.05s" data-reveal><span class="step__n">01</span><b>Ознакомительная глава</b><small>Откройте первую главу любой книги</small></div>
+              <div class="step" style="--g:var(--g-peach)" data-reveal><span class="step__n">02</span><b>Покупка</b><small>На сайте или на маркетплейсе</small></div>
+              <div class="step" style="--g:var(--g-lilac)" data-reveal><span class="step__n">03</span><b>Книга у вас</b><small>Отправим сразу после оплаты</small></div>
+            </div>
+            <div class="g-card books__cta" style="--g:#fff" data-reveal>
+              <a class="btn btn--sm" href="soon.html?s=books">Перейти в каталог <span class="arr">→</span></a>
+              <p>Все форматы, цены и ссылки на маркетплейсы — в каталоге</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Музей Кегеля -->
+    <section class="section section--soft" id="museum">
+      <div class="container">
+        <div class="museum">
+          <div class="g-card museum__main" style="--g:var(--g-mist);--bd:var(--b-mist)" data-reveal>
+            <p class="eyebrow">Бесплатная база знаний</p>
+            <h2 class="h-section" style="margin-top:10px">Музей Кегеля</h2>
+            <p>Всё о тренажёрах для мышц тазового дна: как они устроены, чем отличаются и какой подойдёт именно вам.</p>
+            <div class="museum__features">
+              <div class="feature"><i></i><b>Каталог</b><small>Тренажёры с фото и категориями</small></div>
+              <div class="feature"><i></i><b>Принцип действия</b><small>Как работает каждый тренажёр</small></div>
+              <div class="feature"><i></i><b>Рекомендации</b><small>Кому и когда подходит</small></div>
+            </div>
+            <a class="btn" href="soon.html?s=museum" style="margin-top:40px">Открыть музей <span class="arr">→</span></a>
+          </div>
+          <div class="museum__photo" data-reveal="right">
+            <img src="assets/img/photo-06756.jpg" alt="Екатерина Паньшина с тренажёрами для мышц тазового дна">
+            <div class="museum__tag"><b>Полностью бесплатно</b><span>Открытый раздел без подписки</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. О центре и пространстве -->
+    <section class="section section--warm" id="about">
+      <div class="container">
+        <div class="section-head section-head--row">
+          <div>
+            <h2 class="h-section"><span class="split-line"><span>Пространство, где</span></span><span class="split-line"><span style="--d:.1s">можно расслабиться</span></span></h2>
+          </div>
+          <a class="link-arrow" href="bos.html#cabinet" data-reveal>Как проходит занятие <span class="arr">→</span></a>
+        </div>
+        <div class="space-grid">
+          <div class="space-img space-img--large" data-reveal="zoom"><img src="assets/img/interior-3.jpg" alt="Кабинет центра" loading="lazy"></div>
+          <div class="space-img space-img--tall" data-reveal="zoom" style="--d:.1s"><img src="assets/img/interior-1.jpg" alt="Зона переодевания" loading="lazy"></div>
+          <div class="space-img space-img--small" data-reveal="zoom" style="--d:.2s"><img src="assets/img/interior-2.jpg" alt="Кушетка и оборудование" loading="lazy"></div>
+          <div class="privacy" data-reveal style="--d:.3s">
+            <h3>Приватность —<br>часть заботы</h3>
+            <ul>
+              <li><b>Отдельный кабинет</b>Только вы и специалист</li>
+              <li><b>В одежде</b>Без неловкости</li>
+              <li><b>Без боли</b>Комфортный формат</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about-row" id="specialist">
+          <div class="g-card about-card" style="--g:#fff" data-reveal>
+            <p class="eyebrow">О центре</p>
+            <h3 class="h-card" style="font-size:32px">Эстетика, экспертность<br>и бережность</h3>
+            <p>Мы соединяем современные методы тренировки мышц тазового дна, сексологию и телесные практики. Сначала — диагностика и понятный план, затем — занятия в кабинете или онлайн и материалы для самостоятельной практики.</p>
+            <a class="btn btn--ghost btn--sm" href="bos.html">Направления центра <span class="arr">→</span></a>
+          </div>
+          <div class="g-card about-spec" style="--g:var(--g-violet);--bd:var(--b-violet);--d:.1s" data-reveal>
+            <div class="about-spec__img"><img src="assets/img/photo-07214.jpg" alt="Екатерина Паньшина" loading="lazy"></div>
+            <div>
+              <p class="eyebrow">О специалисте</p>
+              <h3 class="h-card" style="font-size:28px;margin-top:8px">Екатерина<br>Паньшина</h3>
+              <p style="margin-top:8px;font-size:15px;color:var(--muted)">Работаю с телом и доверием</p>
+              <ul>
+                <li>Образование и сертификаты</li>
+                <li>Авторские программы</li>
+                <li>Консультации онлайн и в центре</li>
+              </ul>
+              <a class="btn btn--sm" href="bos.html#formats">Записаться <span class="arr">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Отзывы -->
+    <section class="section" id="reviews">
+      <div class="container reviews-wrap" data-slider>
+        <div class="section-head section-head--row">
+          <div>
+            <h2 class="h-section"><span class="split-line"><span>Отзывы</span></span></h2>
+            <span class="placeholder-note">Тексты-примеры — замените на реальные отзывы клиенток</span>
+          </div>
+          <div class="slider-nav" data-reveal>
+            <button class="slider-btn" type="button" data-dir="-1" aria-label="Назад">←</button>
+            <button class="slider-btn" type="button" data-dir="1" aria-label="Вперёд">→</button>
+          </div>
+        </div>
+        <div class="reviews">
+          <article class="review" style="--g:var(--g-rose);--bd:var(--b-rose)" data-reveal>
+            <span class="review__q">“</span>
+            <p>Здесь будет отзыв клиентки о БОС-терапии: с каким запросом пришла и что изменилось после занятий.</p>
+            <footer><span class="review__ava">А</span><span><b>Имя клиентки</b><small>БОС-терапия</small></span></footer>
+          </article>
+          <article class="review" style="--g:var(--g-mint);--bd:var(--b-mint);--d:.08s" data-reveal>
+            <span class="review__q">“</span>
+            <p>Здесь будет отзыв о пространстве центра, атмосфере кабинета и работе со специалистом.</p>
+            <footer><span class="review__ava">М</span><span><b>Имя клиентки</b><small>Тибетские чаши</small></span></footer>
+          </article>
+          <article class="review" style="--g:var(--g-sky);--bd:var(--b-sky);--d:.16s" data-reveal>
+            <span class="review__q">“</span>
+            <p>Здесь будет отзыв о самостоятельных тренировках и бесплатных материалах платформы.</p>
+            <footer><span class="review__ava">Е</span><span><b>Имя клиентки</b><small>Фитнес мышц тазового дна</small></span></footer>
+          </article>
+          <article class="review" style="--g:var(--g-violet);--bd:var(--b-violet)">
+            <span class="review__q">“</span>
+            <p>Здесь будет отзыв о подготовке к родам и восстановлении после них.</p>
+            <footer><span class="review__ava">О</span><span><b>Имя клиентки</b><small>Мягкие роды</small></span></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Контакты -->
+    <section class="section section--rose" id="contacts">
+      <div class="container">
+        <div class="contacts">
+          <div class="g-card contacts__card" style="--g:var(--g-lilac);--bd:var(--b-lilac)" data-reveal="left">
+            <h2 class="h-section">Контакты</h2>
+            <div class="contacts__list">
+              <a class="contacts__row" href="tel:+79030812616"><span class="contacts__ico">☏</span><span><small>Телефон</small><b>+7 (903) 081-26-16</b></span></a>
+              <div class="contacts__row"><span class="contacts__ico">⌖</span><span><small>Адрес</small><b>Екатеринбург, ул. Онежская 4, офис 238</b></span></div>
+              <a class="contacts__row" href="#"><span class="contacts__ico">✈</span><span><small>Мессенджеры</small><b>Telegram · WhatsApp</b></span></a>
+            </div>
+            <a class="btn" href="bos.html#formats" style="align-self:flex-start">Записаться на консультацию <span class="arr">→</span></a>
+          </div>
+          <div class="contacts__visual" data-reveal="right">
+            <img src="assets/img/flower-bg-3.jpg" alt="">
+            <div class="dirs__hint">
+              <b>Не знаете, с чего начать?</b>
+              <p>Начните с первичной консультации — специалист поможет выбрать подходящий формат.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-footer></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

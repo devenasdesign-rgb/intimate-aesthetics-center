@@ -1,0 +1,9 @@
+# В репозитории только сайт; исходники и фотосессия остаются локально
+/*
+!/site/
+!/.claude/
+/.claude/*
+!/.claude/launch.json
+!/.gitignore
+!/README.md
+.DS_Store

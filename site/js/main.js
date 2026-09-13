@@ -1,0 +1,426 @@
+/* Центр интимной эстетики — общий layout и микроанимации */
+(function () {
+  "use strict";
+
+  const IMG = "assets/img/";
+  const page = document.body.dataset.page || "";
+
+  /* ---------- данные ---------- */
+  const DIRECTIONS = [
+    { id: "bos", n: "01", title: "БОС-терапия", desc: "Диагностика и восстановление мышц", mod: "rose", art: "line-bos.png", href: "bos.html", tw: "none", dw: "151px", meta: "Основное направление" },
+    { id: "audio", n: "02", title: "Аудиотренировки интимных мышц", desc: "Практики для самостоятельных занятий", mod: "lilac", art: "line-audio.png", href: "soon.html?s=audio", tw: "264px", dw: "195px", meta: "3 аудио бесплатно" },
+    { id: "books", n: "03", title: "Книги", desc: "Издания и ознакомительные главы", mod: "sand", art: "line-books.png", href: "soon.html?s=books", tw: "252px", dw: "177px", meta: "Первая глава бесплатно" },
+    { id: "libido", n: "04", title: "Либидо и питание", desc: "Связь тела, энергии и рациона", mod: "peach", art: "line-libido.png", href: "soon.html?s=libido", tw: "208px", dw: "210px", meta: "3 рецепта бесплатно" },
+    { id: "bowls", n: "05", title: "Тибетские чаши и камертоны", desc: "Расслабление и восстановление", mod: "mint", art: "line-bowls.png", href: "soon.html?s=bowls", tw: "196px", dw: "164px", meta: "3 практики бесплатно" },
+    { id: "fitness", n: "06", title: "Фитнес мышц тазового дна", desc: "Тонус и бережное укрепление", mod: "sky", art: "line-fitness.png", href: "soon.html?s=fitness", tw: "181px", dw: "210px", meta: "3 тренировки бесплатно" },
+    { id: "birth", n: "07", title: "Мягкие роды", desc: "Подготовка и поддержка тела", mod: "violet", art: "line-birth.png", href: "soon.html?s=birth", tw: "300px", dw: "210px", meta: "3 материала бесплатно" },
+    { id: "museum", n: "08", title: "Музей Кегеля", desc: "Бесплатная база знаний", mod: "mist", art: "line-museum.png", href: "soon.html?s=museum", tw: "300px", dw: "210px", meta: "Полностью бесплатно" }
+  ];
+  window.DIRECTIONS = DIRECTIONS;
+
+  const G = { rose: "var(--g-rose)", lilac: "var(--g-lilac)", sand: "var(--g-sand)", peach: "var(--g-peach)", mint: "var(--g-mint)", sky: "var(--g-sky)", violet: "var(--g-violet)", mist: "var(--g-mist)" };
+  const BD = { rose: "var(--b-rose)", lilac: "var(--b-lilac)", sand: "var(--b-sand)", peach: "var(--b-peach)", mint: "var(--b-mint)", sky: "var(--b-sky)", violet: "var(--b-violet)", mist: "var(--b-mist)" };
+
+  const chevron = '<img class="chev" src="' + IMG + 'chevron.svg" alt="" aria-hidden="true">';
+  const miniDir = (d, i) =>
+    '<a class="mini-dir" href="' + d.href + '" style="--g:' + G[d.mod] + ';--bd:' + BD[d.mod] + (i !== undefined ? ";--i:" + i : "") + '">' +
+    '<span class="mini-dir__num">' + d.n + "</span>" +
+    '<span class="mini-dir__name">' + d.title + "</span>" +
+    '<span class="mini-dir__meta">' + d.meta + "</span>" +
+    '<img src="' + IMG + d.art + '" alt="" loading="lazy"></a>';
+
+  const megaLink = (href, title, sub, mod, n) =>
+    '<a class="mega-link" href="' + href + '" style="--g:' + G[mod] + '"><span class="mega-link__dot">' + n + "</span><span><b>" + title + "</b><small>" + sub + '</small></span><span class="arr">→</span></a>';
+
+  /* ---------- header ---------- */
+  const NAV = [
+    { key: "dirs", label: "Направления", href: "directions.html" },
+    { key: "books", label: "Книги", href: "soon.html?s=books" },
+    { key: "museum", label: "Музей Кегеля", href: "soon.html?s=museum" },
+    { key: "about", label: "О центре", href: "index.html#about" },
+    { key: "contacts", label: "Контакты", href: "index.html#contacts" }
+  ];
+  const activeKey = { directions: "dirs", bos: "dirs" }[page];
+
+  const headerHTML =
+    '<header class="site-header" id="top">' +
+    '<div class="container header-bar">' +
+    '<a class="logo" href="index.html" aria-label="Центр интимной эстетики — на главную">' +
+    '<img src="' + IMG + 'logo.svg" alt="">' +
+    '<span class="logo__text"><span>Центр интимной</span><span>эстетики</span></span></a>' +
+    '<nav class="nav" aria-label="Основное меню">' +
+    NAV.map((it) =>
+      '<div class="nav__item" data-nav="' + it.key + '">' +
+      '<a class="nav__link' + (activeKey === it.key ? " is-active" : "") + '" href="' + it.href + '"' +
+      (it.key !== "contacts" ? ' aria-haspopup="true" aria-expanded="false"' : "") + ">" +
+      it.label + (it.key !== "contacts" ? chevron : "") + "</a></div>"
+    ).join("") +
+    "</nav>" +
+    '<div class="header-actions">' +
+    '<button class="icon-btn" type="button" data-login aria-label="Личный кабинет"><span class="icon-user"></span></button>' +
+    '<button class="btn btn--xs" type="button" data-login>Войти</button>' +
+    '<button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span></button>' +
+    "</div></div>" +
+    megaHTML() +
+    "</header>" +
+    '<div class="mega-backdrop"></div>' +
+    mobileMenuHTML();
+
+  function megaHTML() {
+    const paid = DIRECTIONS.filter((d) => !["books", "museum"].includes(d.id));
+    return (
+      '<div class="mega" aria-hidden="true"><div class="mega__panel"><div class="container mega__inner">' +
+      /* направления */
+      '<div class="mega__section mega__section--dirs" data-mega="dirs">' +
+      "<div>" +
+      '<div class="mega__title"><h3>Выбери путь к себе</h3><a class="link-arrow" href="directions.html">Все направления <span class="arr">→</span></a></div>' +
+      '<div class="mega-grid" data-stagger>' + DIRECTIONS.map((d) => miniDir(d)).join("") + "</div>" +
+      "</div>" +
+      '<div class="mega-promo" data-stagger>' +
+      '<span class="badge-free">Free внутри каждого</span>' +
+      '<div class="mega-promo__text"><div class="h-card">3 материала бесплатно</div><p>Попробуйте направление, прежде чем открыть доступ на месяц</p></div>' +
+      '<img src="' + IMG + 'hero-main.png" alt="">' +
+      '<a class="btn btn--sm" href="directions.html">Начать <span class="arr">→</span></a>' +
+      "</div></div>" +
+      /* книги */
+      '<div class="mega__section mega__section--list" data-mega="books">' +
+      '<div class="mega-intro" data-stagger><h3>Книги</h3><p>Авторские издания о женском здоровье и сексуальности. Первая глава каждой книги — бесплатно.</p><a class="btn btn--sm" href="soon.html?s=books">В каталог <span class="arr">→</span></a></div>' +
+      '<div class="mega-links" data-stagger>' +
+      megaLink("soon.html?s=books", "Каталог книг", "Все издания и форматы", "sand", "01") +
+      megaLink("soon.html?s=books", "Ознакомительные главы", "Читать бесплатно", "rose", "02") +
+      megaLink("soon.html?s=books", "Где купить", "На сайте или на маркетплейсе", "peach", "03") +
+      "</div>" +
+      '<div class="mega-photo" style="--g:var(--g-sand)"><img src="' + IMG + 'photo-06739.jpg" alt=""><span><b>Первая глава</b>Откройте любую книгу бесплатно</span></div>' +
+      "</div>" +
+      /* музей */
+      '<div class="mega__section mega__section--list" data-mega="museum">' +
+      '<div class="mega-intro" data-stagger><h3>Музей Кегеля</h3><p>Бесплатная база знаний: тренажёры для мышц тазового дна, принцип их действия и рекомендации.</p><a class="btn btn--sm" href="soon.html?s=museum">Открыть музей <span class="arr">→</span></a></div>' +
+      '<div class="mega-links" data-stagger>' +
+      megaLink("soon.html?s=museum", "База знаний", "Статьи о мышцах тазового дна", "mist", "01") +
+      megaLink("soon.html?s=museum", "Каталог тренажёров", "Фото, принцип действия, категории", "sky", "02") +
+      megaLink("soon.html?s=museum", "Как выбрать тренажёр", "Рекомендации специалиста", "mint", "03") +
+      "</div>" +
+      '<div class="mega-photo" style="--g:var(--g-mist)"><img src="' + IMG + 'photo-06756.jpg" alt=""><span><b>Бесплатно</b>Вся экспертная база открыта</span></div>' +
+      "</div>" +
+      /* о центре */
+      '<div class="mega__section mega__section--list" data-mega="about">' +
+      '<div class="mega-intro" data-stagger><h3>О центре</h3><p>Отдельный кабинет, спокойная атмосфера и современное оборудование в Екатеринбурге.</p><a class="btn btn--sm" href="index.html#about">Узнать больше <span class="arr">→</span></a></div>' +
+      '<div class="mega-links" data-stagger>' +
+      megaLink("index.html#about", "Центр и пространство", "Кабинет, услуги, программы", "violet", "01") +
+      megaLink("index.html#specialist", "О специалисте", "Екатерина Паньшина", "rose", "02") +
+      megaLink("index.html#reviews", "Отзывы", "Истории клиенток", "lilac", "03") +
+      "</div>" +
+      '<div class="mega-photo" style="--g:var(--g-violet)"><img src="' + IMG + 'interior-3.jpg" alt=""><span><b>Приватность</b>Только вы и специалист</span></div>' +
+      "</div>" +
+      "</div></div></div>"
+    );
+  }
+
+  function mobileMenuHTML() {
+    let i = 0;
+    const s = () => ' data-mstagger style="--i:' + i++ + '"';
+    const acc = (title, body) =>
+      '<div class="m-acc"' + s() + '><button class="m-acc__head" type="button" aria-expanded="false">' + title + '<span class="plus"></span></button><div class="m-acc__body"><div>' + body + "</div></div></div>";
+    const list = (items) => '<div class="m-acc__list">' + items.map((a) => megaLink(a[0], a[1], a[2], a[3], a[4])).join("") + "</div>";
+    return (
+      '<div class="m-menu" aria-hidden="true"><span class="m-menu__blob m-menu__blob--1"></span><span class="m-menu__blob m-menu__blob--2"></span><div class="m-menu__scroll">' +
+      acc("Направления", '<div class="m-dirs">' + DIRECTIONS.map((d) => miniDir(d)).join("") + "</div>") +
+      acc("Книги", list([["soon.html?s=books", "Каталог книг", "Все издания и форматы", "sand", "01"], ["soon.html?s=books", "Ознакомительные главы", "Читать бесплатно", "rose", "02"], ["soon.html?s=books", "Где купить", "Сайт или маркетплейс", "peach", "03"]])) +
+      acc("Музей Кегеля", list([["soon.html?s=museum", "База знаний", "Статьи о мышцах тазового дна", "mist", "01"], ["soon.html?s=museum", "Каталог тренажёров", "Фото и принцип действия", "sky", "02"]])) +
+      acc("О центре", list([["index.html#about", "Центр и пространство", "Кабинет, услуги, программы", "violet", "01"], ["index.html#specialist", "О специалисте", "Екатерина Паньшина", "rose", "02"], ["index.html#reviews", "Отзывы", "Истории клиенток", "lilac", "03"]])) +
+      '<a class="m-link-plain" href="index.html#contacts"' + s() + ">Контакты</a>" +
+      '<div class="m-menu__foot"' + s() + '><button class="btn" type="button" data-login>Войти в кабинет <span class="arr">→</span></button>' +
+      '<div class="m-contacts"><a href="tel:+79030812616">+7 (903) 081-26-16</a><a href="#">Telegram</a><a href="#">WhatsApp</a></div></div>' +
+      "</div></div>"
+    );
+  }
+
+  const footerHTML =
+    '<footer class="site-footer"><div class="container">' +
+    '<div class="footer-grid">' +
+    '<div class="footer-brand"><h4>Центр интимной эстетики</h4><p>Екатеринбург, ул. Онежская 4,<br>офис 238</p>' +
+    '<div class="footer-socials"><a href="tel:+79030812616">+7 (903) 081-26-16</a><a href="#">Telegram</a><a href="#">WhatsApp</a></div></div>' +
+    '<div class="footer-col"><h5>Направления</h5><ul>' +
+    '<li><a href="bos.html">БОС-терапия</a></li><li><a href="soon.html?s=fitness">Тазовое дно</a></li><li><a href="soon.html?s=bowls">Тибетские чаши</a></li><li><a href="soon.html?s=libido">Либидо, питание и нутрициология</a></li><li><a href="soon.html?s=birth">Мягкие роды</a></li></ul></div>' +
+    '<div class="footer-col"><h5>Платформа</h5><ul><li><a href="soon.html?s=books">Книги</a></li><li><a href="soon.html?s=museum">Музей Кегеля</a></li><li><a href="index.html#about">О центре</a></li><li><a href="#" data-login>Личный кабинет</a></li></ul></div>' +
+    '<div class="footer-col"><h5>Документы</h5><ul><li><a href="soon.html?s=docs">Оферта</a></li><li><a href="soon.html?s=docs">Политика</a></li><li><a href="soon.html?s=docs">Возврат</a></li><li><a href="soon.html?s=docs">Согласие на обработку данных</a></li></ul></div>' +
+    "</div>" +
+    '<div class="footer-bottom"><span>© 2026 Центр интимной эстетики</span><span>Материалы не заменяют консультацию врача</span></div>' +
+    "</div></footer>";
+
+  const modalHTML =
+    '<div class="modal" id="login" role="dialog" aria-modal="true" aria-labelledby="login-title" aria-hidden="true">' +
+    '<div class="modal__backdrop" data-close></div>' +
+    '<div class="modal__card">' +
+    '<img class="modal__flower" src="' + IMG + 'lotus-cut-1.png" alt="">' +
+    '<button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>' +
+    '<h3 id="login-title">Вход<br>в кабинет</h3>' +
+    "<p>Купленные направления, срок доступа и открытая библиотека материалов</p>" +
+    '<form data-login-form><label class="field"><span>Телефон</span><input type="tel" inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel"></label>' +
+    '<button class="btn" type="submit">Получить код <span class="arr">→</span></button></form>' +
+    '<p class="modal__note">Нажимая кнопку, вы соглашаетесь с политикой обработки данных</p>' +
+    "</div></div>";
+
+  const headerSlot = document.querySelector("[data-header]");
+  if (headerSlot) headerSlot.outerHTML = headerHTML;
+  const footerSlot = document.querySelector("[data-footer]");
+  if (footerSlot) footerSlot.outerHTML = footerHTML;
+  document.body.insertAdjacentHTML("beforeend", modalHTML);
+
+  /* ---------- карточки направлений ---------- */
+  document.querySelectorAll("[data-dir-grid]").forEach((grid) => {
+    grid.innerHTML = DIRECTIONS.map((d, i) =>
+      '<a class="dir-card dir-card--' + d.mod + '" href="' + d.href + '" data-reveal style="--d:' + (0.06 * i).toFixed(2) + 's">' +
+      '<img class="dir-card__art art-' + d.id + '" src="' + IMG + d.art + '" alt="" loading="lazy">' +
+      '<span class="dir-card__num">' + d.n + "</span>" +
+      '<h3 class="dir-card__title" style="max-width:' + d.tw + '">' + d.title + "</h3>" +
+      '<p class="dir-card__desc" style="--dw:' + d.dw + '">' + d.desc + "</p>" +
+      '<span class="dir-card__arr" aria-hidden="true">→</span></a>'
+    ).join("");
+  });
+
+  /* ---------- шапка: скролл ---------- */
+  const header = document.querySelector(".site-header");
+  const onScrollHeader = () => header && header.classList.toggle("is-scrolled", window.scrollY > 10);
+  onScrollHeader();
+
+  /* ---------- мега-меню ---------- */
+  const mega = document.querySelector(".mega");
+  const backdrop = document.querySelector(".mega-backdrop");
+  let megaTimer = null;
+  let currentMega = null;
+
+  function openMega(key) {
+    clearTimeout(megaTimer);
+    if (!mega) return;
+    const section = mega.querySelector('[data-mega="' + key + '"]');
+    if (!section) return closeMega();
+    if (currentMega !== key) {
+      mega.querySelectorAll(".mega__section").forEach((s) => s.classList.toggle("is-active", s === section));
+      document.querySelectorAll(".nav__item").forEach((n) => {
+        const on = n.dataset.nav === key;
+        n.classList.toggle("is-open", on);
+        const link = n.querySelector(".nav__link");
+        if (link.hasAttribute("aria-expanded")) link.setAttribute("aria-expanded", on);
+      });
+      if (mega.classList.contains("is-open")) { /* перезапуск каскада при переключении */
+        mega.classList.remove("is-open"); void mega.offsetWidth;
+      }
+    }
+    currentMega = key;
+    mega.classList.add("is-open");
+    mega.setAttribute("aria-hidden", "false");
+    backdrop.classList.add("is-on");
+  }
+  function closeMega() {
+    if (!mega) return;
+    currentMega = null;
+    mega.classList.remove("is-open");
+    mega.setAttribute("aria-hidden", "true");
+    backdrop.classList.remove("is-on");
+    document.querySelectorAll(".nav__item").forEach((n) => {
+      n.classList.remove("is-open");
+      const link = n.querySelector(".nav__link");
+      if (link.hasAttribute("aria-expanded")) link.setAttribute("aria-expanded", "false");
+    });
+  }
+  const scheduleClose = () => { clearTimeout(megaTimer); megaTimer = setTimeout(closeMega, 180); };
+
+  document.querySelectorAll(".nav__item").forEach((item) => {
+    const key = item.dataset.nav;
+    item.addEventListener("mouseenter", () => (key === "contacts" ? scheduleClose() : openMega(key)));
+    item.querySelector(".nav__link").addEventListener("keydown", (e) => {
+      if ((e.key === "Enter" || e.key === " " || e.key === "ArrowDown") && key !== "contacts") {
+        e.preventDefault();
+        currentMega === key ? closeMega() : openMega(key);
+      }
+    });
+  });
+  if (header) header.addEventListener("mouseleave", scheduleClose);
+  if (mega) mega.addEventListener("mouseenter", () => clearTimeout(megaTimer));
+  if (backdrop) backdrop.addEventListener("click", closeMega);
+
+  /* ---------- мобильное меню ---------- */
+  const burger = document.querySelector(".burger");
+  const mMenu = document.querySelector(".m-menu");
+  function toggleMenu(force) {
+    const open = typeof force === "boolean" ? force : !document.body.classList.contains("is-menu-open");
+    document.body.classList.toggle("is-menu-open", open);
+    document.body.classList.toggle("is-locked", open);
+    burger.setAttribute("aria-expanded", open);
+    burger.setAttribute("aria-label", open ? "Закрыть меню" : "Открыть меню");
+    mMenu.setAttribute("aria-hidden", !open);
+  }
+  if (burger) burger.addEventListener("click", () => toggleMenu());
+  document.querySelectorAll(".m-acc__head").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const acc = btn.parentElement;
+      const open = !acc.classList.contains("is-open");
+      acc.classList.toggle("is-open", open);
+      btn.setAttribute("aria-expanded", open);
+    });
+  });
+  if (mMenu) mMenu.addEventListener("click", (e) => { if (e.target.closest("a")) toggleMenu(false); });
+
+  /* ---------- модалка ---------- */
+  const modal = document.getElementById("login");
+  let lastFocus = null;
+  function openModal() {
+    lastFocus = document.activeElement;
+    toggleMenu(false);
+    closeMega();
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-locked");
+    setTimeout(() => modal.querySelector("input").focus(), 250);
+  }
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-locked");
+    if (lastFocus) lastFocus.focus();
+  }
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("[data-login]");
+    if (t) { e.preventDefault(); openModal(); }
+    if (e.target.closest("[data-close]")) closeModal();
+  });
+  modal.querySelector("[data-login-form]").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector(".btn");
+    btn.innerHTML = "Код отправлен ✓";
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (modal.classList.contains("is-open")) closeModal();
+    else if (document.body.classList.contains("is-menu-open")) toggleMenu(false);
+    else closeMega();
+  });
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* ---------- вкладки ---------- */
+  const mobileTabs = window.matchMedia("(max-width: 760px)");
+  document.querySelectorAll("[data-tabs]").forEach((root) => {
+    const tabs = [...root.querySelectorAll(".tab")];
+    const panels = [...root.querySelectorAll(".tab-panel")];
+    const tabList = root.querySelector(".tabs");
+    const panelsHome = root.querySelector(".tab-panels");
+
+    /* на телефоне панель стоит сразу под своей вкладкой, остальные вкладки уходят ниже */
+    const layout = () => {
+      panels.forEach((p, i) => {
+        if (mobileTabs.matches) tabs[i].after(p);
+        else panelsHome.appendChild(p);
+      });
+    };
+    layout();
+    mobileTabs.addEventListener("change", layout);
+
+    const select = (i, fromUser) => {
+      tabs.forEach((t, j) => { t.classList.toggle("is-active", i === j); t.setAttribute("aria-selected", i === j); t.tabIndex = i === j ? 0 : -1; });
+      panels.forEach((p, j) => p.classList.toggle("is-active", i === j));
+      if (fromUser && mobileTabs.matches) {
+        const top = tabs[i].getBoundingClientRect().top + window.scrollY - (header ? header.offsetHeight : 0) - 12;
+        window.scrollTo({ top, behavior: reduce ? "auto" : "smooth" });
+      }
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", () => select(i, true));
+      t.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          const n = (i + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+          tabs[n].focus(); select(n);
+        }
+      });
+    });
+    if (tabList) tabList.setAttribute("aria-orientation", "horizontal");
+  });
+
+  /* ---------- слайдер отзывов ---------- */
+  document.querySelectorAll("[data-slider]").forEach((wrap) => {
+    const track = wrap.querySelector(".reviews");
+    wrap.querySelectorAll("[data-dir]").forEach((b) =>
+      b.addEventListener("click", () => {
+        const card = track.firstElementChild;
+        const step = card ? card.getBoundingClientRect().width + 24 : 300;
+        track.scrollBy({ left: step * Number(b.dataset.dir), behavior: "smooth" });
+      })
+    );
+  });
+
+  /* ---------- свет за курсором на плашках ---------- */
+  document.addEventListener("pointermove", (e) => {
+    const card = e.target.closest && e.target.closest(".dir-card");
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    card.style.setProperty("--mx", e.clientX - r.left + "px");
+    card.style.setProperty("--my", e.clientY - r.top + "px");
+  }, { passive: true });
+
+  /* ---------- появление при скролле ---------- */
+  if (/[?&]static\b/.test(location.search)) document.documentElement.classList.add("is-static"); // режим для скриншотов
+  const revealEls = document.querySelectorAll("[data-reveal], .split-line");
+  if ("IntersectionObserver" in window && !reduce) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("is-in"));
+  }
+
+  /* ---------- параллакс и лёгкий отклик на курсор ---------- */
+  const parallax = [...document.querySelectorAll("[data-parallax]")];
+  const pointerEls = [...document.querySelectorAll("[data-pointer]")];
+  let px = 0, py = 0, ticking = false;
+  function frame() {
+    ticking = false;
+    if (window.innerWidth < 1180) { /* на планшетах и телефонах без параллакса */
+      parallax.concat(pointerEls).forEach((el) => (el.style.translate = ""));
+      return;
+    }
+    const vh = window.innerHeight;
+    parallax.forEach((el) => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > vh + 200) return;
+      const k = parseFloat(el.dataset.parallax) || 0.1;
+      const center = r.top + r.height / 2 - vh / 2;
+      const pk = parseFloat(el.dataset.pointer || 0);
+      el.style.translate = (px * pk).toFixed(1) + "px " + (-center * k + py * pk).toFixed(1) + "px";
+    });
+    pointerEls.forEach((el) => {
+      if (el.hasAttribute("data-parallax")) return;
+      const pk = parseFloat(el.dataset.pointer) || 8;
+      el.style.translate = (px * pk).toFixed(1) + "px " + (py * pk).toFixed(1) + "px";
+    });
+  }
+  const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+  if (!reduce) {
+    window.addEventListener("scroll", request, { passive: true });
+    window.addEventListener("resize", request);
+    if (window.matchMedia("(hover: hover)").matches) {
+      window.addEventListener("pointermove", (e) => {
+        px = e.clientX / window.innerWidth - 0.5;
+        py = e.clientY / window.innerHeight - 0.5;
+        request();
+      }, { passive: true });
+    }
+    frame();
+  }
+  window.addEventListener("scroll", onScrollHeader, { passive: true });
+
+  /* ---------- страница-заглушка ---------- */
+  const soonTitle = document.querySelector("[data-soon-title]");
+  if (soonTitle) {
+    const s = new URLSearchParams(location.search).get("s");
+    const d = DIRECTIONS.find((x) => x.id === s);
+    const names = { docs: "Документы" };
+    soonTitle.textContent = d ? d.title : names[s] || "Раздел";
+    const art = document.querySelector("[data-soon-art]");
+    if (d && art) { art.src = IMG + d.art; art.hidden = false; }
+    const card = document.querySelector("[data-soon-card]");
+    if (d && card) card.style.setProperty("--g", G[d.mod]);
+  }
+})();
