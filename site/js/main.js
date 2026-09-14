@@ -165,7 +165,43 @@
   if (headerSlot) headerSlot.outerHTML = headerHTML;
   const footerSlot = document.querySelector("[data-footer]");
   if (footerSlot) footerSlot.outerHTML = footerHTML;
-  document.body.insertAdjacentHTML("beforeend", modalHTML);
+  const BOOKING_OPTIONS = [
+    ["diag", "Первичная диагностика на аппарате БОС Callibri — 10 000 ₽"],
+    ["training", "Тренировка мышц в центре — 7 000 ₽"],
+    ["online", "Онлайн-консультация по мышцам тазового дна — 7 000 ₽"],
+    ["sex", "Сексологические и психологические запросы — 5 000 ₽"],
+    ["pack-base", "Пакет «Базовое здоровье» — 40 000 ₽"],
+    ["pack-ext", "Пакет «Расширенный» — 60 000 ₽"],
+    ["help", "Не знаю, помогите выбрать"]
+  ];
+  const bookingHTML =
+    '<div class="modal modal--booking" id="booking" role="dialog" aria-modal="true" aria-labelledby="booking-title" aria-hidden="true">' +
+    '<div class="modal__backdrop" data-close></div>' +
+    '<div class="modal__card">' +
+    '<img class="modal__flower" src="' + IMG + 'lotus-cut-1.png" alt="">' +
+    '<button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>' +
+    '<div class="booking__form-wrap">' +
+    '<h3 id="booking-title">Запись<br>на диагностику</h3>' +
+    "<p>Оставьте контакты — мы перезвоним, подберём удобное время и ответим на вопросы</p>" +
+    '<form class="booking__form" data-booking-form novalidate>' +
+    '<label class="field"><span>Имя</span><input name="name" type="text" autocomplete="given-name" placeholder="Как к вам обращаться" required></label>' +
+    '<label class="field"><span>Телефон</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required></label>' +
+    '<label class="field"><span>Формат</span><select name="format">' +
+    BOOKING_OPTIONS.map((o) => '<option value="' + o[0] + '">' + o[1] + "</option>").join("") +
+    "</select></label>" +
+    '<div class="field"><span>Как удобнее связаться</span><div class="seg">' +
+    '<label><input type="radio" name="contact" value="call" checked><i>Звонок</i></label>' +
+    '<label><input type="radio" name="contact" value="tg"><i>Telegram</i></label>' +
+    '<label><input type="radio" name="contact" value="wa"><i>WhatsApp</i></label>' +
+    "</div></div>" +
+    '<label class="check"><input type="checkbox" name="agree" required><span>Соглашаюсь на обработку персональных данных</span></label>' +
+    '<button class="btn" type="submit">Записаться <span class="arr">→</span></button>' +
+    '<p class="booking__error" role="alert" hidden>Заполните имя, телефон и отметьте согласие</p>' +
+    "</form></div>" +
+    '<div class="booking__done" hidden><span class="bubble bubble--big" aria-hidden="true"></span><h3>Спасибо!</h3><p>Заявка отправлена. Мы свяжемся с вами в ближайшее время.</p><button class="btn btn--ghost" type="button" data-close>Хорошо</button></div>' +
+    "</div></div>";
+
+  document.body.insertAdjacentHTML("beforeend", modalHTML + bookingHTML);
 
   /* ---------- карточки направлений ---------- */
   document.querySelectorAll("[data-dir-grid]").forEach((grid) => {
@@ -262,42 +298,91 @@
   });
   if (mMenu) mMenu.addEventListener("click", (e) => { if (e.target.closest("a")) toggleMenu(false); });
 
-  /* ---------- модалка ---------- */
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- модальные окна: вход и запись ---------- */
   const modal = document.getElementById("login");
+  const booking = document.getElementById("booking");
+  let openedModal = null;
   let lastFocus = null;
-  function openModal() {
+  function openModal(el, focusSel) {
     lastFocus = document.activeElement;
     toggleMenu(false);
     closeMega();
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
+    openedModal = el;
+    el.classList.add("is-open");
+    el.setAttribute("aria-hidden", "false");
     document.body.classList.add("is-locked");
-    setTimeout(() => modal.querySelector("input").focus(), 250);
+    setTimeout(() => { const f = el.querySelector(focusSel || "input"); if (f) f.focus(); }, 250);
   }
   function closeModal() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
+    if (!openedModal) return;
+    openedModal.classList.remove("is-open");
+    openedModal.setAttribute("aria-hidden", "true");
+    openedModal = null;
     document.body.classList.remove("is-locked");
     if (lastFocus) lastFocus.focus();
   }
+  function openBooking(format) {
+    booking.querySelector(".booking__form-wrap").hidden = false;
+    booking.querySelector(".booking__done").hidden = true;
+    booking.querySelector(".booking__error").hidden = true;
+    if (format) booking.querySelector('select[name="format"]').value = format;
+    booking.querySelector("#booking-title").innerHTML = format && format.startsWith("pack") ? "Запись<br>на пакет" : format === "online" ? "Запись<br>на консультацию" : "Запись<br>на диагностику";
+    openModal(booking);
+  }
   document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-booking]");
+    if (b) { e.preventDefault(); openBooking(b.dataset.booking); return; }
     const t = e.target.closest("[data-login]");
-    if (t) { e.preventDefault(); openModal(); }
+    if (t) { e.preventDefault(); openModal(modal); }
     if (e.target.closest("[data-close]")) closeModal();
   });
   modal.querySelector("[data-login-form]").addEventListener("submit", (e) => {
     e.preventDefault();
-    const btn = e.target.querySelector(".btn");
-    btn.innerHTML = "Код отправлен ✓";
+    e.target.querySelector(".btn").innerHTML = "Код отправлен ✓";
+  });
+
+  /* маска телефона: +7 (999) 999-99-99 */
+  document.querySelectorAll('input[type="tel"]').forEach((input) => {
+    input.addEventListener("input", () => {
+      let d = input.value.replace(/\D/g, "");
+      if (d.startsWith("8")) d = "7" + d.slice(1);
+      if (!d.startsWith("7")) d = "7" + d;
+      d = d.slice(0, 11);
+      const p = [d.slice(1, 4), d.slice(4, 7), d.slice(7, 9), d.slice(9, 11)];
+      let out = "+7";
+      if (p[0]) out += " (" + p[0];
+      if (p[0].length === 3) out += ")";
+      if (p[1]) out += " " + p[1];
+      if (p[2]) out += "-" + p[2];
+      if (p[3]) out += "-" + p[3];
+      input.value = d.length > 1 ? out : "";
+    });
+  });
+
+  booking.querySelector("[data-booking-form]").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const ok = f.name.value.trim().length > 1 && f.phone.value.replace(/\D/g, "").length === 11 && f.agree.checked;
+    f.querySelector(".booking__error").hidden = ok;
+    f.querySelectorAll("input[required]").forEach((i) => {
+      const bad = i.type === "checkbox" ? !i.checked : i.name === "phone" ? i.value.replace(/\D/g, "").length !== 11 : i.value.trim().length < 2;
+      i.closest("label").classList.toggle("is-invalid", !ok && bad);
+    });
+    if (!ok) return;
+    // TODO: подключить отправку заявки (CRM, Telegram-бот или почта)
+    booking.querySelector(".booking__form-wrap").hidden = true;
+    booking.querySelector(".booking__done").hidden = false;
+    f.reset();
   });
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    if (modal.classList.contains("is-open")) closeModal();
+    if (openedModal) closeModal();
     else if (document.body.classList.contains("is-menu-open")) toggleMenu(false);
     else closeMega();
   });
 
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   /* ---------- вкладки ---------- */
   const mobileTabs = window.matchMedia("(max-width: 760px)");
   document.querySelectorAll("[data-tabs]").forEach((root) => {

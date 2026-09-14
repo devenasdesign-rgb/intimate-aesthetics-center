@@ -98,7 +98,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 h1, h2, h3, h4, p { margin: 0; }
 ul { margin: 0; padding: 0; list-style: none; }
 :focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 6px; }
-body.is-locked { overflow: hidden; }
+html:has(body.is-locked) { overflow: hidden; }
 
 .container {
   width: 100%;
@@ -494,6 +494,42 @@ body.is-locked { overflow: hidden; }
 .field input:focus { outline: none; border-color: var(--pink); box-shadow: 0 0 0 4px rgba(254, 108, 131, .15); }
 .modal .btn { width: 100%; }
 .modal__note { font-size: 12px !important; margin: 14px 0 0 !important; max-width: none !important; }
+.modal--booking .modal__card { width: min(500px, 100%); max-height: calc(100vh - 40px); overflow-y: auto; }
+.modal--booking .modal__flower { width: 120px; right: -34px; top: -26px; opacity: .8; }
+.modal--booking h3, .modal--booking p { padding-right: 60px; }
+.booking__done h3, .booking__done p { padding-right: 0 !important; }
+@media (max-width: 760px) {
+  .modal--booking .modal__card { padding: 30px 20px 24px; }
+  .modal--booking .modal__flower { display: none; }
+  .modal--booking h3 { font-size: 26px; padding-right: 40px; }
+  .modal--booking p { padding-right: 0; }
+}
+.field select {
+  width: 100%; height: 52px; padding: 0 40px 0 16px;
+  border-radius: 12px; border: 1px solid var(--line); background: var(--bg);
+  font: inherit; font-size: 15px; color: var(--ink);
+  appearance: none; -webkit-appearance: none;
+  background-image: url("../assets/img/chevron.svg"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px;
+  transition: border-color .3s, box-shadow .3s;
+}
+.field select:focus { outline: none; border-color: var(--pink); box-shadow: 0 0 0 4px rgba(254, 108, 131, .15); }
+.field.is-invalid input, label.is-invalid input { border-color: var(--pink); background: #fff5f7; }
+.seg { display: flex; gap: 8px; flex-wrap: wrap; }
+.seg label { position: relative; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg i { display: block; font-style: normal; padding: 11px 16px; border-radius: 40px; border: 1px solid var(--line); background: var(--bg); font-size: 14px; font-weight: 500; color: var(--text); transition: background .35s var(--ease), border-color .35s, color .3s; }
+.seg input:checked + i { background: var(--g-rose); border-color: var(--b-rose); color: var(--ink); }
+.seg input:focus-visible + i { outline: 2px solid var(--pink); outline-offset: 2px; }
+.check { position: relative; display: flex; gap: 10px; align-items: flex-start; margin: 6px 0 18px; font-size: 13px; color: var(--muted); cursor: pointer; }
+.check input { flex: none; width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--pink); }
+.check.is-invalid span { color: var(--pink); }
+.booking__error { margin: 12px 0 0 !important; font-size: 13px !important; color: var(--pink) !important; max-width: none !important; }
+.booking__done { position: relative; text-align: center; padding: 30px 0 6px; }
+.booking__done h3 { margin-top: 18px; }
+.booking__done p { margin: 0 auto 22px; }
+.booking__done .btn { width: auto; }
+.bubble--big { width: 72px; height: 72px; margin: 0 auto; }
+.bubble--big::after { right: 15px; bottom: 13px; width: 10px; height: 6px; }
 
 /* ==========================================================================
    Home — hero
@@ -952,7 +988,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .formats__side { display: grid; gap: 30px; align-content: start; }
 .start-card { display: grid; grid-template-columns: 182px 1fr; gap: 34px; padding: 18px 16px; border-radius: 30px; border: 1px solid rgba(232,223,227,.9); background: var(--g-lilac); border-color: var(--b-lilac); }
 .start-card__img { height: 182px; border-radius: 25px; overflow: hidden; }
-.start-card__img img { width: 100%; height: 100%; object-fit: cover; }
+.start-card__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
 .start-card h4 { font-size: 20px; font-weight: 600; color: var(--pink); text-transform: uppercase; }
 .start-card p { margin-top: 8px; font-size: 18px; line-height: 1.22; color: var(--ink); }
 .start-card .btn { margin-top: 20px; font-size: 16px; padding: 18px 30px; border-radius: 6px; }
@@ -1163,10 +1199,10 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .p-hero__text .btn { margin-top: 28px; width: 100%; }
   .p-hero__visual { --ps: .47; }
   .situations, .method, .cabinet, .formats, .packages { padding: 50px 0; }
-  .sit-card--list { padding: 28px 22px 250px; }
+  .sit-card--list { padding: 28px 22px 0; display: flex; flex-direction: column; }
   .sit-card--list .sit-list { grid-template-columns: 1fr; gap: 16px; }
   .sit-card--list .sit-list li { font-size: 16px; }
-  .sit-card__lotus { width: 220px; right: -14px; bottom: -26px; }
+  .sit-card__lotus { position: relative; right: auto; bottom: auto; align-self: flex-end; width: 210px; margin: 8px -14px -2px 0; }
   .tp-photo { height: 200px; }
   .tp-chips { gap: 8px; }
   .tp-chips span { padding: 10px 14px; font-size: 12px; }
