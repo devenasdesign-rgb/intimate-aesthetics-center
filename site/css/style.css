@@ -988,7 +988,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .formats__side { display: grid; gap: 30px; align-content: start; }
 .start-card { display: grid; grid-template-columns: 182px 1fr; gap: 34px; padding: 18px 16px; border-radius: 30px; border: 1px solid rgba(232,223,227,.9); background: var(--g-lilac); border-color: var(--b-lilac); }
 .start-card__img { height: 182px; border-radius: 25px; overflow: hidden; }
-.start-card__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.start-card__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
 .start-card h4 { font-size: 20px; font-weight: 600; color: var(--pink); text-transform: uppercase; }
 .start-card p { margin-top: 8px; font-size: 18px; line-height: 1.22; color: var(--ink); }
 .start-card .btn { margin-top: 20px; font-size: 16px; padding: 18px 30px; border-radius: 6px; }
@@ -1224,7 +1224,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .price-row__t { font-size: 16px; }
   .price-row__p { font-size: 19px; }
   .start-card { grid-template-columns: 1fr; }
-  .start-card__img { height: 260px; }
+  .start-card__img { height: auto; aspect-ratio: 1 / 1; }
   .pack { padding: 22px 20px; }
   .pack li { font-size: 16px; }
   .pack__price { font-size: 44px; margin-top: 36px; }
