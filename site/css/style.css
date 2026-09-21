@@ -1272,8 +1272,8 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .book-card:hover .book-card__more .arr { transform: translateX(6px); }
 
 .author-strip { display: grid; grid-template-columns: 260px 1fr; gap: 36px; align-items: center; padding: 26px; border-radius: 30px; background: #f8f5f1; border: 1px solid #ebe2d9; }
-.author-strip__img { height: 300px; border-radius: 22px; overflow: hidden; }
-.author-strip__img img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
+.author-strip__img { aspect-ratio: 1 / 1.15; border-radius: 22px; overflow: hidden; }
+.author-strip__img img { width: 100%; height: 100%; object-fit: cover; object-position: center var(--pos, 35%); }
 .author-strip h2 { font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height: 1.05; color: var(--ink); margin: 8px 0 14px; }
 .author-strip p { font-size: 17px; line-height: 1.45; color: var(--text); max-width: 620px; }
 .author-strip .btn { margin-top: 22px; }
@@ -1371,7 +1371,6 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .book-card__media { height: 340px; border-radius: 18px; }
   .book-card__title { font-size: 30px; }
   .author-strip { grid-template-columns: 1fr; gap: 20px; padding: 16px 16px 24px; }
-  .author-strip__img { height: 320px; }
   .author-strip h2 { font-size: 28px; }
   .b-hero { padding-bottom: 60px; }
   .b-hero__plate { left: -12px; right: 24px; top: 30px; bottom: -20px; }
