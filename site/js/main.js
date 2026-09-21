@@ -9,7 +9,7 @@
   const DIRECTIONS = [
     { id: "bos", n: "01", title: "БОС-терапия", desc: "Диагностика и восстановление мышц", mod: "rose", art: "line-bos.png", href: "bos.html", tw: "none", dw: "151px", meta: "Основное направление" },
     { id: "audio", n: "02", title: "Аудиотренировки интимных мышц", desc: "Практики для самостоятельных занятий", mod: "lilac", art: "line-audio.png", href: "soon.html?s=audio", tw: "264px", dw: "195px", meta: "3 аудио бесплатно" },
-    { id: "books", n: "03", title: "Книги", desc: "Издания и ознакомительные главы", mod: "sand", art: "line-books.png", href: "soon.html?s=books", tw: "252px", dw: "177px", meta: "Первая глава бесплатно" },
+    { id: "books", n: "03", title: "Книги", desc: "Кортизоловое тело и Art book", mod: "sand", art: "line-books.png", href: "books.html", tw: "252px", dw: "177px", meta: "Аудиоглава бесплатно" },
     { id: "libido", n: "04", title: "Либидо и питание", desc: "Связь тела, энергии и рациона", mod: "peach", art: "line-libido.png", href: "soon.html?s=libido", tw: "208px", dw: "210px", meta: "3 рецепта бесплатно" },
     { id: "bowls", n: "05", title: "Тибетские чаши и камертоны", desc: "Расслабление и восстановление", mod: "mint", art: "line-bowls.png", href: "soon.html?s=bowls", tw: "196px", dw: "164px", meta: "3 практики бесплатно" },
     { id: "fitness", n: "06", title: "Фитнес мышц тазового дна", desc: "Тонус и бережное укрепление", mod: "sky", art: "line-fitness.png", href: "soon.html?s=fitness", tw: "181px", dw: "210px", meta: "3 тренировки бесплатно" },
@@ -35,12 +35,12 @@
   /* ---------- header ---------- */
   const NAV = [
     { key: "dirs", label: "Направления", href: "directions.html" },
-    { key: "books", label: "Книги", href: "soon.html?s=books" },
+    { key: "books", label: "Книги", href: "books.html" },
     { key: "museum", label: "Музей Кегеля", href: "soon.html?s=museum" },
     { key: "about", label: "О центре", href: "index.html#about" },
     { key: "contacts", label: "Контакты", href: "index.html#contacts" }
   ];
-  const activeKey = { directions: "dirs", bos: "dirs" }[page];
+  const activeKey = { directions: "dirs", bos: "dirs", books: "books", book: "books" }[page];
 
   const headerHTML =
     '<header class="site-header" id="top">' +
@@ -84,13 +84,13 @@
       "</div></div>" +
       /* книги */
       '<div class="mega__section mega__section--list" data-mega="books">' +
-      '<div class="mega-intro" data-stagger><h3>Книги</h3><p>Авторские издания о женском здоровье и сексуальности. Первая глава каждой книги — бесплатно.</p><a class="btn btn--sm" href="soon.html?s=books">В каталог <span class="arr">→</span></a></div>' +
+      '<div class="mega-intro" data-stagger><h3>Книги</h3><p>Авторские книги Екатерины Паньшиной. У каждой — бесплатная аудиоглава.</p><a class="btn btn--sm" href="books.html">Выбрать книгу <span class="arr">→</span></a></div>' +
       '<div class="mega-links" data-stagger>' +
-      megaLink("soon.html?s=books", "Каталог книг", "Все издания и форматы", "sand", "01") +
-      megaLink("soon.html?s=books", "Ознакомительные главы", "Читать бесплатно", "rose", "02") +
-      megaLink("soon.html?s=books", "Где купить", "На сайте или на маркетплейсе", "peach", "03") +
+      megaLink("book-cortisol.html", "Кортизоловое тело", "Методы снижения кортизола", "sky", "01") +
+      megaLink("book-artbook.html", "Art book", "Эротических фантазий", "rose", "02") +
+      megaLink("book-cortisol.html#audio", "Бесплатная аудиоглава", "Слушайте прямо на сайте", "violet", "03") +
       "</div>" +
-      '<div class="mega-photo" style="--g:var(--g-sand)"><img src="' + IMG + 'photo-06739.jpg" alt=""><span><b>Первая глава</b>Откройте любую книгу бесплатно</span></div>' +
+      '<div class="mega-photo" style="--g:var(--g-sand)"><img src="' + IMG + 'book-cortisol.jpg" alt=""><span><b>Печатная + аудио</b>3 500 ₽ — заказ в один клик</span></div>' +
       "</div>" +
       /* музей */
       '<div class="mega__section mega__section--list" data-mega="museum">' +
@@ -125,7 +125,7 @@
     return (
       '<div class="m-menu" aria-hidden="true"><span class="m-menu__blob m-menu__blob--1"></span><span class="m-menu__blob m-menu__blob--2"></span><div class="m-menu__scroll">' +
       acc("Направления", '<div class="m-dirs">' + DIRECTIONS.map((d) => miniDir(d)).join("") + "</div>") +
-      acc("Книги", list([["soon.html?s=books", "Каталог книг", "Все издания и форматы", "sand", "01"], ["soon.html?s=books", "Ознакомительные главы", "Читать бесплатно", "rose", "02"], ["soon.html?s=books", "Где купить", "Сайт или маркетплейс", "peach", "03"]])) +
+      acc("Книги", list([["books.html", "Все книги", "Выберите книгу", "sand", "01"], ["book-cortisol.html", "Кортизоловое тело", "Методы снижения кортизола", "sky", "02"], ["book-artbook.html", "Art book", "Эротических фантазий", "rose", "03"]])) +
       acc("Музей Кегеля", list([["soon.html?s=museum", "База знаний", "Статьи о мышцах тазового дна", "mist", "01"], ["soon.html?s=museum", "Каталог тренажёров", "Фото и принцип действия", "sky", "02"]])) +
       acc("О центре", list([["index.html#about", "Центр и пространство", "Кабинет, услуги, программы", "violet", "01"], ["index.html#specialist", "О специалисте", "Екатерина Паньшина", "rose", "02"], ["index.html#reviews", "Отзывы", "Истории клиенток", "lilac", "03"]])) +
       '<a class="m-link-plain" href="index.html#contacts"' + s() + ">Контакты</a>" +
@@ -142,7 +142,7 @@
     '<div class="footer-socials"><a href="tel:+79030812616">+7 (903) 081-26-16</a><a href="#">Telegram</a><a href="#">WhatsApp</a></div></div>' +
     '<div class="footer-col"><h5>Направления</h5><ul>' +
     '<li><a href="bos.html">БОС-терапия</a></li><li><a href="soon.html?s=fitness">Тазовое дно</a></li><li><a href="soon.html?s=bowls">Тибетские чаши</a></li><li><a href="soon.html?s=libido">Либидо, питание и нутрициология</a></li><li><a href="soon.html?s=birth">Мягкие роды</a></li></ul></div>' +
-    '<div class="footer-col"><h5>Платформа</h5><ul><li><a href="soon.html?s=books">Книги</a></li><li><a href="soon.html?s=museum">Музей Кегеля</a></li><li><a href="index.html#about">О центре</a></li><li><a href="#" data-login>Личный кабинет</a></li></ul></div>' +
+    '<div class="footer-col"><h5>Платформа</h5><ul><li><a href="books.html">Книги</a></li><li><a href="soon.html?s=museum">Музей Кегеля</a></li><li><a href="index.html#about">О центре</a></li><li><a href="#" data-login>Личный кабинет</a></li></ul></div>' +
     '<div class="footer-col"><h5>Документы</h5><ul><li><a href="soon.html?s=docs">Оферта</a></li><li><a href="soon.html?s=docs">Политика</a></li><li><a href="soon.html?s=docs">Возврат</a></li><li><a href="soon.html?s=docs">Согласие на обработку данных</a></li></ul></div>' +
     "</div>" +
     '<div class="footer-bottom"><span>© 2026 Центр интимной эстетики</span><span>Материалы не заменяют консультацию врача</span></div>' +
@@ -201,7 +201,32 @@
     '<div class="booking__done" hidden><span class="bubble bubble--big" aria-hidden="true"></span><h3>Спасибо!</h3><p>Заявка отправлена. Мы свяжемся с вами в ближайшее время.</p><button class="btn btn--ghost" type="button" data-close>Хорошо</button></div>' +
     "</div></div>";
 
-  document.body.insertAdjacentHTML("beforeend", modalHTML + bookingHTML);
+  /* заказ книги: заявка уходит сообщением в WhatsApp на номер центра */
+  const ORDER_PHONE = "79030812616";
+  const orderHTML =
+    '<div class="modal modal--booking" id="order" role="dialog" aria-modal="true" aria-labelledby="order-title" aria-hidden="true">' +
+    '<div class="modal__backdrop" data-close></div>' +
+    '<div class="modal__card">' +
+    '<button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>' +
+    '<div class="booking__form-wrap">' +
+    '<h3 id="order-title">Заказ книги</h3>' +
+    '<p class="order__product" data-order-product></p>' +
+    '<form class="booking__form" data-order-form novalidate>' +
+    '<label class="field"><span>Имя</span><input name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required></label>' +
+    '<label class="field"><span>Телефон</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required></label>' +
+    '<label class="field"><span>Город и адрес доставки</span><input name="address" type="text" autocomplete="street-address" placeholder="Можно уточнить позже"></label>' +
+    '<label class="field"><span>Комментарий</span><input name="comment" type="text" placeholder="Например, подпись автора"></label>' +
+    '<label class="check"><input type="checkbox" name="agree" required><span>Соглашаюсь на обработку персональных данных</span></label>' +
+    '<button class="btn" type="submit">Отправить заявку <span class="arr">→</span></button>' +
+    '<p class="booking__error" role="alert" hidden>Заполните имя, телефон и отметьте согласие</p>' +
+    "</form></div>" +
+    '<div class="booking__done" hidden><span class="bubble bubble--big" aria-hidden="true"></span><h3>Почти готово</h3>' +
+    "<p>Мы открыли WhatsApp с вашей заявкой — нажмите «Отправить», и Екатерина свяжется с вами.</p>" +
+    '<a class="btn" data-order-wa target="_blank" rel="noopener">Открыть WhatsApp <span class="arr">→</span></a>' +
+    '<p class="modal__note">Не открылся WhatsApp? Позвоните: <a href="tel:+' + ORDER_PHONE + '">+7 (903) 081-26-16</a></p>' +
+    "</div></div></div>";
+
+  document.body.insertAdjacentHTML("beforeend", modalHTML + bookingHTML + orderHTML);
 
   /* ---------- карточки направлений ---------- */
   document.querySelectorAll("[data-dir-grid]").forEach((grid) => {
@@ -323,6 +348,15 @@
     document.body.classList.remove("is-locked");
     if (lastFocus) lastFocus.focus();
   }
+  const order = document.getElementById("order");
+  function openOrder(btn) {
+    order.querySelector(".booking__form-wrap").hidden = false;
+    order.querySelector(".booking__done").hidden = true;
+    order.querySelector(".booking__error").hidden = true;
+    order.dataset.product = btn.dataset.order;
+    order.querySelector("[data-order-product]").textContent = btn.dataset.order;
+    openModal(order);
+  }
   function openBooking(format) {
     booking.querySelector(".booking__form-wrap").hidden = false;
     booking.querySelector(".booking__done").hidden = true;
@@ -332,6 +366,8 @@
     openModal(booking);
   }
   document.addEventListener("click", (e) => {
+    const o = e.target.closest("[data-order]");
+    if (o) { e.preventDefault(); openOrder(o); return; }
     const b = e.target.closest("[data-booking]");
     if (b) { e.preventDefault(); openBooking(b.dataset.booking); return; }
     const t = e.target.closest("[data-login]");
@@ -376,6 +412,51 @@
     booking.querySelector(".booking__done").hidden = false;
     f.reset();
   });
+  order.querySelector("[data-order-form]").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const phoneOk = f.phone.value.replace(/\D/g, "").length === 11;
+    const ok = f.name.value.trim().length > 1 && phoneOk && f.agree.checked;
+    f.querySelector(".booking__error").hidden = ok;
+    f.name.closest("label").classList.toggle("is-invalid", f.name.value.trim().length < 2);
+    f.phone.closest("label").classList.toggle("is-invalid", !phoneOk);
+    f.agree.closest("label").classList.toggle("is-invalid", !f.agree.checked);
+    if (!ok) return;
+    const text = [
+      "Здравствуйте! Хочу заказать книгу.",
+      "Заказ: " + order.dataset.product,
+      "Имя: " + f.name.value.trim(),
+      "Телефон: " + f.phone.value,
+      f.address.value.trim() && "Доставка: " + f.address.value.trim(),
+      f.comment.value.trim() && "Комментарий: " + f.comment.value.trim()
+    ].filter(Boolean).join("\n");
+    const url = "https://wa.me/" + ORDER_PHONE + "?text=" + encodeURIComponent(text);
+    order.querySelector("[data-order-wa]").href = url;
+    window.open(url, "_blank", "noopener");
+    order.querySelector(".booking__form-wrap").hidden = true;
+    order.querySelector(".booking__done").hidden = false;
+    f.reset();
+  });
+
+  /* бесплатная аудиоглава: плеер включается, когда в data-audio-src есть ссылка */
+  document.querySelectorAll("[data-audio]").forEach((card) => {
+    const src = card.dataset.audioSrc;
+    const btn = card.querySelector(".audio__play");
+    const status = card.querySelector(".audio__status");
+    if (!src) { card.classList.add("is-empty"); btn.disabled = true; return; }
+    const audio = new Audio(src);
+    audio.preload = "none";
+    btn.addEventListener("click", () => (audio.paused ? audio.play() : audio.pause()));
+    audio.addEventListener("play", () => { card.classList.add("is-playing"); btn.setAttribute("aria-label", "Пауза"); });
+    audio.addEventListener("pause", () => { card.classList.remove("is-playing"); btn.setAttribute("aria-label", "Слушать"); });
+    audio.addEventListener("timeupdate", () => {
+      if (!audio.duration) return;
+      card.style.setProperty("--progress", (audio.currentTime / audio.duration) * 100 + "%");
+      const t = Math.floor(audio.currentTime);
+      status.textContent = Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0");
+    });
+  });
+
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
     if (openedModal) closeModal();
