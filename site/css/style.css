@@ -855,7 +855,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .sit-card--result .kicker { color: var(--ink); font-size: 15px; }
 .sit-card--result h3 { margin-top: 30px; font-size: 27px; line-height: 1.15; font-weight: 500; color: var(--ink); max-width: 205px; position: relative; z-index: 1; }
 .sit-card--result p { margin-top: 44px; font-size: 18px; line-height: 1.4; color: var(--text); max-width: 235px; position: relative; z-index: 1; }
-.sit-card__flower { position: absolute; right: -52px; top: -44px; width: 230px; z-index: 0; animation: sway 9s ease-in-out infinite; transform-origin: 80% 50%; }
+.sit-card__flower { position: absolute; right: -52px; top: -44px; width: 230px; z-index: 0; transform-origin: 80% 50%; }
 @keyframes sway { 0%,100% { transform: rotate(0) translateY(0); } 50% { transform: rotate(-4deg) translateY(-6px); } }
 .sit-card .kicker { font-size: 15px; }
 .sit-list { margin-top: 20px; display: grid; gap: 14px; }
@@ -868,7 +868,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .sit-card--list { background: linear-gradient(123deg, #f7d9e3 0%, #f3e3f3 55%, #e4e6f8 100%); border-color: var(--b-rose); padding: 40px 300px 40px 40px; min-height: 326px; }
 .sit-card--list .sit-list { margin-top: 0; grid-template-columns: 1fr 1fr; gap: 22px 36px; position: relative; z-index: 1; }
 .sit-card--list .sit-list li { font-size: 18px; line-height: 1.35; }
-.sit-card__lotus { position: absolute; right: -20px; bottom: -30px; width: 290px; z-index: 0; pointer-events: none; animation: sway 10s ease-in-out infinite; transform-origin: 30% 100%; }
+.sit-card__lotus { position: absolute; right: -20px; bottom: -30px; width: 290px; z-index: 0; pointer-events: none; transform-origin: 30% 100%; }
 
 .method { padding: 64px 0 64px; }
 .method .lead { margin-top: 26px; font-size: 20px; color: var(--muted-2); color: #6f626b; }
@@ -1019,7 +1019,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .cta-banner::after { content: ""; position: absolute; inset: 0; background: radial-gradient(500px circle at 85% 20%, rgba(235,133,255,.25), transparent 60%), radial-gradient(400px circle at 10% 110%, rgba(255,77,140,.18), transparent 60%); pointer-events: none; }
 .cta-banner > * { position: relative; z-index: 1; }
 .cta-banner p { margin-top: 16px; font-size: 18px; color: var(--text); max-width: 520px; }
-.cta-banner__flower { position: absolute !important; right: 260px; bottom: -60px; width: 260px; z-index: 0 !important; opacity: .9; animation: sway 10s ease-in-out infinite; }
+.cta-banner__flower { position: absolute !important; right: 260px; bottom: -60px; width: 260px; z-index: 0 !important; opacity: .9; }
 
 /* страница «выбор направлений» */
 .choose { position: relative; padding: 55px 0 60px; overflow: hidden; }
@@ -1041,7 +1041,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .soon { min-height: calc(100vh - 99px); display: grid; place-items: center; text-align: center; position: relative; overflow: hidden; padding: 60px 20px; }
 .soon .h-section { max-width: 720px; margin: 20px auto 16px; }
 .soon p { max-width: 520px; margin: 0 auto 28px; font-size: 18px; color: var(--muted); }
-.soon__flower { position: absolute; width: 360px; opacity: .85; pointer-events: none; animation: sway 10s ease-in-out infinite; }
+.soon__flower { position: absolute; width: 360px; opacity: .85; pointer-events: none; }
 
 /* ==========================================================================
    Микроанимации появления
@@ -1465,4 +1465,40 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .photo-strip div:nth-child(even) { margin-top: 24px; }
   .about-book__text p { font-size: 16px; }
   .about-book__text .lead-quote { font-size: 21px; }
+}
+
+/* цветок в блоке «О книге» — отдельная колонка слева, выходит из края экрана и не удлиняет блок */
+.about-book--flower { grid-template-columns: 250px 1fr 400px; gap: 50px; align-items: stretch; }
+.about-book__flower {
+  align-self: end; display: block; height: auto; max-width: none;
+  width: calc(250px + var(--gutter) + (100vw - min(100vw, 1440px)) / 2);
+  margin-left: calc(-1 * (var(--gutter) + (100vw - min(100vw, 1440px)) / 2));
+  filter: drop-shadow(0 18px 30px rgba(194, 107, 130, .12));
+}
+/* цветок в блоке об авторе */
+.author-strip--flower { grid-template-columns: 260px 1fr 230px; }
+.author-strip__flower { align-self: end; width: 230px; height: auto; margin-bottom: -26px; filter: drop-shadow(0 18px 30px rgba(194, 107, 130, .12)); }
+@media (max-width: 1180px) {
+  .about-book--flower { grid-template-columns: 1fr; }
+  .about-book__flower { display: none; }
+  .author-strip--flower { grid-template-columns: 220px 1fr; }
+  .author-strip__flower { display: none; }
+}
+@media (max-width: 760px) {
+  .author-strip--flower { grid-template-columns: 1fr; }
+}
+
+/* цены: ровные (lining) цифры, чтобы «3» и «5» не опускались ниже плашки */
+.buy-card .buy-card__price, .pack__price {
+  font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1;
+  padding: 14px 22px 12px; line-height: 1;
+}
+
+/* страница выбора книг на телефоне: одно фото и меньше текста */
+@media (max-width: 760px) {
+  .books-hero .lead { margin-top: 12px; }
+  .books-hero__grid { gap: 26px; }
+  .books-hero__photos { height: auto; }
+  .books-hero__photos img:nth-child(2) { display: none; }
+  .books-hero__photos img:nth-child(1) { position: relative; left: auto; top: auto; rotate: 0deg; width: 100%; height: auto; aspect-ratio: 1 / 1.12; object-position: center 55%; }
 }
