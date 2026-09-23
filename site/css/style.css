@@ -1262,7 +1262,6 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .book-card:hover .book-card__media img { transform: scale(1.05); }
 .book-card__media .badge-free { position: absolute; left: 18px; bottom: 20px; font-size: 12px; padding: 12px 14px; }
 .book-card__body { padding: 26px 14px 0; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-.book-card__n { font-size: 12px; font-weight: 600; color: var(--pink); }
 .book-card__title { font-family: var(--font-display); font-weight: 700; font-size: 38px; line-height: 1; color: var(--ink-blue); }
 .book-card__sub { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.15; color: var(--blue); max-width: 420px; }
 .book-card__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
