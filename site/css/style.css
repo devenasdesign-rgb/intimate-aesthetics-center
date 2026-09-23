@@ -1501,3 +1501,12 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .books-hero__photos img:nth-child(2) { display: none; }
   .books-hero__photos img:nth-child(1) { position: relative; left: auto; top: auto; rotate: 0deg; width: 100%; height: auto; aspect-ratio: 1 / 1.12; object-position: center 55%; }
 }
+
+/* верхняя полоска страницы книг без первого экрана */
+.books-top { background: var(--bg-rose); padding: 26px 0 0; }
+/* список симптомов в блоке «О книге» */
+.about-book__intro { font-weight: 600; color: var(--ink) !important; }
+.about-book__list { display: grid; gap: 12px; margin: 18px 0 22px; }
+.about-book__list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; line-height: 1.4; color: var(--ink); }
+.about-book__list li .bubble { width: 22px; height: 22px; margin-top: 1px; }
+.photo-strip--flat img { object-position: center; }
