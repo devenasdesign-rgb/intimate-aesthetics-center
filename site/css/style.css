@@ -1568,3 +1568,14 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .audio-after p { font-size: 15px; color: var(--muted); }
 .btn--ghost .price { border-left-color: rgba(45, 39, 48, .18); }
 @media (max-width: 760px) { .audio-after .btn { width: 100%; } }
+
+/* первые страницы и виртуальный показ (Art book) */
+.preview-card { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; padding: 34px 40px; border-radius: 30px; border: 1px solid var(--b-rose); background: var(--g-rose); }
+.preview-card__pages { display: flex; gap: 12px; }
+.preview-card__pages span { display: block; width: 76px; height: 104px; border-radius: 10px; background: rgba(255,255,255,.75); box-shadow: 0 10px 22px rgba(89,59,82,.12); transform: rotate(-4deg); }
+.preview-card__pages span:nth-child(2) { transform: rotate(2deg); }
+.preview-card__pages span:nth-child(3) { transform: rotate(6deg); }
+@media (max-width: 760px) {
+  .preview-card { grid-template-columns: 1fr; gap: 24px; padding: 24px 20px; }
+  .preview-card__pages span { width: 62px; height: 86px; }
+}
