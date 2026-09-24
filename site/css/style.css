@@ -986,8 +986,8 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .price-row__p { font-size: 22px; font-weight: 500; color: var(--pink); white-space: nowrap; }
 .price-card .btn { margin-top: 26px; font-size: 16px; padding: 18px 30px; border-radius: 6px; }
 .formats__side { display: grid; gap: 30px; align-content: start; }
-.start-card { display: grid; grid-template-columns: 182px 1fr; gap: 34px; padding: 18px 16px; border-radius: 30px; border: 1px solid rgba(232,223,227,.9); background: var(--g-lilac); border-color: var(--b-lilac); }
-.start-card__img { height: 182px; border-radius: 25px; overflow: hidden; }
+.start-card { --r: 30px; --p: 16px; display: grid; grid-template-columns: 182px 1fr; gap: 34px; padding: var(--p); border-radius: var(--r); border: 1px solid rgba(232,223,227,.9); background: var(--g-lilac); border-color: var(--b-lilac); }
+.start-card__img { height: 182px; border-radius: calc(var(--r) - var(--p)); overflow: hidden; }
 .start-card__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
 .start-card h4 { font-size: 20px; font-weight: 600; color: var(--pink); text-transform: uppercase; }
 .start-card p { margin-top: 8px; font-size: 18px; line-height: 1.22; color: var(--ink); }
@@ -1248,16 +1248,16 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 
 .book-pick { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 30px 0 90px; }
 .book-card {
-  --g: var(--g-sky); --bd: var(--b-sky);
+  --g: var(--g-sky); --bd: var(--b-sky); --r: 34px; --p: 18px;
   position: relative; display: flex; flex-direction: column;
-  border-radius: 34px; border: 1px solid var(--bd); background: var(--g);
-  padding: 18px 18px 30px; overflow: hidden; isolation: isolate;
+  border-radius: var(--r); border: 1px solid var(--bd); background: var(--g);
+  padding: var(--p) var(--p) 30px; overflow: hidden; isolation: isolate;
   box-shadow: var(--shadow-card);
   transition: transform .6s var(--ease), box-shadow .6s var(--ease);
 }
 .book-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-card-hover); }
 .book-card--rose { --g: var(--g-rose); --bd: var(--b-rose); }
-.book-card__media { position: relative; height: 430px; border-radius: 24px; overflow: hidden; background: #ddd; }
+.book-card__media { position: relative; height: 430px; border-radius: calc(var(--r) - var(--p)); overflow: hidden; background: #ddd; }
 .book-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .book-card:hover .book-card__media img { transform: scale(1.05); }
 .book-card__media .badge-free { position: absolute; left: 18px; bottom: 20px; font-size: 12px; padding: 12px 14px; }
@@ -1366,8 +1366,8 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 @media (max-width: 760px) {
   .books-hero .h-section { font-size: 38px; }
   .book-pick { gap: 18px; padding-bottom: 60px; }
-  .book-card { border-radius: 26px; padding: 12px 12px 24px; }
-  .book-card__media { height: 340px; border-radius: 18px; }
+  .book-card { --r: 26px; --p: 12px; border-radius: var(--r); padding: var(--p) var(--p) 24px; }
+  .book-card__media { height: 340px; }
   .book-card__title { font-size: 30px; }
   .author-strip { grid-template-columns: 1fr; gap: 20px; padding: 16px 16px 24px; }
   .author-strip h2 { font-size: 28px; }
@@ -1531,7 +1531,6 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .swipe-hint i { width: 34px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, rgba(254,108,131,.25), var(--pink)); position: relative; animation: hintSlide 1.8s ease-in-out infinite; }
   .swipe-hint i::after { content: ""; position: absolute; right: -1px; top: -3px; width: 8px; height: 8px; border-top: 2px solid var(--pink); border-right: 2px solid var(--pink); transform: rotate(45deg); }
   @keyframes hintSlide { 0%, 100% { transform: translateX(0); opacity: .7; } 50% { transform: translateX(8px); opacity: 1; } }
-  .reviews__flower { width: 120px; margin: 18px 0 -20px auto; }
   .reviews-grid::-webkit-scrollbar { display: none; }
   .reviews-grid .review { scroll-snap-align: start; min-height: 0; }
   .reviews-grid .review:first-child { grid-column: auto; }
@@ -1540,8 +1539,8 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 /* фото книги и автор — в две колонки */
 .book-author-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
 .book-author-row .photo-single { width: 100%; margin: 0; aspect-ratio: auto; height: 100%; min-height: 430px; }
-.book-author-row .author-strip { grid-template-columns: 1fr; gap: 22px; padding: 14px 14px 26px; align-content: start; border-radius: 30px; }
-.book-author-row .author-strip__img { aspect-ratio: 1 / 1; height: auto; border-radius: 18px; }
+.book-author-row .author-strip { --r: 30px; --p: 14px; grid-template-columns: 1fr; gap: 22px; padding: var(--p) var(--p) 26px; align-content: start; border-radius: var(--r); }
+.book-author-row .author-strip__img { aspect-ratio: 1 / 1; height: auto; border-radius: calc(var(--r) - var(--p)); }
 .book-author-row .author-strip__img img { object-position: center var(--pos-top, calc(var(--pos, 35%) * .7)); }
 .book-author-row .author-strip > div { padding: 0 12px; }
 .book-author-row .author-strip h2 { font-size: 30px; }
@@ -1551,7 +1550,6 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 #reviews > .container { position: relative; z-index: 1; }
 .reviews-grid { align-items: stretch; }
 .reviews-grid .review { height: 100%; }
-.reviews__flower { display: block; width: 150px; height: auto; margin: 26px 0 -26px auto; filter: drop-shadow(0 16px 26px rgba(194, 107, 130, .12)); }
 .swipe-hint { display: none; }
 @media (max-width: 760px) { .swipe-hint { display: flex; } }
 @media (max-width: 1180px) {
@@ -1561,5 +1559,5 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 }
 @media (max-width: 760px) {
   .book-author-row .photo-single { aspect-ratio: 4 / 5; }
-  .book-author-row .author-strip { grid-template-columns: 1fr; padding: 16px 16px 24px; }
+  .book-author-row .author-strip { --p: 16px; grid-template-columns: 1fr; padding: var(--p) var(--p) 24px; }
 }
