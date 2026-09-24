@@ -1542,7 +1542,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .book-author-row .author-strip { --r: 30px; --p: 14px; grid-template-columns: 1fr; gap: 22px; padding: var(--p) var(--p) 28px; align-content: start; border-radius: var(--r); overflow: hidden; }
 .book-author-row .author-strip__img { aspect-ratio: 4 / 5; height: auto; border-radius: 24px; }
 .book-author-row .author-strip__img img { object-position: center var(--pos-top, calc(var(--pos, 35%) * .7)); }
-.book-author-row .author-strip > div { padding: 0 12px; }
+.book-author-row .author-strip > div:not(.author-strip__img) { padding: 0 12px; }
 .book-author-row .author-strip h2 { font-size: 30px; }
 .book-author-row .author-strip p { font-size: 16px; }
 /* отзывы: ровные карточки, цветок — завершающий акцент справа внизу */
@@ -1560,5 +1560,5 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 @media (max-width: 760px) {
   .book-author-row .photo-single { aspect-ratio: 4 / 5; }
   .book-author-row .author-strip { grid-template-columns: 1fr; padding: var(--p) var(--p) 24px; }
-  .book-author-row .author-strip > div { padding: 0 6px; }
+  .book-author-row .author-strip > div:not(.author-strip__img) { padding: 0 6px; }
 }
