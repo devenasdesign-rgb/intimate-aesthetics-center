@@ -502,6 +502,22 @@
     if (tabList) tabList.setAttribute("aria-orientation", "horizontal");
   });
 
+  /* ---------- подсказка прокрутки для отзывов на телефоне ---------- */
+  const swipeTrack = document.querySelector(".reviews-grid");
+  if (swipeTrack && "IntersectionObserver" in window) {
+    const nudge = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        nudge.disconnect();
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (swipeTrack.scrollWidth - swipeTrack.clientWidth < 40) return;
+        swipeTrack.scrollTo({ left: 46, behavior: "smooth" });
+        setTimeout(() => swipeTrack.scrollTo({ left: 0, behavior: "smooth" }), 700);
+      });
+    }, { threshold: .4 });
+    nudge.observe(swipeTrack);
+  }
+
   /* ---------- слайдер отзывов ---------- */
   document.querySelectorAll("[data-slider]").forEach((wrap) => {
     const track = wrap.querySelector(".reviews");

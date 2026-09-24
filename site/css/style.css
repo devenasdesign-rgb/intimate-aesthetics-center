@@ -1522,11 +1522,16 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .photo-single { aspect-ratio: 4 / 5; border-radius: 24px; }
   /* на телефоне отзывы листаются вбок */
   .reviews-grid {
-    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 86%;
-    gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: calc(100% - 42px);
+    gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: var(--gutter);
     margin: 0 calc(-1 * var(--gutter)); padding: 4px var(--gutter) 16px;
     scrollbar-width: none;
   }
+  .swipe-hint { display: flex; align-items: center; gap: 10px; margin: 2px 0 0; font-size: 13px; color: var(--caption); text-transform: uppercase; letter-spacing: .1em; }
+  .swipe-hint i { width: 34px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, rgba(254,108,131,.25), var(--pink)); position: relative; animation: hintSlide 1.8s ease-in-out infinite; }
+  .swipe-hint i::after { content: ""; position: absolute; right: -1px; top: -3px; width: 8px; height: 8px; border-top: 2px solid var(--pink); border-right: 2px solid var(--pink); transform: rotate(45deg); }
+  @keyframes hintSlide { 0%, 100% { transform: translateX(0); opacity: .7; } 50% { transform: translateX(8px); opacity: 1; } }
+  .reviews__flower { width: 120px; margin: 18px 0 -20px auto; }
   .reviews-grid::-webkit-scrollbar { display: none; }
   .reviews-grid .review { scroll-snap-align: start; min-height: 0; }
   .reviews-grid .review:first-child { grid-column: auto; }
@@ -1535,17 +1540,20 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 /* фото книги и автор — в две колонки */
 .book-author-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
 .book-author-row .photo-single { width: 100%; margin: 0; aspect-ratio: auto; height: 100%; min-height: 430px; }
-.book-author-row .author-strip { grid-template-columns: 1fr; gap: 26px; padding: 22px 22px 30px; align-content: start; }
-.book-author-row .author-strip__img { aspect-ratio: 1 / 1; height: auto; }
+.book-author-row .author-strip { grid-template-columns: 1fr; gap: 22px; padding: 14px 14px 26px; align-content: start; border-radius: 30px; }
+.book-author-row .author-strip__img { aspect-ratio: 1 / 1; height: auto; border-radius: 18px; }
 .book-author-row .author-strip__img img { object-position: center var(--pos-top, calc(var(--pos, 35%) * .7)); }
-.book-author-row .author-strip > div { padding: 0 10px; }
+.book-author-row .author-strip > div { padding: 0 12px; }
 .book-author-row .author-strip h2 { font-size: 30px; }
 .book-author-row .author-strip p { font-size: 16px; }
-/* отзывы: ровные карточки и цветок у заголовка */
-.reviews-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 40px; }
-.reviews-head__flower { width: 190px; height: auto; margin-bottom: -10px; filter: drop-shadow(0 18px 30px rgba(194, 107, 130, .12)); }
+/* отзывы: ровные карточки, цветок — завершающий акцент справа внизу */
+#reviews { position: relative; overflow: hidden; padding-top: 70px; }
+#reviews > .container { position: relative; z-index: 1; }
 .reviews-grid { align-items: stretch; }
 .reviews-grid .review { height: 100%; }
+.reviews__flower { display: block; width: 150px; height: auto; margin: 26px 0 -26px auto; filter: drop-shadow(0 16px 26px rgba(194, 107, 130, .12)); }
+.swipe-hint { display: none; }
+@media (max-width: 760px) { .swipe-hint { display: flex; } }
 @media (max-width: 1180px) {
   .book-author-row { grid-template-columns: 1fr; }
   .book-author-row .photo-single { min-height: 0; aspect-ratio: 5 / 4; }
