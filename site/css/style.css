@@ -1509,3 +1509,13 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .about-book__list li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; line-height: 1.4; color: var(--ink); }
 .about-book__list li .bubble { width: 22px; height: 22px; margin-top: 1px; }
 .photo-strip--flat img { object-position: center; }
+
+/* одна фотография вместо ленты */
+.photo-single { width: min(820px, 100%); margin: 0 auto; aspect-ratio: 5 / 4; border-radius: 30px; overflow: hidden; }
+.photo-single img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 1.4s var(--ease); }
+.photo-single:hover img { transform: scale(1.04); }
+/* отзывы читательниц */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.reviews-grid .review { min-height: 0; }
+@media (max-width: 1180px) { .reviews-grid { grid-template-columns: 1fr 1fr; } .reviews-grid .review:first-child { grid-column: 1 / -1; } }
+@media (max-width: 760px) { .photo-single { height: 330px; border-radius: 24px; } .reviews-grid { grid-template-columns: 1fr; } .reviews-grid .review:first-child { grid-column: auto; } }
