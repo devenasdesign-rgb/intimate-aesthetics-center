@@ -1562,3 +1562,9 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .book-author-row .author-strip { grid-template-columns: 1fr; padding: var(--p) var(--p) 24px; }
   .book-author-row .author-strip > div:not(.author-strip__img) { padding: 0 6px; }
 }
+
+/* кнопка заказа у издательства под аудиоглавой */
+.audio-after { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 22px; }
+.audio-after p { font-size: 15px; color: var(--muted); }
+.btn--ghost .price { border-left-color: rgba(45, 39, 48, .18); }
+@media (max-width: 760px) { .audio-after .btn { width: 100%; } }
