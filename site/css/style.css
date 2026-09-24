@@ -1539,10 +1539,10 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 /* фото книги и автор — в две колонки */
 .book-author-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
 .book-author-row .photo-single { width: 100%; margin: 0; aspect-ratio: auto; height: 100%; min-height: 430px; }
-.book-author-row .author-strip { --r: 30px; --p: 14px; grid-template-columns: 1fr; gap: 22px; padding: var(--p) var(--p) 26px; align-content: start; border-radius: var(--r); }
-.book-author-row .author-strip__img { aspect-ratio: 1 / 1; height: auto; border-radius: calc(var(--r) - var(--p)); }
+.book-author-row .author-strip { --r: 30px; grid-template-columns: 1fr; gap: 24px; padding: 0 0 28px; align-content: start; border-radius: var(--r); overflow: hidden; }
+.book-author-row .author-strip__img { aspect-ratio: 1 / 1; height: auto; border-radius: var(--r) var(--r) 0 0; }
 .book-author-row .author-strip__img img { object-position: center var(--pos-top, calc(var(--pos, 35%) * .7)); }
-.book-author-row .author-strip > div { padding: 0 12px; }
+.book-author-row .author-strip > div { padding: 0 26px; }
 .book-author-row .author-strip h2 { font-size: 30px; }
 .book-author-row .author-strip p { font-size: 16px; }
 /* отзывы: ровные карточки, цветок — завершающий акцент справа внизу */
@@ -1559,5 +1559,6 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 }
 @media (max-width: 760px) {
   .book-author-row .photo-single { aspect-ratio: 4 / 5; }
-  .book-author-row .author-strip { --p: 16px; grid-template-columns: 1fr; padding: var(--p) var(--p) 24px; }
+  .book-author-row .author-strip { grid-template-columns: 1fr; padding: 0 0 24px; }
+  .book-author-row .author-strip > div { padding: 0 18px; }
 }
