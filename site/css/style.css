@@ -1535,9 +1535,10 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 /* фото книги и автор — в две колонки */
 .book-author-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
 .book-author-row .photo-single { width: 100%; margin: 0; aspect-ratio: auto; height: 100%; min-height: 430px; }
-.book-author-row .author-strip { grid-template-columns: 230px 1fr; gap: 28px; padding: 22px; align-items: stretch; }
-.book-author-row .author-strip__img { aspect-ratio: auto; height: 100%; }
-.book-author-row .author-strip > div { align-self: center; }
+.book-author-row .author-strip { grid-template-columns: 1fr; gap: 26px; padding: 22px 22px 30px; align-content: start; }
+.book-author-row .author-strip__img { aspect-ratio: 1 / 1; height: auto; }
+.book-author-row .author-strip__img img { object-position: center var(--pos-top, calc(var(--pos, 35%) * .7)); }
+.book-author-row .author-strip > div { padding: 0 10px; }
 .book-author-row .author-strip h2 { font-size: 30px; }
 .book-author-row .author-strip p { font-size: 16px; }
 /* отзывы: ровные карточки и цветок у заголовка */
