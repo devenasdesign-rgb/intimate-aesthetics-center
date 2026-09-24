@@ -1531,3 +1531,26 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .reviews-grid .review { scroll-snap-align: start; min-height: 0; }
   .reviews-grid .review:first-child { grid-column: auto; }
 }
+
+/* фото книги и автор — в две колонки */
+.book-author-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+.book-author-row .photo-single { width: 100%; margin: 0; aspect-ratio: auto; height: 100%; min-height: 430px; }
+.book-author-row .author-strip { grid-template-columns: 230px 1fr; gap: 28px; padding: 22px; align-items: stretch; }
+.book-author-row .author-strip__img { aspect-ratio: auto; height: 100%; }
+.book-author-row .author-strip > div { align-self: center; }
+.book-author-row .author-strip h2 { font-size: 30px; }
+.book-author-row .author-strip p { font-size: 16px; }
+/* отзывы: ровные карточки и цветок у заголовка */
+.reviews-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 40px; }
+.reviews-head__flower { width: 190px; height: auto; margin-bottom: -10px; filter: drop-shadow(0 18px 30px rgba(194, 107, 130, .12)); }
+.reviews-grid { align-items: stretch; }
+.reviews-grid .review { height: 100%; }
+@media (max-width: 1180px) {
+  .book-author-row { grid-template-columns: 1fr; }
+  .book-author-row .photo-single { min-height: 0; aspect-ratio: 5 / 4; }
+  .reviews-head__flower { display: none; }
+}
+@media (max-width: 760px) {
+  .book-author-row .photo-single { aspect-ratio: 4 / 5; }
+  .book-author-row .author-strip { grid-template-columns: 1fr; padding: 16px 16px 24px; }
+}
