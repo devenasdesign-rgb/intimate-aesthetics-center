@@ -1540,7 +1540,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .book-author-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
 .book-author-row .photo-single { width: 100%; margin: 0; aspect-ratio: auto; height: 100%; min-height: 430px; }
 .book-author-row .author-strip { --r: 30px; --p: 14px; grid-template-columns: 1fr; gap: 22px; padding: var(--p) var(--p) 28px; align-content: start; border-radius: var(--r); overflow: hidden; }
-.book-author-row .author-strip__img { aspect-ratio: 1 / 1; height: auto; border-radius: 24px; }
+.book-author-row .author-strip__img { aspect-ratio: 4 / 5; height: auto; border-radius: 24px; }
 .book-author-row .author-strip__img img { object-position: center var(--pos-top, calc(var(--pos, 35%) * .7)); }
 .book-author-row .author-strip > div { padding: 0 12px; }
 .book-author-row .author-strip h2 { font-size: 30px; }
