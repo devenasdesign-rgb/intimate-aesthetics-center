@@ -1518,4 +1518,16 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
 .reviews-grid .review { min-height: 0; }
 @media (max-width: 1180px) { .reviews-grid { grid-template-columns: 1fr 1fr; } .reviews-grid .review:first-child { grid-column: 1 / -1; } }
-@media (max-width: 760px) { .photo-single { height: 330px; border-radius: 24px; } .reviews-grid { grid-template-columns: 1fr; } .reviews-grid .review:first-child { grid-column: auto; } }
+@media (max-width: 760px) {
+  .photo-single { aspect-ratio: 4 / 5; border-radius: 24px; }
+  /* на телефоне отзывы листаются вбок */
+  .reviews-grid {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 86%;
+    gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 calc(-1 * var(--gutter)); padding: 4px var(--gutter) 16px;
+    scrollbar-width: none;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .reviews-grid .review { scroll-snap-align: start; min-height: 0; }
+  .reviews-grid .review:first-child { grid-column: auto; }
+}
