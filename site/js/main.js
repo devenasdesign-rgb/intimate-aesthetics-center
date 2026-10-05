@@ -507,10 +507,11 @@
     const grid = document.querySelector("[data-filter-grid]");
     if (!grid) return;
     bar.addEventListener("click", (e) => {
-      const chip = e.target.closest(".m-chip");
+      const chip = e.target.closest(".m-chip, .cat-card");
       if (!chip) return;
-      bar.querySelectorAll(".m-chip").forEach((c) => c.classList.toggle("is-active", c === chip));
+      document.querySelectorAll(".m-chip, .cat-card").forEach((c) => c.classList.toggle("is-active", c.dataset.cat === chip.dataset.cat));
       const cat = chip.dataset.cat;
+      if (chip.classList.contains("cat-card")) document.querySelector(".m-grid").scrollIntoView({ behavior: "smooth", block: "start" });
       grid.querySelectorAll("[data-cat]").forEach((card) => {
         card.classList.toggle("is-hidden", cat !== "all" && card.dataset.cat !== cat);
       });
