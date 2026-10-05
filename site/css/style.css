@@ -1650,16 +1650,16 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 @media (max-width: 760px) { .free-grid { grid-template-columns: 1fr; } }
 
 /* музей: вступление и разделы */
-.m-intro { position: relative; display: grid; grid-template-columns: 1fr 400px; gap: 0; margin-top: 30px; border-radius: 30px; overflow: hidden; background: var(--g-rose); border: 1px solid var(--b-rose); }
-.m-intro__text { padding: 44px 46px; }
+.m-intro { position: relative; display: grid; grid-template-columns: 1fr 420px; gap: 24px; margin-top: 30px; align-items: stretch; }
+.m-intro__text { padding: 44px 46px; border-radius: 30px; background: var(--g-rose); border: 1px solid var(--b-rose); display: flex; flex-direction: column; justify-content: center; }
 .m-intro__kicker { font-family: var(--font-display); font-weight: 700; font-size: 32px; color: var(--ink); }
 .m-intro__script { font-family: var(--font-price); font-style: italic; font-size: 44px; line-height: 1; color: var(--pink); margin-top: 4px; }
 .m-intro__quote { margin-top: 24px; font-size: 20px; line-height: 1.45; color: var(--ink); max-width: 560px; }
 .m-intro__author { margin-top: 10px; font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--pink-deep); }
 .m-intro__note { margin-top: 22px; font-size: 16px; line-height: 1.5; color: var(--text); max-width: 520px; }
-.m-intro__photo { position: relative; min-height: 460px; }
+.m-intro__photo { position: relative; min-height: 460px; border-radius: 30px; overflow: hidden; border: 1px solid var(--line-2); }
 .m-intro__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-.m-intro__badge { position: absolute; right: 24px; top: 24px; z-index: 2; font-size: 12px; padding: 12px 15px; }
+.m-intro__badge { position: absolute; right: 22px; top: 22px; z-index: 2; font-size: 12px; padding: 12px 15px; }
 
 .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .cat-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-radius: 18px; border: 1px solid var(--bd); background: var(--g); font-family: var(--font-display); font-weight: 700; font-size: 21px; color: var(--ink-blue); text-align: left; transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
@@ -1673,6 +1673,7 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 @media (max-width: 1180px) {
   .m-intro { grid-template-columns: 1fr; }
   .m-intro__photo { min-height: 360px; order: -1; }
+  .m-intro { gap: 16px; }
   .cat-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 760px) {
