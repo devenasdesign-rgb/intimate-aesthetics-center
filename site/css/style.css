@@ -1579,3 +1579,72 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .preview-card { grid-template-columns: 1fr; gap: 24px; padding: 24px 20px; }
   .preview-card__pages span { width: 62px; height: 86px; }
 }
+
+/* ==========================================================================
+   Музей Кегеля
+   ========================================================================== */
+.m-hero { background: var(--bg-sky); padding: 40px 0 60px; }
+.m-hero__grid { display: grid; grid-template-columns: 1fr 520px; gap: 60px; align-items: center; margin-top: 24px; }
+.m-hero__title { font-size: 72px; line-height: 1; color: var(--ink); }
+.m-hero__sub { margin-top: 22px; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.12; color: var(--blue); }
+.m-hero__text { margin-top: 22px; font-size: 18px; line-height: 1.5; color: var(--text); max-width: 540px; }
+.m-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.m-hero__media { position: relative; }
+.m-hero__plate { position: absolute; left: -40px; right: 50px; top: 50px; bottom: -34px; border-radius: 34px; background: var(--g-mist); }
+.m-hero__photo { position: relative; height: 520px; border-radius: 28px; overflow: hidden; box-shadow: 0 30px 60px rgba(77, 51, 71, .16); }
+.m-hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; transition: transform 1.4s var(--ease); }
+.m-hero__media:hover .m-hero__photo img { transform: scale(1.04); }
+.m-hero__badge { position: absolute; right: -20px; top: 28px; z-index: 2; }
+
+.m-filter { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 28px; }
+.m-chip { padding: 11px 18px; border-radius: 40px; border: 1px solid var(--line-2); background: #fff; font-size: 14px; font-weight: 500; color: var(--text); transition: background .4s var(--ease), color .3s, border-color .3s, transform .3s var(--ease); }
+.m-chip:hover { transform: translateY(-2px); }
+.m-chip.is-active { background: var(--g-badge); border-color: transparent; color: #fff; }
+
+.m-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.m-card { --r: 28px; --p: 14px; display: flex; flex-direction: column; padding: var(--p) var(--p) 24px; border-radius: var(--r); border: 1px solid var(--line-2); background: #fff; box-shadow: var(--shadow-soft); transition: transform .5s var(--ease), box-shadow .5s var(--ease), opacity .4s; }
+a.m-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card-hover); }
+.m-card.is-soon { opacity: .75; }
+.m-card__media { position: relative; height: 230px; border-radius: calc(var(--r) - var(--p)); background: var(--g, var(--g-mist)); display: grid; place-items: center; overflow: hidden; }
+.m-card__media img { width: 62%; height: auto; max-height: 80%; object-fit: contain; transition: transform .8s var(--ease); }
+a.m-card:hover .m-card__media img { transform: translateY(-4px) scale(1.04); }
+.m-card.is-soon .m-card__media { display: grid; place-items: center; }
+.m-card.is-soon .m-card__media::before { content: ""; width: 54px; height: 54px; border-radius: 50%; background: rgba(255,255,255,.65); }
+.m-card__soon { position: absolute; left: 14px; bottom: 14px; padding: 7px 12px; border-radius: 40px; background: rgba(255,255,255,.9); font-size: 12px; font-weight: 600; color: var(--muted); }
+.m-card__body { padding: 20px 10px 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.m-card__body h3 { font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1.1; color: var(--ink-blue); }
+.m-card__body p { font-size: 15px; line-height: 1.45; color: var(--muted); }
+.m-card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+.m-card__tags span { padding: 6px 12px; border-radius: 40px; background: var(--bg-soft); font-size: 12.5px; color: var(--text); }
+.m-card__more { margin-top: auto; padding-top: 14px; display: inline-flex; gap: 8px; align-items: center; font-weight: 600; font-size: 15px; color: var(--pink-deep); }
+.m-card__more .arr { transition: transform .35s var(--ease-spring); }
+a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
+.m-card.is-hidden { display: none; }
+.m-item__photo { display: grid; place-items: center; background: var(--g-rose); }
+.m-item__photo img { width: 60%; height: auto; }
+
+@media (max-width: 1180px) {
+  .m-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+  .m-hero__media { max-width: 520px; }
+  .m-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .m-hero { padding: 24px 0 40px; }
+  .m-hero__title { font-size: min(46px, 9.4vw); }
+  .m-hero__sub { font-size: 22px; }
+  .m-hero__text { font-size: 16px; }
+  .m-hero__actions .btn { width: 100%; }
+  .m-hero__plate { left: -12px; right: 24px; top: 30px; bottom: -20px; }
+  .m-hero__photo { height: 420px; }
+  .m-hero__badge { right: 10px; top: -16px; font-size: 11px; padding: 11px 13px; }
+  .m-grid { grid-template-columns: 1fr; gap: 14px; }
+  .m-card__media { height: 200px; }
+  .m-filter { gap: 8px; margin-bottom: 20px; }
+  .m-chip { padding: 9px 14px; font-size: 13px; }
+}
+
+/* сетка бесплатных материалов на страницах направлений */
+.free-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.free-grid .mat-card__thumb { height: 150px; }
+@media (max-width: 1180px) { .free-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) { .free-grid { grid-template-columns: 1fr; } }

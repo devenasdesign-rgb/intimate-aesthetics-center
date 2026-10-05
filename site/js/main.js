@@ -8,13 +8,13 @@
   /* ---------- данные ---------- */
   const DIRECTIONS = [
     { id: "bos", n: "01", title: "БОС-терапия", desc: "Диагностика и восстановление мышц", mod: "rose", art: "line-bos.png", href: "bos.html", tw: "none", dw: "151px", meta: "Основное направление" },
-    { id: "audio", n: "02", title: "Аудиотренировки интимных мышц", desc: "Практики для самостоятельных занятий", mod: "lilac", art: "line-audio.png", href: "soon.html?s=audio", tw: "264px", dw: "195px", meta: "3 аудио бесплатно" },
+    { id: "audio", n: "02", title: "Аудиотренировки интимных мышц", desc: "Практики для самостоятельных занятий", mod: "lilac", art: "line-audio.png", href: "audio.html", tw: "264px", dw: "195px", meta: "3 аудио бесплатно" },
     { id: "books", n: "03", title: "Книги", desc: "Кортизоловое тело и Art book", mod: "sand", art: "line-books.png", href: "books.html", tw: "252px", dw: "177px", meta: "Аудиоглава бесплатно" },
-    { id: "libido", n: "04", title: "Либидо и питание", desc: "Связь тела, энергии и рациона", mod: "peach", art: "line-libido.png", href: "soon.html?s=libido", tw: "208px", dw: "210px", meta: "3 рецепта бесплатно" },
-    { id: "bowls", n: "05", title: "Тибетские чаши и камертоны", desc: "Расслабление и восстановление", mod: "mint", art: "line-bowls.png", href: "soon.html?s=bowls", tw: "196px", dw: "164px", meta: "3 практики бесплатно" },
-    { id: "fitness", n: "06", title: "Фитнес мышц тазового дна", desc: "Тонус и бережное укрепление", mod: "sky", art: "line-fitness.png", href: "soon.html?s=fitness", tw: "181px", dw: "210px", meta: "3 тренировки бесплатно" },
-    { id: "birth", n: "07", title: "Мягкие роды", desc: "Подготовка и поддержка тела", mod: "violet", art: "line-birth.png", href: "soon.html?s=birth", tw: "300px", dw: "210px", meta: "3 материала бесплатно" },
-    { id: "museum", n: "08", title: "Музей Кегеля", desc: "Бесплатная база знаний", mod: "mist", art: "line-museum.png", href: "soon.html?s=museum", tw: "300px", dw: "210px", meta: "Полностью бесплатно" }
+    { id: "libido", n: "04", title: "Либидо и питание", desc: "Связь тела, энергии и рациона", mod: "peach", art: "line-libido.png", href: "libido.html", tw: "208px", dw: "210px", meta: "3 рецепта бесплатно" },
+    { id: "bowls", n: "05", title: "Тибетские чаши и камертоны", desc: "Расслабление и восстановление", mod: "mint", art: "line-bowls.png", href: "bowls.html", tw: "196px", dw: "164px", meta: "3 практики бесплатно" },
+    { id: "fitness", n: "06", title: "Фитнес мышц тазового дна", desc: "Тонус и бережное укрепление", mod: "sky", art: "line-fitness.png", href: "fitness.html", tw: "181px", dw: "210px", meta: "3 тренировки бесплатно" },
+    { id: "birth", n: "07", title: "Мягкие роды", desc: "Подготовка и поддержка тела", mod: "violet", art: "line-birth.png", href: "birth.html", tw: "300px", dw: "210px", meta: "3 материала бесплатно" },
+    { id: "museum", n: "08", title: "Музей Кегеля", desc: "Бесплатная база знаний", mod: "mist", art: "line-museum.png", href: "museum.html", tw: "300px", dw: "210px", meta: "Полностью бесплатно" }
   ];
   window.DIRECTIONS = DIRECTIONS;
 
@@ -36,11 +36,11 @@
   const NAV = [
     { key: "dirs", label: "Направления", href: "directions.html" },
     { key: "books", label: "Книги", href: "books.html" },
-    { key: "museum", label: "Музей Кегеля", href: "soon.html?s=museum" },
+    { key: "museum", label: "Музей Кегеля", href: "museum.html" },
     { key: "about", label: "О центре", href: "index.html#about" },
     { key: "contacts", label: "Контакты", href: "index.html#contacts" }
   ];
-  const activeKey = { directions: "dirs", bos: "dirs", books: "books", book: "books" }[page];
+  const activeKey = { directions: "dirs", bos: "dirs", direction: "dirs", books: "books", book: "books", museum: "museum" }[page];
 
   const headerHTML =
     '<header class="site-header" id="top">' +
@@ -94,11 +94,11 @@
       "</div>" +
       /* музей */
       '<div class="mega__section mega__section--list" data-mega="museum">' +
-      '<div class="mega-intro" data-stagger><h3>Музей Кегеля</h3><p>Бесплатная база знаний: тренажёры для мышц тазового дна, принцип их действия и рекомендации.</p><a class="btn btn--sm" href="soon.html?s=museum">Открыть музей <span class="arr">→</span></a></div>' +
+      '<div class="mega-intro" data-stagger><h3>Музей Кегеля</h3><p>Бесплатная база знаний: тренажёры для мышц тазового дна, принцип их действия и рекомендации.</p><a class="btn btn--sm" href="museum.html">Открыть музей <span class="arr">→</span></a></div>' +
       '<div class="mega-links" data-stagger>' +
-      megaLink("soon.html?s=museum", "База знаний", "Статьи о мышцах тазового дна", "mist", "01") +
-      megaLink("soon.html?s=museum", "Каталог тренажёров", "Фото, принцип действия, категории", "sky", "02") +
-      megaLink("soon.html?s=museum", "Как выбрать тренажёр", "Рекомендации специалиста", "mint", "03") +
+      megaLink("museum.html", "База знаний", "Как устроены тренажёры", "mist", "01") +
+      megaLink("museum.html#catalog", "Каталог тренажёров", "Принцип действия и категории", "sky", "02") +
+      megaLink("museum.html#catalog", "Как выбрать тренажёр", "Рекомендации специалиста", "mint", "03") +
       "</div>" +
       '<div class="mega-photo" style="--g:var(--g-mist)"><img src="' + IMG + 'photo-06756.jpg" alt=""><span><b>Бесплатно</b>Вся экспертная база открыта</span></div>' +
       "</div>" +
@@ -126,7 +126,7 @@
       '<div class="m-menu" aria-hidden="true"><span class="m-menu__blob m-menu__blob--1"></span><span class="m-menu__blob m-menu__blob--2"></span><div class="m-menu__scroll">' +
       acc("Направления", '<div class="m-dirs">' + DIRECTIONS.map((d) => miniDir(d)).join("") + "</div>") +
       acc("Книги", list([["books.html", "Все книги", "Выберите книгу", "sand", "01"], ["book-cortisol.html", "Кортизоловое тело", "Методы снижения кортизола", "sky", "02"], ["book-artbook.html", "Art book", "Эротических фантазий", "rose", "03"]])) +
-      acc("Музей Кегеля", list([["soon.html?s=museum", "База знаний", "Статьи о мышцах тазового дна", "mist", "01"], ["soon.html?s=museum", "Каталог тренажёров", "Фото и принцип действия", "sky", "02"]])) +
+      acc("Музей Кегеля", list([["museum.html", "База знаний", "Как устроены тренажёры", "mist", "01"], ["museum.html#catalog", "Каталог тренажёров", "Принцип действия и категории", "sky", "02"]])) +
       acc("О центре", list([["index.html#about", "Центр и пространство", "Кабинет, услуги, программы", "violet", "01"], ["index.html#specialist", "О специалисте", "Екатерина Паньшина", "rose", "02"], ["index.html#reviews", "Отзывы", "Истории клиенток", "lilac", "03"]])) +
       '<a class="m-link-plain" href="index.html#contacts"' + s() + ">Контакты</a>" +
       '<div class="m-menu__foot"' + s() + '><button class="btn" type="button" data-login>Войти в кабинет <span class="arr">→</span></button>' +
@@ -141,8 +141,8 @@
     '<div class="footer-brand"><h4>Центр интимной эстетики</h4><p>Екатеринбург, ул. Онежская 4,<br>офис 238</p>' +
     '<div class="footer-socials"><a href="tel:+79030812616">+7 (903) 081-26-16</a><a href="#">Telegram</a><a href="#">WhatsApp</a></div></div>' +
     '<div class="footer-col"><h5>Направления</h5><ul>' +
-    '<li><a href="bos.html">БОС-терапия</a></li><li><a href="soon.html?s=fitness">Тазовое дно</a></li><li><a href="soon.html?s=bowls">Тибетские чаши</a></li><li><a href="soon.html?s=libido">Либидо, питание и нутрициология</a></li><li><a href="soon.html?s=birth">Мягкие роды</a></li></ul></div>' +
-    '<div class="footer-col"><h5>Платформа</h5><ul><li><a href="books.html">Книги</a></li><li><a href="soon.html?s=museum">Музей Кегеля</a></li><li><a href="index.html#about">О центре</a></li><li><a href="#" data-login>Личный кабинет</a></li></ul></div>' +
+    '<li><a href="bos.html">БОС-терапия</a></li><li><a href="fitness.html">Тазовое дно</a></li><li><a href="bowls.html">Тибетские чаши</a></li><li><a href="libido.html">Либидо и питание</a></li><li><a href="birth.html">Мягкие роды</a></li></ul></div>' +
+    '<div class="footer-col"><h5>Платформа</h5><ul><li><a href="books.html">Книги</a></li><li><a href="museum.html">Музей Кегеля</a></li><li><a href="index.html#about">О центре</a></li><li><a href="#" data-login>Личный кабинет</a></li></ul></div>' +
     '<div class="footer-col"><h5>Документы</h5><ul><li><a href="soon.html?s=docs">Оферта</a></li><li><a href="soon.html?s=docs">Политика</a></li><li><a href="soon.html?s=docs">Возврат</a></li><li><a href="soon.html?s=docs">Согласие на обработку данных</a></li></ul></div>' +
     "</div>" +
     '<div class="footer-bottom"><span>© 2026 Центр интимной эстетики</span><span>Материалы не заменяют консультацию врача</span></div>' +
@@ -500,6 +500,21 @@
       });
     });
     if (tabList) tabList.setAttribute("aria-orientation", "horizontal");
+  });
+
+  /* ---------- фильтр каталога музея ---------- */
+  document.querySelectorAll("[data-filter]").forEach((bar) => {
+    const grid = document.querySelector("[data-filter-grid]");
+    if (!grid) return;
+    bar.addEventListener("click", (e) => {
+      const chip = e.target.closest(".m-chip");
+      if (!chip) return;
+      bar.querySelectorAll(".m-chip").forEach((c) => c.classList.toggle("is-active", c === chip));
+      const cat = chip.dataset.cat;
+      grid.querySelectorAll("[data-cat]").forEach((card) => {
+        card.classList.toggle("is-hidden", cat !== "all" && card.dataset.cat !== cat);
+      });
+    });
   });
 
   /* ---------- подсказка прокрутки для отзывов на телефоне ---------- */
