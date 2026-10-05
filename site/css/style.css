@@ -1684,3 +1684,10 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
   .cat-grid { grid-template-columns: 1fr; }
   .cat-card { font-size: 18px; padding: 18px 18px; }
 }
+
+/* фото экспоната без фона — по центру плашки */
+.m-item__photo--real { background: var(--g-rose); display: grid; place-items: center; padding: 40px; }
+.m-item__photo--real img { width: 100%; height: auto; max-height: 100%; object-fit: contain; }
+.m-card__media--photo { background: var(--g, var(--g-rose)); display: grid; place-items: center; }
+.m-card__media--photo img { width: auto; max-width: 84%; height: auto; max-height: 76%; object-fit: contain; padding: 0; }
+@media (max-width: 760px) { .m-item__photo--real { padding: 26px; } }
