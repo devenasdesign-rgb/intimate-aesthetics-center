@@ -1712,3 +1712,13 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 .tp-col { display: grid; gap: 20px; align-content: start; margin-top: 16px; }
 .tp-col .tp-box { margin-top: 0; }
 .tp-col .tp-important { margin-top: 0; max-width: none; }
+
+/* пузырьки-буллеты: на телефоне меньше */
+@media (max-width: 760px) {
+  .bubble { width: 24px; height: 24px; }
+  .bubble::after { right: 5px; bottom: 4px; width: 4px; height: 2px; }
+  .fb-item, .why-item, .lesson { grid-template-columns: 26px 1fr; gap: 12px; }
+  .fb-item .bubble { margin-top: 2px; }
+  .buy-card li .bubble, .fit-card li .bubble, .about-book__list li .bubble, .m-card .bubble { width: 20px; height: 20px; }
+  .bubble--big { width: 58px; height: 58px; }
+}
