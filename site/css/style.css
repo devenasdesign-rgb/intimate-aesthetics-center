@@ -1657,6 +1657,7 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 .m-intro__quote { margin-top: 22px; font-family: var(--font-price); font-style: italic; font-size: 26px; line-height: 1.4; color: var(--ink); max-width: 560px; }
 .m-intro__author { margin-top: 10px; font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--pink-deep); }
 .m-intro__note { margin-top: 22px; font-size: 16px; line-height: 1.5; color: var(--text); max-width: 520px; }
+.m-intro__note--top { margin: 0 0 14px; font-size: 17px; }
 .m-intro__photo { position: relative; min-height: 460px; border-radius: 30px; overflow: hidden; border: 1px solid var(--line-2); }
 .m-intro__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 26%; }
 .m-intro__badge { position: absolute; right: 22px; top: 22px; z-index: 2; font-size: 12px; padding: 12px 15px; }
