@@ -499,6 +499,8 @@
         }
       });
     });
+    const forced = new URLSearchParams(location.search).get("tab");
+    if (forced) select(Number(forced));
     if (tabList) tabList.setAttribute("aria-orientation", "horizontal");
   });
 
