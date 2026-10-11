@@ -1697,13 +1697,13 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 .p-hero__photo { position: absolute; left: 58px; top: 68px; width: 622px; height: 622px; border-radius: 25px; overflow: hidden; box-shadow: 0 30px 60px rgba(77, 51, 71, .14); }
 .p-hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; transition: transform 1.4s var(--ease); }
 .p-hero__visual:hover .p-hero__photo img { transform: scale(1.03); }
-.p-hero__inset { position: absolute; left: -26px; top: 452px; width: 320px; padding: 12px; border-radius: 20px; background: #fff; box-shadow: 0 22px 44px rgba(77, 51, 71, .18); will-change: translate; }
-.p-hero__inset img { width: 100%; height: auto; display: block; border-radius: 10px; }
-@media (max-width: 1180px) { .p-hero__inset { left: 0; } }
 @media (max-width: 760px) {
   .p-hero__photo { left: 58px; }
-  .p-hero__inset { width: 240px; top: 470px; left: -10px; padding: 8px; }
 }
 .tp-photo--tall { height: 420px; }
 .tp-photo--tall img { object-position: center 28%; }
 @media (max-width: 760px) { .tp-photo--tall { height: 300px; } }
+
+/* экраны с играми во вкладке «Как проходит тренировка» */
+.tp-photo--games { height: auto; background: #fff; padding: 18px; display: grid; place-items: center; }
+.tp-photo--games img { width: 100%; height: auto; object-fit: contain; }
