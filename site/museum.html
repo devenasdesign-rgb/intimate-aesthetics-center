@@ -36,93 +36,25 @@
     <section class="section" id="catalog" style="padding-top:60px">
       <div class="container">
         <h2 class="h-section" style="margin-bottom:28px"><span class="split-line"><span>Разделы музея</span></span></h2>
-        <div class="cat-grid" data-filter>
-          <button class="cat-card" type="button" data-cat="ancient" style="--g:var(--g-rose);--bd:var(--b-rose)" data-reveal style="--d:0.00s">
-            <span>Тренажёры древности</span><span class="cat-card__arr">↓</span>
-          </button>          <button class="cat-card" type="button" data-cat="europe" style="--g:var(--g-sky);--bd:var(--b-sky)" data-reveal style="--d:0.06s">
-            <span>Рынок Европы</span><span class="cat-card__arr">↓</span>
-          </button>          <button class="cat-card" type="button" data-cat="russia" style="--g:var(--g-violet);--bd:var(--b-violet)" data-reveal style="--d:0.12s">
-            <span>Рынок России</span><span class="cat-card__arr">↓</span>
-          </button>          <button class="cat-card" type="button" data-cat="asia" style="--g:var(--g-mint);--bd:var(--b-mint)" data-reveal style="--d:0.18s">
-            <span>Рынок Азии</span><span class="cat-card__arr">↓</span>
-          </button>          <button class="cat-card" type="button" data-cat="schools" style="--g:var(--g-sand);--bd:var(--b-sand)" data-reveal style="--d:0.24s">
-            <span>Сертифицированные школы</span><span class="cat-card__arr">↓</span>
-          </button>          <button class="cat-card" type="button" data-cat="future" style="--g:var(--g-mist);--bd:var(--b-mist)" data-reveal style="--d:0.30s">
-            <span>Технологии будущего</span><span class="cat-card__arr">↓</span>
-          </button>
-        </div>
+        <div class="cat-grid" data-filter data-museum-sections></div>
 
-        <div class="m-filter" data-filter role="tablist" data-reveal style="margin-top:36px">
-          <button class="m-chip is-active" type="button" data-cat="all">Все экспонаты</button>
-          <button class="m-chip" type="button" data-cat="ancient">Тренажёры древности</button><button class="m-chip" type="button" data-cat="europe">Рынок Европы</button><button class="m-chip" type="button" data-cat="russia">Рынок России</button><button class="m-chip" type="button" data-cat="asia">Рынок Азии</button><button class="m-chip" type="button" data-cat="schools">Сертифицированные школы</button><button class="m-chip" type="button" data-cat="future">Технологии будущего</button>
+        <div class="m-toolbar">
+          <div class="m-filter" data-filter data-museum-chips></div>
+          <label class="m-search"><input type="search" placeholder="Найти тренажёр" data-museum-search aria-label="Поиск по музею"></label>
         </div>
-        <div class="m-grid" data-filter-grid>
-        <a class="m-card" data-cat="russia" href="museum-item.html" data-reveal>
-          <div class="m-card__media m-card__media--photo" style="--g:var(--g-rose)"><img src="assets/img/museum-tulip.png" alt="Тюльпан" loading="lazy"></div>
-          <div class="m-card__body">
-            <h3>Тюльпан</h3>
-            <p>Тренажёр с обратной связью в виде лазерного луча.</p>
-            <div class="m-card__tags"><span>Обратная связь</span><span>Рынок России</span></div>
-            <span class="m-card__more">Подробнее <span class="arr">→</span></span>
-          </div>
-        </a>
-        <div class="m-card is-soon" data-cat="ancient" data-reveal>
-          <div class="m-card__media" style="--g:var(--g-sand)"><span class="m-card__soon">Фото скоро</span></div>
-          <div class="m-card__body">
-            <h3>Экспонат древности</h3>
-            <p>Название, фото и описание добавим из материалов центра.</p>
-            <div class="m-card__tags"><span>Заготовка</span></div>
-            
-          </div>
-        </div>
-        <div class="m-card is-soon" data-cat="europe" data-reveal>
-          <div class="m-card__media" style="--g:var(--g-sky)"><span class="m-card__soon">Фото скоро</span></div>
-          <div class="m-card__body">
-            <h3>Европейский тренажёр</h3>
-            <p>Название, фото и описание добавим из материалов центра.</p>
-            <div class="m-card__tags"><span>Заготовка</span></div>
-            
-          </div>
-        </div>
-        <div class="m-card is-soon" data-cat="russia" data-reveal>
-          <div class="m-card__media" style="--g:var(--g-violet)"><span class="m-card__soon">Фото скоро</span></div>
-          <div class="m-card__body">
-            <h3>Российский тренажёр</h3>
-            <p>Название, фото и описание добавим из материалов центра.</p>
-            <div class="m-card__tags"><span>Заготовка</span></div>
-            
-          </div>
-        </div>
-        <div class="m-card is-soon" data-cat="asia" data-reveal>
-          <div class="m-card__media" style="--g:var(--g-mint)"><span class="m-card__soon">Фото скоро</span></div>
-          <div class="m-card__body">
-            <h3>Азиатский тренажёр</h3>
-            <p>Название, фото и описание добавим из материалов центра.</p>
-            <div class="m-card__tags"><span>Заготовка</span></div>
-            
-          </div>
-        </div>
-        <div class="m-card is-soon" data-cat="future" data-reveal>
-          <div class="m-card__media" style="--g:var(--g-mist)"><span class="m-card__soon">Фото скоро</span></div>
-          <div class="m-card__body">
-            <h3>Технологии будущего</h3>
-            <p>Название, фото и описание добавим из материалов центра.</p>
-            <div class="m-card__tags"><span>Заготовка</span></div>
-            
-          </div>
-        </div>
-        </div>
-        <p class="placeholder-note" style="margin-top:22px">Карточки-заготовки: название, фото и описание каждого тренажёра центр добавляет сам. Образец заполненной карточки — «Тюльпан».</p>
+        <p class="m-count" data-museum-count></p>
+        <div class="m-grid" data-filter-grid data-museum-grid></div>
+        <p class="m-empty" data-museum-empty hidden>Ничего не нашлось. Попробуйте другое слово или выберите раздел «Все экспонаты».</p>
       </div>
     </section>
 
     <section class="section section--rose">
       <div class="container">
-        <h2 class="h-section" style="margin-bottom:40px"><span class="split-line"><span>Как устроена карточка</span></span></h2>
+        <h2 class="h-section" style="margin-bottom:40px"><span class="split-line"><span>Как пополнять музей</span></span></h2>
         <div class="inside-grid">
           <div class="inside-card" style="--g:var(--g-rose);--bd:var(--b-rose)" data-reveal><span class="bubble" aria-hidden="true"></span><b>Фото тренажёра</b><p>Один или несколько снимков: как выглядит и что входит в комплект.</p></div>
           <div class="inside-card" style="--g:var(--g-sky);--bd:var(--b-sky);--d:.08s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Описание</b><p>Что это за тренажёр и чем он отличается от других.</p></div>
-          <div class="inside-card" style="--g:var(--g-violet);--bd:var(--b-violet);--d:.16s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Принцип действия</b><p>Как использовать и за счёт чего работает.</p></div>
+          <div class="inside-card" style="--g:var(--g-violet);--bd:var(--b-violet);--d:.16s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Принцип действия</b><p>Как использовать и за счёт чего работает. Новый экспонат добавляется одним блоком в файле museum-data.js.</p></div>
         </div>
         <div class="g-card" style="--g:#f8f5f1;--bd:#ebe2d9;margin-top:24px;padding:28px 30px" data-reveal>
           <p style="font-size:16px;line-height:1.5;color:var(--text)"><b>Важно.</b> Материалы музея носят справочный характер и не заменяют консультацию специалиста. Подбирать тренажёр лучше вместе с врачом или тренером мышц тазового дна.</p>
@@ -144,6 +76,7 @@
   </main>
 
   <div data-footer></div>
+  <script src="js/museum-data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

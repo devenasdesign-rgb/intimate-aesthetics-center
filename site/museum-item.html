@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>Тюльпан — Музей тренажёров Кегеля</title>
-  <meta name="description" content="Тренажёр «Тюльпан» с обратной связью в виде лазерного луча: описание и принцип действия.">
+  <title>Экспонат — Музей тренажёров Кегеля</title>
+  <meta name="description" content="Экспонат музея тренажёров Кегеля: описание и принцип действия.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,500;1,600&display=swap" rel="stylesheet">
@@ -15,21 +15,20 @@
 <body data-page="museum">
   <div data-header style="height:99px"></div>
 
-  <main>
+  <main data-museum-item>
     <section class="b-hero">
       <div class="container">
-        <nav class="breadcrumbs" aria-label="Хлебные крошки" data-reveal><a href="museum.html">Музей Кегеля</a><span>/</span><span>Тюльпан</span></nav>
+        <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="museum.html">Музей Кегеля</a><span>/</span><span data-item-section>Экспонат</span></nav>
         <div class="b-hero__grid">
-          <div class="b-hero__media" style="--g:var(--g-rose)" data-reveal="zoom">
+          <div class="b-hero__media" style="--g:var(--g-rose)">
             <div class="b-hero__plate"></div>
-            <div class="b-hero__photo m-item__photo m-item__photo--real"><img src="assets/img/museum-tulip.png" alt="Тренажёр «Тюльпан»"></div>
+            <div class="b-hero__photo m-item__photo m-item__photo--real" data-item-photos></div>
           </div>
           <div>
-            <p class="b-hero__author" data-reveal>Экспонат музея · Рынок России</p>
-            <h1 class="display b-hero__title"><span class="split-line"><span style="--d:.05s">Тюльпан</span></span></h1>
-            <p class="b-hero__sub" data-reveal style="--d:.15s">Тренажёр с обратной связью<br>в виде лазерного луча</p>
-            <div class="b-hero__facts" data-reveal style="--d:.28s"><span>Обратная связь</span><span>Упражнения стоя</span><span>Можно добавить груз</span></div>
-            <div class="b-hero__actions" data-reveal style="--d:.34s">
+            <p class="b-hero__author" data-item-kicker>Экспонат музея</p>
+            <h1 class="display b-hero__title" data-item-name>Экспонат</h1>
+            <p class="b-hero__text" data-item-lead></p>
+            <div class="b-hero__actions">
               <a class="btn" href="bos.html#formats" data-booking="diag">Подобрать на диагностике <span class="arr">→</span></a>
               <a class="btn btn--ghost" href="museum.html">Все экспонаты <span class="arr">→</span></a>
             </div>
@@ -41,49 +40,23 @@
     <section class="section">
       <div class="container">
         <div class="about-book">
-          <div class="about-book__text" data-reveal>
-            <p class="m-item__label">Описание</p>
-            <p>Тренажёр с обратной связью в виде лазерного луча.</p>
-            <p class="m-item__label" style="margin-top:26px">Принцип действия</p>
-            <p>Помещается во влагалище на 5–6 см. При напряжении мышц тазового дна стержень отклоняется назад, а при расслаблении подаётся вперёд.</p>
-            <p>Упражнения выполняются стоя, перед стеной, ноги на ширине плеч. Точка лазерного луча на стене при сжатии опускается вниз, при расслаблении — вверх. Прогресс в занятиях отражается на увеличении амплитуды движений лазера.</p>
-            <p>Для создания дополнительной нагрузки можно прикреплять небольшой груз к специальному отверстию на конце стержня тренажёра.</p>
-          </div>
-          <dl class="specs" data-reveal style="--d:.1s"><p class="specs__title">Коротко</p>
-            <div><dt>Раздел музея</dt><dd>Рынок России</dd></div>
-            <div><dt>Тип</dt><dd>С обратной связью</dd></div>
-            <div><dt>Положение</dt><dd>Упражнения стоя</dd></div>
-            <div><dt>Нагрузка</dt><dd>Можно добавить груз</dd></div>
-          </dl>
+          <div class="about-book__text" data-item-blocks></div>
+          <dl class="specs" data-item-specs></dl>
         </div>
-        <p class="placeholder-note" style="margin-top:20px">Текст карточки взят из макета приложения «МойТонус».</p>
+        <p class="placeholder-note" style="margin-top:20px">Материалы музея носят справочный характер и не заменяют консультацию специалиста.</p>
       </div>
     </section>
 
-    <section class="section section--rose">
+    <section class="section" style="padding-top:0">
       <div class="container">
-        <h2 class="h-section" style="margin-bottom:34px"><span class="split-line"><span>Важно</span></span></h2>
-        <div class="inside-grid">
-          <div class="inside-card" style="--g:var(--g-rose);--bd:var(--b-rose)" data-reveal><span class="bubble" aria-hidden="true"></span><b>Сначала диагностика</b><p>Важно понимать исходное состояние мышц: что тренировать, а что — расслаблять.</p></div>
-          <div class="inside-card" style="--g:var(--g-sky);--bd:var(--b-sky);--d:.08s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Без боли</b><p>При дискомфорте занятие прекращают и обращаются к специалисту.</p></div>
-          <div class="inside-card" style="--g:var(--g-violet);--bd:var(--b-violet);--d:.16s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Личное использование</b><p>Тренажёр индивидуальный, уход и гигиена — после каждой тренировки.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:20px">
-      <div class="container">
-        <p class="eyebrow" style="margin-bottom:16px">Ещё из музея</p>
-        <a class="other-book" href="museum.html" style="--g:var(--g-mist);--bd:var(--b-mist)" data-reveal>
-          <div class="other-book__img" style="background:var(--g-mist);display:grid;place-items:center"><img src="assets/img/line-museum.png" alt="" loading="lazy" style="width:62%;height:auto;object-fit:contain"></div>
-          <div><h3>Все экспонаты</h3><p>Тренажёры древности, рынки Европы, России и Азии, технологии будущего</p></div>
-          <span class="btn btn--ghost btn--sm">В музей <span class="arr">→</span></span>
-        </a>
+        <p class="eyebrow" style="margin-bottom:16px">Соседние экспонаты</p>
+        <div class="m-grid m-grid--near" data-item-near></div>
       </div>
     </section>
   </main>
 
   <div data-footer></div>
+  <script src="js/museum-data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

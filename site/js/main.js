@@ -504,6 +504,91 @@
     if (tabList) tabList.setAttribute("aria-orientation", "horizontal");
   });
 
+  /* ---------- музей: каталог и карточка экспоната ---------- */
+  const MZ = window.MUSEUM;
+  if (MZ) {
+    const SG = ["rose", "sky", "violet", "mint", "sand", "mist", "lilac"];
+    const grad = (i) => SG[i % SG.length];
+    const secById = (id) => MZ.sections.find((x) => x.id === id) || { title: "" };
+    const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    /* каталог */
+    const secBar = document.querySelector("[data-museum-sections]");
+    if (secBar) {
+      const chips = document.querySelector("[data-museum-chips]");
+      const grid = document.querySelector("[data-museum-grid]");
+      const countEl = document.querySelector("[data-museum-count]");
+      const emptyEl = document.querySelector("[data-museum-empty]");
+      const search = document.querySelector("[data-museum-search]");
+
+      secBar.innerHTML = MZ.sections.map((sec, i) => {
+        const n = MZ.items.filter((it) => it.section === sec.id).length;
+        return '<button class="cat-card" type="button" data-cat="' + sec.id + '" style="--g:var(--g-' + grad(i) + ');--bd:var(--b-' + grad(i) + ')">' +
+          "<span>" + esc(sec.title) + '</span><span class="cat-card__arr">' + n + "</span></button>";
+      }).join("");
+
+      chips.innerHTML = '<button class="m-chip is-active" type="button" data-cat="all">Все экспонаты</button>' +
+        MZ.sections.map((sec) => '<button class="m-chip" type="button" data-cat="' + sec.id + '">' + esc(sec.title) + "</button>").join("");
+
+      grid.innerHTML = MZ.items.map((it, i) => {
+        const si = MZ.sections.findIndex((x) => x.id === it.section);
+        return '<a class="m-card" href="museum-item.html?id=' + it.id + '" data-cat="' + it.section + '" data-name="' + esc(it.name.toLowerCase()) + " " + esc((it.lead || "").toLowerCase()) + '">' +
+          '<div class="m-card__media m-card__media--photo" style="--g:var(--g-' + grad(si) + ')"><img src="assets/museum/' + it.photos[0] + '" alt="' + esc(it.name) + '" loading="lazy"></div>' +
+          '<div class="m-card__body"><h3>' + esc(it.name) + "</h3>" +
+          "<p>" + esc((it.lead || "").slice(0, 150)) + "</p>" +
+          '<div class="m-card__tags"><span>' + esc(secById(it.section).title) + "</span></div>" +
+          '<span class="m-card__more">Подробнее <span class="arr">→</span></span></div></a>';
+      }).join("");
+
+      const apply = () => {
+        const cat = (document.querySelector(".m-chip.is-active") || {}).dataset?.cat || "all";
+        const q = (search.value || "").trim().toLowerCase();
+        let shown = 0;
+        grid.querySelectorAll(".m-card").forEach((card) => {
+          const ok = (cat === "all" || card.dataset.cat === cat) && (!q || card.dataset.name.includes(q));
+          card.classList.toggle("is-hidden", !ok);
+          if (ok) shown++;
+        });
+        countEl.textContent = shown + " из " + MZ.items.length + " экспонатов";
+        emptyEl.hidden = shown > 0;
+      };
+      search.addEventListener("input", apply);
+      document.addEventListener("click", (e) => { if (e.target.closest(".m-chip, .cat-card")) setTimeout(apply, 0); });
+      apply();
+    }
+
+    /* карточка экспоната */
+    const itemRoot = document.querySelector("[data-museum-item]");
+    if (itemRoot) {
+      const id = new URLSearchParams(location.search).get("id");
+      const idx = MZ.items.findIndex((x) => x.id === id);
+      const it = MZ.items[idx] || MZ.items[0];
+      const sec = secById(it.section);
+      const si = MZ.sections.findIndex((x) => x.id === it.section);
+      document.title = it.name + " — Музей тренажёров Кегеля";
+      itemRoot.querySelector("[data-item-section]").textContent = it.name;
+      itemRoot.querySelector("[data-item-kicker]").textContent = "Экспонат музея · " + sec.title;
+      itemRoot.querySelector("[data-item-name]").innerHTML = '<span class="split-line"><span>' + esc(it.name) + "</span></span>";
+      itemRoot.querySelector("[data-item-lead]").textContent = it.lead || "";
+      itemRoot.querySelector("[data-item-photos]").innerHTML = it.photos.map((p) => '<img src="assets/museum/' + p + '" alt="' + esc(it.name) + '">').join("");
+      itemRoot.querySelector(".b-hero__media").style.setProperty("--g", "var(--g-" + grad(si) + ")");
+      itemRoot.querySelector("[data-item-blocks]").innerHTML = it.blocks.map((b) =>
+        (b.t ? '<p class="m-item__label">' + esc(b.t) + "</p>" : "") +
+        b.p.split("\n").map((t) => "<p>" + esc(t) + "</p>").join("")
+      ).join("");
+      itemRoot.querySelector("[data-item-specs]").innerHTML = '<p class="specs__title">Коротко</p>' +
+        "<div><dt>Раздел музея</dt><dd>" + esc(sec.title) + "</dd></div>" +
+        "<div><dt>Фотографий</dt><dd>" + it.photos.length + "</dd></div>" +
+        "<div><dt>Доступ</dt><dd>Бесплатно</dd></div>";
+      const near = MZ.items.filter((x) => x.section === it.section && x.id !== it.id).slice(0, 3);
+      itemRoot.querySelector("[data-item-near]").innerHTML = near.map((n) =>
+        '<a class="m-card" href="museum-item.html?id=' + n.id + '">' +
+        '<div class="m-card__media m-card__media--photo" style="--g:var(--g-' + grad(si) + ')"><img src="assets/museum/' + n.photos[0] + '" alt="' + esc(n.name) + '" loading="lazy"></div>' +
+        '<div class="m-card__body"><h3>' + esc(n.name) + "</h3><p>" + esc((n.lead || "").slice(0, 110)) + '</p><span class="m-card__more">Подробнее <span class="arr">→</span></span></div></a>'
+      ).join("");
+    }
+  }
+
   /* ---------- фильтр каталога музея ---------- */
   document.querySelectorAll("[data-filter]").forEach((bar) => {
     const grid = document.querySelector("[data-filter-grid]");

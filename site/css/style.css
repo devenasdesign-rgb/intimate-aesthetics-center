@@ -1723,3 +1723,20 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
   .buy-card li .bubble, .fit-card li .bubble, .about-book__list li .bubble, .m-card .bubble { width: 20px; height: 20px; }
   .bubble--big { width: 58px; height: 58px; }
 }
+
+/* музей: поиск и счётчик */
+.m-toolbar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin: 36px 0 10px; }
+.m-toolbar .m-filter { margin: 0; flex: 1; }
+.m-search input { height: 48px; width: 260px; padding: 0 18px; border-radius: 40px; border: 1px solid var(--line-2); background: #fff; font: inherit; font-size: 15px; color: var(--ink); transition: border-color .3s, box-shadow .3s; }
+.m-search input:focus { outline: none; border-color: var(--pink); box-shadow: 0 0 0 4px rgba(254, 108, 131, .14); }
+.m-count { margin: 0 0 18px; font-size: 13px; color: var(--caption); }
+.m-empty { margin-top: 24px; font-size: 16px; color: var(--muted); }
+.m-grid--near { grid-template-columns: repeat(3, 1fr); }
+.cat-card__arr { font-size: 15px; font-weight: 600; }
+@media (max-width: 1180px) { .m-grid--near { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) {
+  .m-toolbar { gap: 10px; }
+  .m-search input { width: 100%; height: 44px; }
+  .m-search { width: 100%; }
+  .m-grid--near { grid-template-columns: 1fr; }
+}
