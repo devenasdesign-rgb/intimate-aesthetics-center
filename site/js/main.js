@@ -571,7 +571,8 @@
     /* каталог */
     const secBar = document.querySelector("[data-museum-sections]");
     if (secBar) {
-      const chips = document.querySelector("[data-museum-chips]");
+      const resetBtn = document.querySelector("[data-museum-reset]");
+      let activeCat = "all";
       const grid = document.querySelector("[data-museum-grid]");
       const countEl = document.querySelector("[data-museum-count]");
       const emptyEl = document.querySelector("[data-museum-empty]");
@@ -591,9 +592,6 @@
       };
       drawSections();
 
-      chips.innerHTML = '<button class="m-chip is-active" type="button" data-cat="all">Все экспонаты</button>' +
-        MZ.sections.map((sec) => '<button class="m-chip" type="button" data-cat="' + sec.id + '">' + esc(sec.title) + "</button>").join("");
-
       const drawGrid = () => { grid.innerHTML = MZ.items.map((it) => cardHTML(it)).join(""); };
       drawGrid();
 
@@ -605,9 +603,10 @@
       });
 
       const apply = () => {
-        const act = document.querySelector(".m-chip.is-active");
-        const cat = (act && act.dataset.cat) || "all";
+        const cat = activeCat;
         const q = (search.value || "").trim().toLowerCase();
+        secBar.querySelectorAll(".cat-card").forEach((c) => c.classList.toggle("is-active", c.dataset.cat === cat));
+        resetBtn.hidden = cat === "all";
         let shown = 0;
         grid.querySelectorAll(".m-card").forEach((card) => {
           const ok = (cat === "all" || card.dataset.cat === cat) && (!q || card.dataset.name.includes(q));
@@ -625,7 +624,14 @@
       };
       window.MUSEUM_UNLOCK = () => { drawSections(); drawGrid(); apply(); };
       search.addEventListener("input", apply);
-      document.addEventListener("click", (e) => { if (e.target.closest(".m-chip, .cat-card")) setTimeout(apply, 0); });
+      secBar.addEventListener("click", (e) => {
+        const card = e.target.closest(".cat-card");
+        if (!card) return;
+        activeCat = activeCat === card.dataset.cat ? "all" : card.dataset.cat;
+        apply();
+        if (activeCat !== "all") grid.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      resetBtn.addEventListener("click", () => { activeCat = "all"; apply(); });
       apply();
     }
 
@@ -683,22 +689,6 @@
       if (locked(it.section)) setTimeout(() => window.MUSEUM_TICKET.open(), 450);
     }
   }
-
-  /* ---------- фильтр каталога музея ---------- */
-  document.querySelectorAll("[data-filter]").forEach((bar) => {
-    const grid = document.querySelector("[data-filter-grid]");
-    if (!grid) return;
-    bar.addEventListener("click", (e) => {
-      const chip = e.target.closest(".m-chip, .cat-card");
-      if (!chip) return;
-      document.querySelectorAll(".m-chip, .cat-card").forEach((c) => c.classList.toggle("is-active", c.dataset.cat === chip.dataset.cat));
-      const cat = chip.dataset.cat;
-      if (chip.classList.contains("cat-card")) document.querySelector(".m-grid").scrollIntoView({ behavior: "smooth", block: "start" });
-      grid.querySelectorAll("[data-cat]").forEach((card) => {
-        card.classList.toggle("is-hidden", cat !== "all" && card.dataset.cat !== cat);
-      });
-    });
-  });
 
   /* ---------- подсказка прокрутки для отзывов на телефоне ---------- */
   const swipeTrack = document.querySelector(".reviews-grid");

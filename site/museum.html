@@ -36,16 +36,18 @@
     <section class="section" id="catalog" style="padding-top:60px">
       <div class="container">
         <h2 class="h-section" style="margin-bottom:28px"><span class="split-line"><span>Разделы музея</span></span></h2>
-        <div class="cat-grid" data-filter data-museum-sections></div>
+        <div class="cat-grid" data-museum-sections></div>
 
         <p class="m-sec-note" data-museum-note></p>
 
         <div class="m-toolbar">
-          <div class="m-filter" data-filter data-museum-chips></div>
-          <label class="m-search"><input type="search" placeholder="Найти тренажёр" data-museum-search aria-label="Поиск по музею"></label>
+          <p class="m-count" data-museum-count></p>
+          <div class="m-toolbar__right">
+            <button class="m-reset" type="button" data-museum-reset hidden>Показать все разделы <span aria-hidden="true">×</span></button>
+            <label class="m-search"><input type="search" placeholder="Найти тренажёр" data-museum-search aria-label="Поиск по музею"></label>
+          </div>
         </div>
-        <p class="m-count" data-museum-count></p>
-        <div class="m-grid" data-filter-grid data-museum-grid></div>
+        <div class="m-grid" data-museum-grid></div>
         <p class="m-empty" data-museum-empty hidden>Ничего не нашлось. Попробуйте другое слово или выберите раздел «Все экспонаты».</p>
       </div>
     </section>
