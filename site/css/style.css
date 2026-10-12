@@ -1732,11 +1732,6 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 
 /* музей: поиск и счётчик */
 .m-toolbar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin: 32px 0 20px; }
-.m-toolbar__right { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.m-reset { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 20px; border-radius: 40px; border: 1px solid var(--line-2); background: #fff; font: inherit; font-size: 15px; color: var(--muted); transition: color .3s, border-color .3s; }
-.m-reset[hidden] { display: none; }
-.m-reset:hover { color: var(--pink-deep); border-color: var(--pink); }
-.m-reset span { font-size: 17px; line-height: 1; }
 .m-search input { height: 48px; width: 260px; padding: 0 18px; border-radius: 40px; border: 1px solid var(--line-2); background: #fff; font: inherit; font-size: 15px; color: var(--ink); transition: border-color .3s, box-shadow .3s; }
 .m-search input:focus { outline: none; border-color: var(--pink); box-shadow: 0 0 0 4px rgba(254, 108, 131, .14); }
 .m-count { margin: 0; font-size: 13px; color: var(--caption); }
@@ -1746,8 +1741,6 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 @media (max-width: 1180px) { .m-grid--near { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 760px) {
   .m-toolbar { gap: 12px; }
-  .m-toolbar__right { width: 100%; gap: 10px; }
-  .m-reset { width: 100%; height: 44px; justify-content: center; }
   .m-search input { width: 100%; height: 44px; }
   .m-search { width: 100%; }
   .m-grid--near { grid-template-columns: 1fr; }
@@ -1802,3 +1795,15 @@ a.m-card.is-locked:hover .m-card__media img { transform: scale(1.06); }
   .modal--ticket h3 { font-size: 26px; }
   .ticket__price b { font-size: 34px; }
 }
+
+/* музей: о музее и пример карточки */
+.m-about__lead { max-width: 820px; font-size: 19px; line-height: 1.55; color: var(--text); }
+.m-sample { display: grid; grid-template-columns: 380px 1fr; gap: 56px; align-items: center; }
+.m-sample__card .m-card { max-width: 380px; }
+.m-sample__text > p { font-size: 18px; line-height: 1.6; color: var(--text); }
+.m-sample__text .about-book__list { margin-top: 22px; }
+.m-sample__text .about-book__list li { font-size: 16px; }
+.m-sample__text .about-book__list b { font-weight: 600; color: var(--ink); }
+.m-sample__hint { margin-top: 20px; font-size: 14.5px; line-height: 1.5; color: var(--caption); }
+@media (max-width: 1180px) { .m-sample { grid-template-columns: 1fr; gap: 28px; } .m-sample__card .m-card { max-width: none; } }
+@media (max-width: 760px) { .m-about__lead { font-size: 17px; } .m-sample__text > p { font-size: 16px; } }

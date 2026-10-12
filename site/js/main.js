@@ -571,7 +571,6 @@
     /* каталог */
     const secBar = document.querySelector("[data-museum-sections]");
     if (secBar) {
-      const resetBtn = document.querySelector("[data-museum-reset]");
       let activeCat = (MZ.sections.find((x) => x.free) || {}).id || "all";
       const grid = document.querySelector("[data-museum-grid]");
       const countEl = document.querySelector("[data-museum-count]");
@@ -606,7 +605,6 @@
         const cat = activeCat;
         const q = (search.value || "").trim().toLowerCase();
         secBar.querySelectorAll(".cat-card").forEach((c) => c.classList.toggle("is-active", c.dataset.cat === cat));
-        resetBtn.hidden = cat === "all";
         let shown = 0;
         grid.querySelectorAll(".m-card").forEach((card) => {
           const ok = (cat === "all" || card.dataset.cat === cat) && (!q || card.dataset.name.includes(q));
@@ -622,7 +620,15 @@
             : '<b class="m-sec-note__t">Десять разделов</b><span>От того, чем пользовались до изобретения тренировок мышц тазового дна, до приборов, которые продаются сегодня. Раздел «История и спорные практики» открыт бесплатно, остальные — по билету.</span>';
         }
       };
-      window.MUSEUM_UNLOCK = () => { drawSections(); drawGrid(); apply(); };
+      const sample = document.querySelector("[data-museum-sample]");
+      const drawSample = () => {
+        if (!sample) return;
+        const free = MZ.items.find((x) => secById(x.section).free) || MZ.items[0];
+        sample.innerHTML = cardHTML(free);
+      };
+      drawSample();
+
+      window.MUSEUM_UNLOCK = () => { drawSections(); drawGrid(); drawSample(); apply(); };
       search.addEventListener("input", apply);
       secBar.addEventListener("click", (e) => {
         const card = e.target.closest(".cat-card");
@@ -631,7 +637,6 @@
         apply();
         if (activeCat !== "all") grid.scrollIntoView({ behavior: "smooth", block: "start" });
       });
-      resetBtn.addEventListener("click", () => { activeCat = "all"; apply(); });
       apply();
     }
 

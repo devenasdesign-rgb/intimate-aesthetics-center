@@ -42,26 +42,43 @@
 
         <div class="m-toolbar">
           <p class="m-count" data-museum-count></p>
-          <div class="m-toolbar__right">
-            <button class="m-reset" type="button" data-museum-reset hidden>Показать все разделы <span aria-hidden="true">×</span></button>
-            <label class="m-search"><input type="search" placeholder="Найти тренажёр" data-museum-search aria-label="Поиск по музею"></label>
-          </div>
+          <label class="m-search"><input type="search" placeholder="Найти тренажёр" data-museum-search aria-label="Поиск по музею"></label>
         </div>
         <div class="m-grid" data-museum-grid></div>
-        <p class="m-empty" data-museum-empty hidden>Ничего не нашлось. Попробуйте другое слово или выберите раздел «Все экспонаты».</p>
+        <p class="m-empty" data-museum-empty hidden>Ничего не нашлось. Попробуйте другое слово или выберите другой раздел.</p>
       </div>
     </section>
 
     <section class="section section--rose">
       <div class="container">
-        <h2 class="h-section" style="margin-bottom:40px"><span class="split-line"><span>Как пополнять музей</span></span></h2>
-        <div class="inside-grid">
-          <div class="inside-card" style="--g:var(--g-rose);--bd:var(--b-rose)" data-reveal><span class="bubble" aria-hidden="true"></span><b>Фото тренажёра</b><p>Один или несколько снимков: как выглядит и что входит в комплект.</p></div>
-          <div class="inside-card" style="--g:var(--g-sky);--bd:var(--b-sky);--d:.08s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Описание</b><p>Что это за тренажёр и чем он отличается от других.</p></div>
-          <div class="inside-card" style="--g:var(--g-violet);--bd:var(--b-violet);--d:.16s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Принцип действия</b><p>Как использовать и за счёт чего работает. Новый экспонат добавляется одним блоком в файле museum-data.js.</p></div>
+        <h2 class="h-section" style="margin-bottom:18px"><span class="split-line"><span>Что такое музей Кегеля</span></span></h2>
+        <p class="m-about__lead" data-reveal>Это собрание тренажёров для мышц тазового дна — от приёмов, которыми пытались решать те же задачи до появления самих тренировок, до приборов, которые продаются сегодня. Екатерина Паньшина собирает его сама: ищет, покупает, пробует и описывает каждый экспонат.</p>
+        <div class="inside-grid" style="margin-top:34px">
+          <div class="inside-card" style="--g:var(--g-rose);--bd:var(--b-rose)" data-reveal><span class="bubble" aria-hidden="true"></span><b>83 экспоната<br>в десяти разделах</b><p>Авторские российские школы, Европа, Америка, Корея и Япония, Китай и массовый рынок — и отдельно история.</p></div>
+          <div class="inside-card" style="--g:var(--g-sky);--bd:var(--b-sky);--d:.08s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Без рекламы<br>и продаж</b><p>Музей ничего не продаёт. Там, где обещания расходятся с механикой, так и написано — и названо, что продаётся под видом тренажёра.</p></div>
+          <div class="inside-card" style="--g:var(--g-violet);--bd:var(--b-violet);--d:.16s" data-reveal><span class="bubble" aria-hidden="true"></span><b>Взгляд<br>специалиста</b><p>У каждого экспоната есть разбор: кому подходит, чем ограничен и на что смотреть, если выбираешь такой тренажёр себе.</p></div>
         </div>
         <div class="g-card" style="--g:#f8f5f1;--bd:#ebe2d9;margin-top:24px;padding:28px 30px" data-reveal>
           <p style="font-size:16px;line-height:1.5;color:var(--text)"><b>Важно.</b> Материалы музея носят справочный характер и не заменяют консультацию специалиста. Подбирать тренажёр лучше вместе с врачом или тренером мышц тазового дна.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="h-section" style="margin-bottom:34px"><span class="split-line"><span>Как выглядит карточка экспоната</span></span></h2>
+        <div class="m-sample">
+          <div class="m-sample__card" data-museum-sample data-reveal></div>
+          <div class="m-sample__text" data-reveal="right">
+            <p>Каждый тренажёр — отдельная страница. В каталоге видно фотографию, название и короткое описание; по нажатию открывается разбор.</p>
+            <ul class="about-book__list">
+              <li><span class="bubble" aria-hidden="true"></span><span><b>Фотография.</b> Как выглядит тренажёр и что входит в комплект.</span></li>
+              <li><span class="bubble" aria-hidden="true"></span><span><b>Как устроен.</b> Из чего сделан, размеры и вес, есть ли обратная связь.</span></li>
+              <li><span class="bubble" aria-hidden="true"></span><span><b>Принцип работы.</b> Что происходит с мышцами и как с ним заниматься.</span></li>
+              <li><span class="bubble" aria-hidden="true"></span><span><b>Для специалиста.</b> Кому подходит, чем ограничен, на что смотреть при подборе.</span></li>
+            </ul>
+            <p class="m-sample__hint">Наведите на карточку слева и откройте её — это настоящий экспонат из бесплатного раздела.</p>
+          </div>
         </div>
       </div>
     </section>
