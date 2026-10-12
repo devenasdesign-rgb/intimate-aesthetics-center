@@ -116,6 +116,9 @@ html:has(body.is-locked) { overflow: hidden; }
   text-transform: uppercase;
   color: var(--ink);
 }
+.section > .container > .h-section,
+.section > .container > .section-head > .h-section { margin-bottom: 40px; }
+.h-section--tight { margin-bottom: 18px !important; }
 .h-section {
   font-family: var(--font-display);
   font-weight: 700;
@@ -735,7 +738,7 @@ html:has(body.is-locked) { overflow: hidden; }
 .feature small { display: block; margin-top: 4px; font-size: 13.5px; color: var(--muted); line-height: 1.35; }
 .museum__main .btn { margin-top: auto; align-self: flex-start; }
 .museum__photo { position: relative; border-radius: 30px; overflow: hidden; min-height: 520px; background: var(--g-mist); }
-.museum__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transition: transform 1.2s var(--ease); }
+.museum__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 8%; transition: transform 1.2s var(--ease); }
 .museum__photo:hover img { transform: scale(1.05); }
 .museum__tag { position: absolute; left: 20px; bottom: 20px; right: 20px; padding: 18px 20px; border-radius: 22px; background: rgba(255,251,251,.94); box-shadow: 0 12px 26px rgba(89,56,82,.14); }
 .museum__tag b { display: block; font-size: 16px; font-weight: 600; color: var(--pink); text-transform: uppercase; }
@@ -1088,6 +1091,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 }
 
 @media (max-width: 1180px) {
+  .section { padding: 88px 0; }
   .nav, .header-actions .icon-btn, .header-actions .btn { display: none; }
   .burger { display: block; }
   .mega, .mega-backdrop { display: none; }
@@ -1146,15 +1150,16 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .logo img { width: 30px; height: 38px; }
   .logo__text { font-size: 14px; line-height: 15px; gap: 1px; }
   .h-section { font-size: 34px; }
+  .section > .container > .h-section, .section > .container > .section-head > .h-section { margin-bottom: 28px; }
   .section { padding: 70px 0; }
   .lead { font-size: 16px; }
   .section-head { margin-bottom: 28px; }
   .section-head--row { flex-direction: column; align-items: flex-start; }
 
   .hero__inner { display: flex; flex-direction: column; min-height: 0; padding-bottom: 40px; }
-  .hero__media { position: relative; order: -1; right: auto; left: 0; top: 0; width: 100%; height: auto; aspect-ratio: 1 / 1.05; margin-top: 16px; }
-  .hero__plate { left: 0; right: 0; width: 100%; top: 12%; height: 88%; }
-  .hero__photo { object-fit: contain; object-position: bottom; }
+  .hero__media { position: relative; order: -1; right: auto; left: 0; top: 0; width: 100%; height: auto; aspect-ratio: 1 / 1.28; margin-top: 16px; }
+  .hero__plate { left: 0; right: 0; width: 100%; top: 0; height: 100%; }
+  .hero__photo { inset: 0 auto 0 -6%; width: 112%; object-fit: contain; object-position: bottom; }
   .hero__text { padding-top: 28px; margin: 0; }
   .hero__title { font-size: 40px; }
   .hero__sub { font-size: 20px; margin-top: 14px; text-transform: uppercase; }
@@ -1242,7 +1247,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 /* ==========================================================================
    Книги
    ========================================================================== */
-.books-hero { background: var(--bg-rose); padding: 56px 0 40px; }
+.books-hero { background: var(--bg-rose); padding: 44px 0 72px; }
 .books-hero .h-section { margin-top: 26px; font-size: 64px; }
 .books-hero .lead { margin-top: 18px; max-width: 560px; }
 
@@ -1278,7 +1283,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 .author-strip .btn { margin-top: 22px; }
 
 /* страница книги */
-.b-hero { background: var(--bg-rose); padding: 44px 0 80px; overflow: hidden; }
+.b-hero { background: var(--bg-rose); padding: 44px 0 72px; overflow: hidden; }
 .b-hero__grid { display: grid; grid-template-columns: 540px 1fr; gap: 70px; align-items: center; margin-top: 26px; }
 .b-hero__media { position: relative; }
 .b-hero__plate { position: absolute; left: -40px; right: 60px; top: 60px; bottom: -40px; border-radius: 34px; background: var(--g, var(--g-sky)); }
@@ -1371,7 +1376,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
   .book-card__title { font-size: 30px; }
   .author-strip { grid-template-columns: 1fr; gap: 20px; padding: 16px 16px 24px; }
   .author-strip h2 { font-size: 28px; }
-  .b-hero { padding-bottom: 60px; }
+  .b-hero { padding-bottom: 52px; }
   .b-hero__plate { left: -12px; right: 24px; top: 30px; bottom: -20px; }
   .b-hero__photo { height: 440px; }
   .b-hero__media .badge-free { right: 14px; top: -16px; font-size: 11px; padding: 11px 13px; }
@@ -1583,7 +1588,7 @@ a.contacts__row:hover { transform: translateX(5px); background: #fff; }
 /* ==========================================================================
    Музей Кегеля
    ========================================================================== */
-.m-hero { background: var(--bg-sky); padding: 40px 0 60px; }
+.m-hero { background: var(--bg-sky); padding: 44px 0 72px; }
 .m-hero__grid { display: grid; grid-template-columns: 1fr 520px; gap: 60px; align-items: center; margin-top: 24px; }
 .m-hero__title { font-size: 72px; line-height: 1; color: var(--ink); }
 .m-hero__sub { margin-top: 22px; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.12; color: var(--blue); }
@@ -1629,7 +1634,7 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
   .m-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 760px) {
-  .m-hero { padding: 24px 0 40px; }
+  .m-hero { padding: 28px 0 52px; }
   .m-hero__title { font-size: min(46px, 9.4vw); }
   .m-hero__sub { font-size: 22px; }
   .m-hero__text { font-size: 16px; }
