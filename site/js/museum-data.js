@@ -7,22 +7,19 @@
    blocks  — абзацы: t — заголовок («Как устроен», «Принцип работы», «Для специалиста»), p — текст. */
 window.MUSEUM = {
   sections: [
-    { id: "istoriya-i-spornye-praktiki", title: "История и спорные практики", sub: "Как пытались решать те же задачи до того, как появились тренировки мышц тазового дна. Исторические примеры, а не рекомендации.", free: true },
-    { id: "specializirovannye-shkoly-i-vagiton", title: "Специализированные школы и Vagiton", sub: "Тренажёры разработаны отечественными специалистами и применяются в рамках системных курсов с инструкторами. В отличие от обычных приборов в свободной продаже, здесь есть чёткая программа обучения и долгосрочная работа с мышцами на индивидуальных занятиях.", kicker: "Авторские российские методики" },
+    { id: "trenazhery-drevnosti", title: "Тренажёры древности", sub: "Как пытались решать те же задачи до того, как появились тренировки мышц тазового дна. Исторические примеры, а не рекомендации.", free: true },
+    { id: "specializirovannye-shkoly", title: "Специализированные школы", sub: "Тренажёры разработаны отечественными специалистами и применяются в рамках системных курсов с инструкторами. В отличие от обычных приборов в свободной продаже, здесь есть чёткая программа обучения и долгосрочная работа с мышцами на индивидуальных занятиях.", kicker: "Авторские российские методики" },
     { id: "evropa", title: "Европа", sub: "Европейские бренды: домашние приборы с обратной связью, электростимуляция, конусы и шарики." },
     { id: "amerika", title: "Америка", sub: "Американский рынок: рецептурные приборы, наружные стимуляторы и светотерапия." },
     { id: "koreya-i-yaponiya", title: "Корея и Япония", sub: "Устройства, на которых просто сидят: EMS-подушки, кресла, вибрация и свет." },
     { id: "kitay-i-massovyy-rynok", title: "Китай и массовый рынок", sub: "Типовые категории, которые продаются на маркетплейсах под названием «тренажёр Кегеля»." },
-    { id: "bos-stimulyaciya-i-pnevmatika", title: "БОС, стимуляция и пневматика", sub: "Современные приборы, собранные по принципу работы: обратная связь, электрический ток и воздух." },
-    { id: "materialy-i-nestandartnye-praktiki", title: "Материалы и нестандартные практики", sub: "Из чего делают тренажёры и что продают под их видом." },
-    { id: "dopolnitelnye-mehanicheskie-ustroystva", title: "Механические устройства", sub: "Пружины, вес и сопротивление: устройства, которые работают без электроники." },
-    { id: "dopolnitelnye-sovremennye-ustroystva", title: "Современные устройства", sub: "Миостимуляторы, конусы, дилататоры и пневматические системы." },
+    { id: "rynok-rossii", title: "Рынок России", sub: "Всё, что продаётся сегодня в России: приборы с обратной связью, миостимуляторы и пневматика, механика без электроники, а также материалы и то, что продают под видом тренажёра." },
   ],
   items: [
     {
       id: "metod-gippokrata-pri-opuscheniyah",
       name: "Метод Гиппократа при опущениях",
-      section: "istoriya-i-spornye-praktiki",
+      section: "trenazhery-drevnosti",
       photos: ["metod-gippokrata-pri-opuscheniyah.jpg"],
       lead: "Тряска вниз головой. Около 400 года до н. э. Здесь я хотела показать, как до изобретения тренировок мышц тазового дна пытались справится с проблемами женского здоровья.",
       blocks: [
@@ -32,7 +29,7 @@ window.MUSEUM = {
     {
       id: "plod-kak-podporka-pri-opuschenii",
       name: "Плод как подпорка при опущении",
-      section: "istoriya-i-spornye-praktiki",
+      section: "trenazhery-drevnosti",
       photos: ["plod-kak-podporka-pri-opuschenii.jpg"],
       lead: "Половинка граната как подпорка при опущении. Около IV века до н. э.",
       blocks: [
@@ -43,7 +40,7 @@ window.MUSEUM = {
     {
       id: "shariki-rin-no-tama",
       name: "Шарики РИН-НО-ТАМА",
-      section: "istoriya-i-spornye-praktiki",
+      section: "trenazhery-drevnosti",
       photos: ["shariki-rin-no-tama.jpg", "shariki-rin-no-tama-2.jpg"],
       lead: "Полые шарики с грузиком внутри. Япония. зафиксированы европейскими антропологами в конце XIX века. Японское имя — рин-но-тама, китайское — иньдаоцю, «шарики для влагалища». В Европе их стали звать бэн-ва.",
       blocks: [
@@ -55,7 +52,7 @@ window.MUSEUM = {
     {
       id: "nefritovoe-yayco-mify-i-legendy",
       name: "Нефритовое яйцо: мифы и легенды",
-      section: "istoriya-i-spornye-praktiki",
+      section: "trenazhery-drevnosti",
       photos: ["nefritovoe-yayco-mify-i-legendy.jpg"],
       lead: "Полированный камень в форме яйца.",
       blocks: [
@@ -68,7 +65,7 @@ window.MUSEUM = {
     {
       id: "palochka-devstvennosti-dlya-suzheniya-vlagalischa",
       name: "Палочка «девственности» для сужения влагалища",
-      section: "istoriya-i-spornye-praktiki",
+      section: "trenazhery-drevnosti",
       photos: ["palochka-devstvennosti-dlya-suzheniya-vlagalischa.jpg"],
       lead: "Палочка для сужения влагалища. Стержень из извести и квасцов. Остров Мадура, Индонезия.",
       blocks: [
@@ -79,7 +76,7 @@ window.MUSEUM = {
     {
       id: "perineometr-kegelya",
       name: "Перинеометр Кегеля",
-      section: "istoriya-i-spornye-praktiki",
+      section: "trenazhery-drevnosti",
       photos: ["perineometr-kegelya.jpg"],
       lead: "1947 год. Резиновая камера с манометром. Первый прибор, который замеряет сжатие мышц тазового дна.",
       blocks: [
@@ -90,7 +87,7 @@ window.MUSEUM = {
     {
       id: "trenazher-muranivskogo-sssr",
       name: "Тренажёр Муранивского СССР",
-      section: "istoriya-i-spornye-praktiki",
+      section: "trenazhery-drevnosti",
       photos: ["trenazher-muranivskogo-sssr.jpg"],
       lead: "Конец 1980-х, Первый советский тренажёр интимных мышц.",
       blocks: [
@@ -101,7 +98,7 @@ window.MUSEUM = {
     {
       id: "vagiton-laser",
       name: "Vagiton Laser",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["vagiton-laser.jpg"],
       lead: "Тренажёр с обратной связью в виде лазерного луча.",
       blocks: [
@@ -112,7 +109,7 @@ window.MUSEUM = {
     {
       id: "vagiton-ball",
       name: "Vagiton Ball",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["vagiton-ball.jpg"],
       lead: "Один вагинальный шарик фиксированного веса.",
       blocks: [
@@ -123,7 +120,7 @@ window.MUSEUM = {
     {
       id: "vagiton-gravity",
       name: "Vagiton Gravity",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["vagiton-gravity.jpg"],
       lead: "Грузовой тренажёр со сменным внешним весом.",
       blocks: [
@@ -134,7 +131,7 @@ window.MUSEUM = {
     {
       id: "vagiton-pneumo",
       name: "Vagiton Pneumo",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["vagiton-pneumo.jpg"],
       lead: "Пневматический тренажёр с манометром и массажной камерой.",
       blocks: [
@@ -145,7 +142,7 @@ window.MUSEUM = {
     {
       id: "sensor",
       name: "Sensor",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["sensor.jpg"],
       lead: "Внешний датчик давления с приложением.",
       blocks: [
@@ -156,7 +153,7 @@ window.MUSEUM = {
     {
       id: "expander-vagiton",
       name: "Expander Vagiton",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["expander-vagiton.jpg"],
       lead: "Вагинальный эспандер со световой шкалой смыкания.",
       blocks: [
@@ -167,7 +164,7 @@ window.MUSEUM = {
     {
       id: "avtonomnyy-trenazher-nikitinoy",
       name: "Автономный тренажёр Никитиной",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["avtonomnyy-trenazher-nikitinoy.jpg"],
       lead: "Латексная камера, которая сама держит заданное давление.",
       blocks: [
@@ -178,7 +175,7 @@ window.MUSEUM = {
     {
       id: "pnevmo-muranivskogo",
       name: "Пневмо Муранивского",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["pnevmo-muranivskogo.jpg"],
       lead: "Пневматический тренажёр Муранивского с манометром и сменными чехлами.",
       blocks: [
@@ -189,7 +186,7 @@ window.MUSEUM = {
     {
       id: "litoterapevticheskiy-kamennye-yayca",
       name: "Литотерапевтический: каменные яйца",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["litoterapevticheskiy-kamennye-yayca.jpg"],
       lead: "Каменное вагинальное яйцо Муранивского.",
       blocks: [
@@ -200,7 +197,7 @@ window.MUSEUM = {
     {
       id: "gruzovoy-nikitinoy",
       name: "Грузовой Никитиной",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["gruzovoy-nikitinoy.jpg"],
       lead: "Штырь со съёмными шариками и набором гирь.",
       blocks: [
@@ -211,7 +208,7 @@ window.MUSEUM = {
     {
       id: "avtonomnyy-dlya-rimbildinga",
       name: "Автономный для римбилдинга",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["avtonomnyy-dlya-rimbildinga.jpg"],
       lead: "Ректальная латексная камера для римбилдинга.",
       blocks: [
@@ -222,7 +219,7 @@ window.MUSEUM = {
     {
       id: "trenazher-yayco-sekretnyy-fitness",
       name: "Тренажёр-яйцо «Секретный фитнесс»",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["trenazher-yayco-sekretnyy-fitness.jpg"],
       lead: "Силиконовое яйцо со стержнем для комфортного извлечения.",
       blocks: [
@@ -233,7 +230,7 @@ window.MUSEUM = {
     {
       id: "pnevmo-sekretnyy-fitness",
       name: "Пневмо «Секретный фитнесс»",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["pnevmo-sekretnyy-fitness.jpg"],
       lead: "Эластичная камера с манометром.",
       blocks: [
@@ -244,7 +241,7 @@ window.MUSEUM = {
     {
       id: "massazher-sekretnyy-fitness",
       name: "Массажёр «Секретный фитнесс»",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["massazher-sekretnyy-fitness.jpg"],
       lead: "Надувная камера для стенок, без силовой задачи.",
       blocks: [
@@ -255,7 +252,7 @@ window.MUSEUM = {
     {
       id: "kegel-sekretnyy-fitness",
       name: "Кегель «Секретный фитнесс»",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["kegel-sekretnyy-fitness.jpg"],
       lead: "Жёсткая насадка на тот же манометр.",
       blocks: [
@@ -266,7 +263,7 @@ window.MUSEUM = {
     {
       id: "silikonovaya-trubka-vagiton",
       name: "Силиконовая трубка Vagiton",
-      section: "specializirovannye-shkoly-i-vagiton",
+      section: "specializirovannye-shkoly",
       photos: ["silikonovaya-trubka-vagiton.jpg"],
       lead: "Обратная связь для упражнения «всасывание воды через трубку».",
       blocks: [
@@ -570,7 +567,7 @@ window.MUSEUM = {
     {
       id: "callibri-befit",
       name: "Callibri BeFit",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["callibri-befit.jpg"],
       lead: "Российский тренажёр мышц тазового дна с биологической обратной связью. Обучает правильно сокращать мышцы.",
       blocks: [
@@ -582,7 +579,7 @@ window.MUSEUM = {
     {
       id: "boost-kgoal-boost",
       name: "BOOST (kGoal Boost)",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["boost-kgoal-boost.jpg"],
       lead: "Наружный тренажёр мышц тазового дна. Ничего вводить не нужно, можно заниматься в одежде. Работает за счёт измерения давления, а не стимуляции. л",
       blocks: [
@@ -593,7 +590,7 @@ window.MUSEUM = {
     {
       id: "zjzk-mikrotok-teplo-i-svet",
       name: "ZJZK: микроток, тепло и свет",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["zjzk-mikrotok-teplo-i-svet.jpg"],
       lead: "Внутриполостной аппарат, который совмещает несколько воздействий сразу: микроток, тепло и свет (красный + синий). Отличается от обычных EMS-зондов наличием световых и тепловых режимов.",
       blocks: [
@@ -605,7 +602,7 @@ window.MUSEUM = {
     {
       id: "pnevmaticheskiy-vaginalnyy-trenazher-libo",
       name: "Пневматический вагинальный тренажёр Libo",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["pnevmaticheskiy-vaginalnyy-trenazher-libo.jpg"],
       lead: "Механический тренажёр, в котором сопротивление создаётся воздухом. Пациентка сама регулирует объём и видит усилие по шкале.",
       blocks: [
@@ -617,7 +614,7 @@ window.MUSEUM = {
     {
       id: "umnye-trenazhery-kegelya-s-datchikom-davleniya",
       name: "Умные тренажёры Кегеля с датчиком давления",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["umnye-trenazhery-kegelya-s-datchikom-davleniya.jpg"],
       lead: "Вагинальные тренажёры с датчиком, которые измеряют силу сжатия и передают данные в приложение на телефоне.",
       blocks: [
@@ -629,7 +626,7 @@ window.MUSEUM = {
     {
       id: "trenazhery-dlya-beder-prodavaemye-kak-trenazhery-kegelya",
       name: "Тренажёры для бёдер, продаваемые как «тренажёры Кегеля»",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["trenazhery-dlya-beder-prodavaemye-kak-trenazhery-kegelya.jpg"],
       lead: "",
       blocks: [
@@ -642,7 +639,7 @@ window.MUSEUM = {
     {
       id: "intimflex-by-kgoal",
       name: "INTIMFLEX by kGOAL",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["intimflex-by-kgoal.jpg"],
       lead: "Мягкая воздушная подушка с датчиком давления, специальная серия для занятий во время ритмичных движений тазом в разных позах.",
       blocks: [
@@ -653,7 +650,7 @@ window.MUSEUM = {
     {
       id: "kgoal-classic",
       name: "KGOAL CLASSIC",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["kgoal-classic.jpg"],
       lead: "Этот тренажер набрал особую популярность в методике фитнес-камасутры EroTraverse, но может быть использован как самостоятельный тренажер. Мягкая воздушная подушка с датчиком давления.",
       blocks: [
@@ -664,7 +661,7 @@ window.MUSEUM = {
     {
       id: "vnutripolostnye-miostimulyatory-ems",
       name: "Внутриполостные миостимуляторы (EMS)",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["vnutripolostnye-miostimulyatory-ems.jpg"],
       lead: "Аппараты для пассивных тренировок. Мышцы сокращаются от электрического импульса, самостоятельно человек их не включает.",
       blocks: [
@@ -676,7 +673,7 @@ window.MUSEUM = {
     {
       id: "btl-emsella-hifem-kreslo",
       name: "BTL Emsella (HIFEM-кресло)",
-      section: "bos-stimulyaciya-i-pnevmatika",
+      section: "rynok-rossii",
       photos: ["btl-emsella-hifem-kreslo.jpg"],
       lead: "Человек сидит в одежде, мышцы сокращаются от мощного магнитного поля.",
       blocks: [
@@ -688,7 +685,7 @@ window.MUSEUM = {
     {
       id: "naturalnye-mineralnye-yayca",
       name: "Натуральные минеральные яйца",
-      section: "materialy-i-nestandartnye-praktiki",
+      section: "rynok-rossii",
       photos: ["naturalnye-mineralnye-yayca.jpg"],
       lead: "",
       blocks: [
@@ -700,7 +697,7 @@ window.MUSEUM = {
     {
       id: "g-fit-kegel-expander",
       name: "G-FIT Kegel Expander",
-      section: "materialy-i-nestandartnye-praktiki",
+      section: "rynok-rossii",
       photos: ["g-fit-kegel-expander.jpg"],
       lead: "",
       blocks: [
@@ -712,7 +709,7 @@ window.MUSEUM = {
     {
       id: "silikonovye-vaginalnye-shariki",
       name: "Силиконовые вагинальные шарики",
-      section: "materialy-i-nestandartnye-praktiki",
+      section: "rynok-rossii",
       photos: ["silikonovye-vaginalnye-shariki.jpg"],
       lead: "",
       blocks: [
@@ -724,7 +721,7 @@ window.MUSEUM = {
     {
       id: "palochka-chka-doyan-palochka-devstvennicy",
       name: "Палочка Чка Доянь / «палочка девственницы»",
-      section: "materialy-i-nestandartnye-praktiki",
+      section: "rynok-rossii",
       photos: ["palochka-chka-doyan-palochka-devstvennicy.jpg"],
       lead: "Палочка «для сужения влагалища»",
       blocks: [
@@ -737,7 +734,7 @@ window.MUSEUM = {
     {
       id: "shariki-manjakani",
       name: "Шарики Manjakani",
-      section: "materialy-i-nestandartnye-praktiki",
+      section: "rynok-rossii",
       photos: ["shariki-manjakani.jpg"],
       lead: "",
       blocks: [
@@ -749,7 +746,7 @@ window.MUSEUM = {
     {
       id: "derevyannye-ovaly-s-metallicheskimi-utyazhelitelyami",
       name: "Деревянные овалы с металлическими утяжелителями",
-      section: "materialy-i-nestandartnye-praktiki",
+      section: "rynok-rossii",
       photos: ["derevyannye-ovaly-s-metallicheskimi-utyazhelitelyami.jpg"],
       lead: "",
       blocks: [
@@ -761,7 +758,7 @@ window.MUSEUM = {
     {
       id: "intimate-rose-pelvic-wand",
       name: "Intimate Rose Pelvic Wand",
-      section: "dopolnitelnye-mehanicheskie-ustroystva",
+      section: "rynok-rossii",
       photos: ["intimate-rose-pelvic-wand.jpg"],
       lead: "",
       blocks: [
@@ -773,7 +770,7 @@ window.MUSEUM = {
     {
       id: "ustroystva-dlya-szhatiya-beder",
       name: "Устройства для сжатия бёдер",
-      section: "dopolnitelnye-mehanicheskie-ustroystva",
+      section: "rynok-rossii",
       photos: ["ustroystva-dlya-szhatiya-beder.jpg"],
       lead: "",
       blocks: [
@@ -784,7 +781,7 @@ window.MUSEUM = {
     {
       id: "plastikovye-podushki-trenazhery",
       name: "Пластиковые «подушки»-тренажёры",
-      section: "dopolnitelnye-mehanicheskie-ustroystva",
+      section: "rynok-rossii",
       photos: ["plastikovye-podushki-trenazhery.jpg"],
       lead: "",
       blocks: [
@@ -796,7 +793,7 @@ window.MUSEUM = {
     {
       id: "pelvic-toner",
       name: "Pelvic Toner",
-      section: "dopolnitelnye-mehanicheskie-ustroystva",
+      section: "rynok-rossii",
       photos: ["pelvic-toner.jpg"],
       lead: "",
       blocks: [
@@ -808,7 +805,7 @@ window.MUSEUM = {
     {
       id: "elektrostimulyator-feniks-stl-rossiya",
       name: "Электростимулятор Феникс (СТЛ, Россия)",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["elektrostimulyator-feniks-stl-rossiya.jpg"],
       lead: "Профессиональный/домашний миостимулятор.",
       blocks: [
@@ -820,7 +817,7 @@ window.MUSEUM = {
     {
       id: "elanee-phase-ii",
       name: "Elanee Phase II",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["elanee-phase-ii.jpg"],
       lead: "Двойные шары с внутренним смещённым центром.",
       blocks: [
@@ -832,7 +829,7 @@ window.MUSEUM = {
     {
       id: "elanee-phase-i",
       name: "Elanee Phase I",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["elanee-phase-i.jpg"],
       lead: "Цветные конусы/яйца разного веса.",
       blocks: [
@@ -844,7 +841,7 @@ window.MUSEUM = {
     {
       id: "embagyn",
       name: "EmbaGYN",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["embagyn.jpg"],
       lead: "",
       blocks: [
@@ -856,7 +853,7 @@ window.MUSEUM = {
     {
       id: "nabor-vaginalnyh-rasshiriteley",
       name: "Набор вагинальных расширителей",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["nabor-vaginalnyh-rasshiriteley.jpg"],
       lead: "Синие/белые палочки разного диаметра.",
       blocks: [
@@ -868,7 +865,7 @@ window.MUSEUM = {
     {
       id: "tonis-kegel",
       name: "Tonis Kegel",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["tonis-kegel.jpg"],
       lead: "Широко известный миостимулятор",
       blocks: [
@@ -880,7 +877,7 @@ window.MUSEUM = {
     {
       id: "kegel-g-sexercise",
       name: "Kegel G Sexercise",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["kegel-g-sexercise.jpg"],
       lead: "Чёрный G-spot вибратор + пульт-браслет. Есть режимы вибрации и «тренировки».",
       blocks: [
@@ -891,7 +888,7 @@ window.MUSEUM = {
     {
       id: "yolana-elanee",
       name: "Yolana / Elanee",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["yolana-elanee.jpg"],
       lead: "",
       blocks: [
@@ -903,7 +900,7 @@ window.MUSEUM = {
     {
       id: "anykegel-hnj-300",
       name: "AnyKegel HNJ 300",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["anykegel-hnj-300.jpg"],
       lead: "",
       blocks: [
@@ -915,7 +912,7 @@ window.MUSEUM = {
     {
       id: "femintimate-pelvix",
       name: "Femintimate Pelvix",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["femintimate-pelvix.jpg"],
       lead: "",
       blocks: [
@@ -927,7 +924,7 @@ window.MUSEUM = {
     {
       id: "pnevmaticheskiy-trenazher-xft-0010ck-iease",
       name: "Пневматический тренажёр XFT-0010CK (iEASE)",
-      section: "dopolnitelnye-sovremennye-ustroystva",
+      section: "rynok-rossii",
       photos: ["pnevmaticheskiy-trenazher-xft-0010ck-iease.jpg"],
       lead: "",
       blocks: [

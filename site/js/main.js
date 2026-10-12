@@ -14,7 +14,7 @@
     { id: "bowls", n: "05", title: "Тибетские чаши и камертоны", desc: "Расслабление и восстановление", mod: "mint", art: "line-bowls.png", href: "bowls.html", tw: "196px", dw: "164px", meta: "3 практики бесплатно" },
     { id: "fitness", n: "06", title: "Фитнес мышц тазового дна", desc: "Тонус и бережное укрепление", mod: "sky", art: "line-fitness.png", href: "fitness.html", tw: "181px", dw: "210px", meta: "3 тренировки бесплатно" },
     { id: "birth", n: "07", title: "Мягкие роды", desc: "Подготовка и поддержка тела", mod: "violet", art: "line-birth.png", href: "birth.html", tw: "300px", dw: "210px", meta: "3 материала бесплатно" },
-    { id: "museum", n: "08", title: "Музей Кегеля", desc: "83 тренажёра со всего мира", mod: "mist", art: "line-museum.png", href: "museum.html", tw: "300px", dw: "210px", meta: "Раздел древности бесплатно" }
+    { id: "museum", n: "08", title: "Музей Кегеля", desc: "83 тренажёра со всего мира", mod: "mist", art: "line-museum.png", href: "museum.html", tw: "300px", dw: "210px", meta: "Тренажёры древности бесплатно" }
   ];
   window.DIRECTIONS = DIRECTIONS;
 
@@ -94,13 +94,13 @@
       "</div>" +
       /* музей */
       '<div class="mega__section mega__section--list" data-mega="museum">' +
-      '<div class="mega-intro" data-stagger><h3>Музей Кегеля</h3><p>83 тренажёра для мышц тазового дна в десяти разделах: как устроены, как работают и кому подходят.</p><a class="btn btn--sm" href="museum.html">Открыть музей <span class="arr">→</span></a></div>' +
+      '<div class="mega-intro" data-stagger><h3>Музей Кегеля</h3><p>83 тренажёра для мышц тазового дна в семи разделах: как устроены, как работают и кому подходят.</p><a class="btn btn--sm" href="museum.html">Открыть музей <span class="arr">→</span></a></div>' +
       '<div class="mega-links" data-stagger>' +
       megaLink("museum.html", "База знаний", "Как устроены тренажёры", "mist", "01") +
       megaLink("museum.html#catalog", "Каталог тренажёров", "Принцип действия и категории", "sky", "02") +
       megaLink("museum.html#catalog", "Как выбрать тренажёр", "Рекомендации специалиста", "mint", "03") +
       "</div>" +
-      '<div class="mega-photo" style="--g:var(--g-mist)"><img src="' + IMG + 'photo-06756.jpg" alt=""><span><b>Вход 150 ₽</b>Раздел «История и спорные практики» — бесплатно</span></div>' +
+      '<div class="mega-photo" style="--g:var(--g-mist)"><img src="' + IMG + 'photo-06756.jpg" alt=""><span><b>Билет 150 ₽</b>Раздел «Тренажёры древности» — бесплатно</span></div>' +
       "</div>" +
       /* о центре */
       '<div class="mega__section mega__section--list" data-mega="about">' +
@@ -226,26 +226,34 @@
     '<p class="modal__note">Не открылся WhatsApp? Позвоните: <a href="tel:+' + ORDER_PHONE + '">+7 (903) 081-26-16</a></p>' +
     "</div></div></div>";
 
-  /* билет в музей: раздел «История и спорные практики» открыт, остальные — по билету */
+  /* билет в музей: раздел «Тренажёры древности» открыт, остальные — по билету */
   const TICKET_PRICE = "150 ₽";
   const ticketHTML =
     '<div class="modal modal--ticket" id="ticket" role="dialog" aria-modal="true" aria-labelledby="ticket-title" aria-hidden="true">' +
     '<div class="modal__backdrop" data-close></div>' +
-    '<div class="modal__card">' +
+    '<div class="modal__card ticket">' +
     '<button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>' +
-    '<p class="eyebrow">Виртуальный билет</p>' +
-    '<h3 id="ticket-title">Билет в музей</h3>' +
-    '<p class="ticket__price"><b>' + TICKET_PRICE + '</b><span>разовый доступ ко всем разделам</span></p>' +
+    '<div class="ticket__stub">' +
+    '<img src="' + IMG + 'museum-ticket.jpg" alt="Екатерина Паньшина с перинеометром Кегеля">' +
+    '<div class="ticket__stub-in">' +
+    '<p class="ticket__kicker">Виртуальный билет</p>' +
+    '<p class="ticket__price"><b>' + TICKET_PRICE + '</b></p>' +
+    '<p class="ticket__no">№&nbsp;001 · без срока действия</p>' +
+    "</div></div>" +
+    '<div class="ticket__body">' +
+    '<p class="ticket__eyebrow">Музей тренажёров Кегеля</p>' +
+    '<h3 id="ticket-title">Билет<br>в музей</h3>' +
+    '<p class="ticket__meta"><b>' + TICKET_PRICE + '</b><span>№&nbsp;001 · без срока действия</span></p>' +
+    '<p class="ticket__quote">«Моя огромная мечта — открыть музей тренажёров Кегеля. Сегодня этот виртуальный музей — мой путь к нему»</p>' +
+    '<p class="ticket__author">Екатерина Паньшина</p>' +
     '<ul class="ticket__list">' +
-    '<li><span class="bubble" aria-hidden="true"></span><span>Раздел «История и спорные практики» открыт бесплатно — 7 экспонатов</span></li>' +
-    '<li><span class="bubble" aria-hidden="true"></span><span>По билету открываются остальные девять разделов — 76 экспонатов</span></li>' +
-    '<li><span class="bubble" aria-hidden="true"></span><span>Фотографии, устройство и принцип работы каждого тренажёра</span></li>' +
+    '<li><span class="bubble" aria-hidden="true"></span><span>Раздел «Тренажёры древности» открыт бесплатно — 7 экспонатов</span></li>' +
+    '<li><span class="bubble" aria-hidden="true"></span><span>По билету открываются остальные шесть разделов — 76 экспонатов</span></li>' +
     "</ul>" +
     '<button class="btn ticket__pay" type="button" data-ticket-pay>Оплатить ' + TICKET_PRICE + ' <span class="arr">→</span></button>' +
     '<p class="ticket__soon" data-ticket-soon hidden>Приём оплаты ещё не подключён — сайт в разработке.</p>' +
     '<button class="btn btn--ghost" type="button" data-ticket-continue>Продолжить без оплаты <span class="arr">→</span></button>' +
-    '<p class="modal__note">Пока сайт в разработке, музей можно открыть целиком без оплаты.</p>' +
-    "</div></div>";
+    "</div></div></div>";
 
   document.body.insertAdjacentHTML("beforeend", modalHTML + bookingHTML + orderHTML + ticketHTML);
 
@@ -405,6 +413,7 @@
   });
 
   document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-ticket-open]")) { e.preventDefault(); window.MUSEUM_TICKET.open(); return; }
     const o = e.target.closest("[data-order]");
     if (o) { e.preventDefault(); openOrder(o); return; }
     const b = e.target.closest("[data-booking]");
@@ -561,7 +570,7 @@
         '" data-name="' + esc((it.name + " " + teaser(it)).toLowerCase()) + '">' +
         '<div class="m-card__media m-card__media--photo" style="--g:var(--g-' + grad(si) + ')">' +
         '<img src="assets/museum/' + it.photos[0] + '" alt="' + esc(it.name) + '" loading="lazy">' +
-        (lk ? '<span class="m-card__lock">По билету</span>' : secById(it.section).free ? '<span class="m-card__lock m-card__lock--free">Бесплатно</span>' : "") + "</div>" +
+        (lk ? '<span class="m-card__lock">По билету</span>' : "") + "</div>" +
         '<div class="m-card__body"><h3>' + esc(it.name) + "</h3>" +
         "<p>" + esc(cut(teaser(it), cls === "near" ? 110 : 150)) + "</p>" +
         (cls === "near" ? "" : '<div class="m-card__tags"><span>' + esc(secById(it.section).title) + "</span></div>") +
@@ -617,7 +626,7 @@
           const sec = cat === "all" ? null : secById(cat);
           noteEl.innerHTML = sec
             ? '<b class="m-sec-note__t">' + esc(sec.kicker || sec.title) + "</b><span>" + esc(sec.sub) + "</span>"
-            : '<b class="m-sec-note__t">Десять разделов</b><span>От того, чем пользовались до изобретения тренировок мышц тазового дна, до приборов, которые продаются сегодня. Раздел «История и спорные практики» открыт бесплатно, остальные — по билету.</span>';
+            : '<b class="m-sec-note__t">Семь разделов</b><span>От того, чем пользовались до изобретения тренировок мышц тазового дна, до приборов, которые продаются сегодня. Раздел «Тренажёры древности» открыт бесплатно, остальные — по билету.</span>';
         }
       };
       const sample = document.querySelector("[data-museum-sample]");
@@ -659,7 +668,7 @@
       const renderItem = () => {
         const lk = locked(it.section);
         const leadEl = itemRoot.querySelector("[data-item-lead]");
-        leadEl.textContent = lk ? "Этот раздел музея открывается по билету. Раздел «История и спорные практики» можно смотреть бесплатно." : it.lead;
+        leadEl.textContent = lk ? "Этот раздел музея открывается по билету. Раздел «Тренажёры древности» можно смотреть бесплатно." : it.lead;
         leadEl.hidden = !lk && !it.lead;
 
         itemRoot.querySelector("[data-item-blocks]").innerHTML = lk
@@ -687,7 +696,6 @@
       window.MUSEUM_UNLOCK = renderItem;
 
       itemRoot.addEventListener("click", (e) => {
-        if (e.target.closest("[data-ticket-open]")) { window.MUSEUM_TICKET.open(); return; }
         const card = e.target.closest(".m-card.is-locked");
         if (card) { e.preventDefault(); window.MUSEUM_TICKET.open(); }
       });
