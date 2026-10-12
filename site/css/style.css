@@ -1667,8 +1667,8 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 .cat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); }
 .cat-card__arr { font-family: var(--font-body); font-size: 16px; color: var(--pink); width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.75); display: grid; place-items: center; }
 .cat-card.is-active { box-shadow: var(--shadow-card); border-color: var(--pink); }
-.m-card__media--photo { background: #fdf1f3; }
-.m-card__media--photo img { width: 100%; height: 100%; object-fit: contain; padding: 18px; }
+.m-sec-note { margin: 24px 0 18px; max-width: 760px; font-size: 16px; line-height: 1.5; color: var(--muted); }
+.m-sec-note b { color: var(--ink); font-weight: 600; }
 .m-item__label { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; }
 
 @media (max-width: 1180px) {
@@ -1687,12 +1687,11 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
   .cat-card { font-size: 18px; padding: 18px 18px; }
 }
 
-/* фото экспоната без фона — по центру плашки */
-.m-item__photo--real { background: var(--g-rose); display: grid; place-items: center; padding: 40px; }
-.m-item__photo--real img { width: 100%; height: auto; max-height: 100%; object-fit: contain; }
-.m-card__media--photo { background: var(--g, var(--g-rose)); display: grid; place-items: center; }
-.m-card__media--photo img { width: auto; max-width: 84%; height: auto; max-height: 76%; object-fit: contain; padding: 0; }
-@media (max-width: 760px) { .m-item__photo--real { padding: 26px; } }
+/* фото экспоната занимает плашку целиком */
+.m-item__photo--real { height: auto; background: #fff; display: grid; gap: 3px; padding: 0; }
+.m-item__photo--real img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.m-card__media--photo { height: auto; aspect-ratio: 3 / 2; background: #fff; display: block; padding: 0; box-shadow: inset 0 0 0 1px rgba(77, 51, 71, .07); }
+.m-card__media--photo img { width: 100%; max-width: none; height: 100%; max-height: none; object-fit: cover; padding: 0; }
 
 /* первый экран БОС: фото в плашке и небольшая карточка с играми */
 .p-hero__photo { position: absolute; left: 58px; top: 68px; width: 622px; height: 622px; border-radius: 25px; overflow: hidden; box-shadow: 0 30px 60px rgba(77, 51, 71, .14); }
@@ -1740,3 +1739,14 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
   .m-search { width: 100%; }
   .m-grid--near { grid-template-columns: 1fr; }
 }
+
+/* музей: карточка экспоната */
+[data-museum-item] .b-hero__title { font-size: clamp(34px, 3.6vw, 56px); overflow-wrap: break-word; hyphens: auto; }
+[data-museum-item] .b-hero__photo { box-shadow: 0 24px 50px rgba(77, 51, 71, .12); }
+.m-item__blocks .m-item__label { margin-top: 30px; }
+.m-item__blocks > :first-child { margin-top: 0; }
+.m-item__pro { margin-top: 30px; padding: 24px 26px; border-radius: 22px; background: var(--g-mist); border: 1px solid var(--b-mist); }
+.m-item__pro .m-item__label { margin-top: 0; color: var(--blue); }
+.m-item__pro p { font-size: 16px; line-height: 1.55; }
+.m-item__blocks .m-item__caption { margin-top: 26px; font-size: 15px; line-height: 1.5; color: var(--caption); }
+@media (max-width: 760px) { .m-item__pro { padding: 20px 18px; } }

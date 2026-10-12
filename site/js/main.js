@@ -507,10 +507,23 @@
   /* ---------- музей: каталог и карточка экспоната ---------- */
   const MZ = window.MUSEUM;
   if (MZ) {
-    const SG = ["rose", "sky", "violet", "mint", "sand", "mist", "lilac"];
+    const SG = ["rose", "sky", "violet", "mint", "sand", "mist", "lilac", "peach", "sand", "sky"];
     const grad = (i) => SG[i % SG.length];
-    const secById = (id) => MZ.sections.find((x) => x.id === id) || { title: "" };
+    const secById = (id) => MZ.sections.find((x) => x.id === id) || { title: "", sub: "" };
     const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const teaser = (it) => { const t = it.lead || ((it.blocks[0] || {}).p || "").split("\n")[0]; return t ? t[0].toUpperCase() + t.slice(1) : ""; };
+    const cut = (t, n) => (t.length > n ? t.slice(0, t.lastIndexOf(" ", n)) + "…" : t);
+    const cardHTML = (it, cls) => {
+      const si = MZ.sections.findIndex((x) => x.id === it.section);
+      return '<a class="m-card" href="museum-item.html?id=' + it.id + '" data-cat="' + it.section +
+        '" data-name="' + esc((it.name + " " + teaser(it)).toLowerCase()) + '">' +
+        '<div class="m-card__media m-card__media--photo" style="--g:var(--g-' + grad(si) + ')">' +
+        '<img src="assets/museum/' + it.photos[0] + '" alt="' + esc(it.name) + '" loading="lazy"></div>' +
+        '<div class="m-card__body"><h3>' + esc(it.name) + "</h3>" +
+        "<p>" + esc(cut(teaser(it), cls === "near" ? 110 : 150)) + "</p>" +
+        (cls === "near" ? "" : '<div class="m-card__tags"><span>' + esc(secById(it.section).title) + "</span></div>") +
+        '<span class="m-card__more">Подробнее <span class="arr">→</span></span></div></a>';
+    };
 
     /* каталог */
     const secBar = document.querySelector("[data-museum-sections]");
@@ -519,6 +532,7 @@
       const grid = document.querySelector("[data-museum-grid]");
       const countEl = document.querySelector("[data-museum-count]");
       const emptyEl = document.querySelector("[data-museum-empty]");
+      const noteEl = document.querySelector("[data-museum-note]");
       const search = document.querySelector("[data-museum-search]");
 
       secBar.innerHTML = MZ.sections.map((sec, i) => {
@@ -530,18 +544,11 @@
       chips.innerHTML = '<button class="m-chip is-active" type="button" data-cat="all">Все экспонаты</button>' +
         MZ.sections.map((sec) => '<button class="m-chip" type="button" data-cat="' + sec.id + '">' + esc(sec.title) + "</button>").join("");
 
-      grid.innerHTML = MZ.items.map((it, i) => {
-        const si = MZ.sections.findIndex((x) => x.id === it.section);
-        return '<a class="m-card" href="museum-item.html?id=' + it.id + '" data-cat="' + it.section + '" data-name="' + esc(it.name.toLowerCase()) + " " + esc((it.lead || "").toLowerCase()) + '">' +
-          '<div class="m-card__media m-card__media--photo" style="--g:var(--g-' + grad(si) + ')"><img src="assets/museum/' + it.photos[0] + '" alt="' + esc(it.name) + '" loading="lazy"></div>' +
-          '<div class="m-card__body"><h3>' + esc(it.name) + "</h3>" +
-          "<p>" + esc((it.lead || "").slice(0, 150)) + "</p>" +
-          '<div class="m-card__tags"><span>' + esc(secById(it.section).title) + "</span></div>" +
-          '<span class="m-card__more">Подробнее <span class="arr">→</span></span></div></a>';
-      }).join("");
+      grid.innerHTML = MZ.items.map((it) => cardHTML(it)).join("");
 
       const apply = () => {
-        const cat = (document.querySelector(".m-chip.is-active") || {}).dataset?.cat || "all";
+        const act = document.querySelector(".m-chip.is-active");
+        const cat = (act && act.dataset.cat) || "all";
         const q = (search.value || "").trim().toLowerCase();
         let shown = 0;
         grid.querySelectorAll(".m-card").forEach((card) => {
@@ -551,6 +558,11 @@
         });
         countEl.textContent = shown + " из " + MZ.items.length + " экспонатов";
         emptyEl.hidden = shown > 0;
+        if (noteEl) {
+          const sec = cat === "all" ? null : secById(cat);
+          noteEl.innerHTML = sec ? "<b>" + esc(sec.title) + ".</b> " + esc(sec.sub)
+            : "Десять разделов: от того, чем пользовались до изобретения тренировок мышц тазового дна, до приборов, которые продаются сегодня.";
+        }
       };
       search.addEventListener("input", apply);
       document.addEventListener("click", (e) => { if (e.target.closest(".m-chip, .cat-card")) setTimeout(apply, 0); });
@@ -569,23 +581,28 @@
       itemRoot.querySelector("[data-item-section]").textContent = it.name;
       itemRoot.querySelector("[data-item-kicker]").textContent = "Экспонат музея · " + sec.title;
       itemRoot.querySelector("[data-item-name]").innerHTML = '<span class="split-line"><span>' + esc(it.name) + "</span></span>";
-      itemRoot.querySelector("[data-item-lead]").textContent = it.lead || "";
+      const leadEl = itemRoot.querySelector("[data-item-lead]");
+      leadEl.textContent = it.lead;
+      leadEl.hidden = !it.lead;
       itemRoot.querySelector("[data-item-photos]").innerHTML = it.photos.map((p) => '<img src="assets/museum/' + p + '" alt="' + esc(it.name) + '">').join("");
       itemRoot.querySelector(".b-hero__media").style.setProperty("--g", "var(--g-" + grad(si) + ")");
-      itemRoot.querySelector("[data-item-blocks]").innerHTML = it.blocks.map((b) =>
-        (b.t ? '<p class="m-item__label">' + esc(b.t) + "</p>" : "") +
-        b.p.split("\n").map((t) => "<p>" + esc(t) + "</p>").join("")
-      ).join("");
+
+      const para = (t) => t.split("\n").map((x) => "<p>" + esc(x) + "</p>").join("");
+      itemRoot.querySelector("[data-item-blocks]").innerHTML = it.blocks.map((b) => {
+        if (b.t === "Для специалиста") return '<div class="m-item__pro"><p class="m-item__label">' + esc(b.t) + "</p>" + para(b.p) + "</div>";
+        if (b.t === "Об изображении") return '<p class="m-item__caption">' + esc(b.p) + "</p>";
+        return (b.t ? '<p class="m-item__label">' + esc(b.t) + "</p>" : "") + para(b.p);
+      }).join("");
+
       itemRoot.querySelector("[data-item-specs]").innerHTML = '<p class="specs__title">Коротко</p>' +
         "<div><dt>Раздел музея</dt><dd>" + esc(sec.title) + "</dd></div>" +
         "<div><dt>Фотографий</dt><dd>" + it.photos.length + "</dd></div>" +
         "<div><dt>Доступ</dt><dd>Бесплатно</dd></div>";
-      const near = MZ.items.filter((x) => x.section === it.section && x.id !== it.id).slice(0, 3);
-      itemRoot.querySelector("[data-item-near]").innerHTML = near.map((n) =>
-        '<a class="m-card" href="museum-item.html?id=' + n.id + '">' +
-        '<div class="m-card__media m-card__media--photo" style="--g:var(--g-' + grad(si) + ')"><img src="assets/museum/' + n.photos[0] + '" alt="' + esc(n.name) + '" loading="lazy"></div>' +
-        '<div class="m-card__body"><h3>' + esc(n.name) + "</h3><p>" + esc((n.lead || "").slice(0, 110)) + '</p><span class="m-card__more">Подробнее <span class="arr">→</span></span></div></a>'
-      ).join("");
+
+      const near = MZ.items.filter((x) => x.section === it.section && x.id !== it.id);
+      const start = Math.max(0, near.findIndex((x) => MZ.items.indexOf(x) > idx));
+      const pick = near.length > 3 ? near.slice(start, start + 3).concat(near.slice(0, 3)).slice(0, 3) : near;
+      itemRoot.querySelector("[data-item-near]").innerHTML = pick.map((n) => cardHTML(n, "near")).join("");
     }
   }
 
