@@ -238,12 +238,12 @@
     '<div class="ticket__stub-in">' +
     '<p class="ticket__kicker">Виртуальный билет</p>' +
     '<p class="ticket__price"><b>' + TICKET_PRICE + '</b></p>' +
-    '<p class="ticket__no">№&nbsp;001 · без срока действия</p>' +
+    '<p class="ticket__no">№&nbsp;001 · бессрочный</p>' +
     "</div></div>" +
     '<div class="ticket__body">' +
     '<p class="ticket__eyebrow">Музей тренажёров Кегеля</p>' +
     '<h3 id="ticket-title">Билет<br>в музей</h3>' +
-    '<p class="ticket__meta"><b>' + TICKET_PRICE + '</b><span>№&nbsp;001 · без срока действия</span></p>' +
+    '<p class="ticket__meta"><b>' + TICKET_PRICE + '</b><span>№&nbsp;001 · бессрочный</span></p>' +
     '<p class="ticket__quote">«Моя огромная мечта — открыть музей тренажёров Кегеля. Сегодня этот виртуальный музей — мой путь к нему»</p>' +
     '<p class="ticket__author">Екатерина Паньшина</p>' +
     '<ul class="ticket__list">' +
