@@ -572,7 +572,7 @@
     const secBar = document.querySelector("[data-museum-sections]");
     if (secBar) {
       const resetBtn = document.querySelector("[data-museum-reset]");
-      let activeCat = "all";
+      let activeCat = (MZ.sections.find((x) => x.free) || {}).id || "all";
       const grid = document.querySelector("[data-museum-grid]");
       const countEl = document.querySelector("[data-museum-count]");
       const emptyEl = document.querySelector("[data-museum-empty]");

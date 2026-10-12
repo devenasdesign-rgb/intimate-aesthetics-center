@@ -1667,6 +1667,13 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 .cat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); }
 .cat-card__arr { font-family: var(--font-body); font-size: 16px; color: var(--pink); width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.75); display: grid; place-items: center; }
 .cat-card.is-active { box-shadow: var(--shadow-card); border-color: var(--pink); }
+@media (min-width: 1181px) {
+  .cat-card:last-child:nth-child(3n + 1) { grid-column: span 3; }
+  .cat-card:last-child:nth-child(3n + 2) { grid-column: span 2; }
+}
+@media (min-width: 761px) and (max-width: 1180px) {
+  .cat-card:last-child:nth-child(2n + 1) { grid-column: span 2; }
+}
 .m-sec-note { margin: 24px 0 18px; max-width: 760px; font-size: 16px; line-height: 1.5; color: var(--muted); }
 .m-sec-note b { color: var(--ink); font-weight: 600; }
 .m-item__label { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--pink); margin-bottom: 8px; }
@@ -1689,8 +1696,8 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 
 /* фото экспоната занимает плашку целиком */
 .m-item__photo--real { height: auto; background: #fff; display: grid; gap: 3px; padding: 0; }
-.m-item__photo--real img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
-.m-card__media--photo { height: auto; aspect-ratio: 3 / 2; background: #fff; display: block; padding: 0; box-shadow: inset 0 0 0 1px rgba(77, 51, 71, .07); }
+.m-item__photo--real img { width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: cover; }
+.m-card__media--photo { height: auto; aspect-ratio: 6 / 5; background: #fff; display: block; padding: 0; box-shadow: inset 0 0 0 1px rgba(77, 51, 71, .07); }
 .m-card__media--photo img { width: 100%; max-width: none; height: 100%; max-height: none; object-fit: cover; padding: 0; }
 
 /* первый экран БОС: фото в плашке и небольшая карточка с играми */
