@@ -367,7 +367,8 @@
     el.classList.add("is-open");
     el.setAttribute("aria-hidden", "false");
     document.body.classList.add("is-locked");
-    setTimeout(() => { const f = el.querySelector(focusSel || "input"); if (f) f.focus(); }, 250);
+    el.scrollTop = 0;
+    setTimeout(() => { const f = el.querySelector(focusSel || "input"); if (f) f.focus({ preventScroll: true }); el.scrollTop = 0; }, 250);
   }
   function closeModal() {
     if (!openedModal) return;
@@ -402,7 +403,7 @@
   function grantTicket() {
     try { localStorage.setItem(TICKET_KEY, "1"); } catch (err) { /* приватный режим */ }
   }
-  window.MUSEUM_TICKET = { has: hasTicket, open: () => { ticket.querySelector("[data-ticket-soon]").hidden = true; openModal(ticket, "[data-ticket-continue]"); } };
+  window.MUSEUM_TICKET = { has: hasTicket, open: () => { ticket.querySelector("[data-ticket-soon]").hidden = true; openModal(ticket, ".modal__close"); } };
   ticket.querySelector("[data-ticket-pay]").addEventListener("click", () => {
     ticket.querySelector("[data-ticket-soon]").hidden = false;
   });
