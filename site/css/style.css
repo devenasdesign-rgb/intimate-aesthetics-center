@@ -1750,3 +1750,42 @@ a.m-card:hover .m-card__more .arr { transform: translateX(5px); }
 .m-item__pro p { font-size: 16px; line-height: 1.55; }
 .m-item__blocks .m-item__caption { margin-top: 26px; font-size: 15px; line-height: 1.5; color: var(--caption); }
 @media (max-width: 760px) { .m-item__pro { padding: 20px 18px; } }
+
+/* музей: подпись раздела */
+.m-sec-note { display: grid; gap: 6px; }
+.m-sec-note__t { font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 1.15; color: var(--ink-blue); }
+
+/* музей: билет и закрытые разделы */
+.cat-card__main { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+.cat-card__flag { font-family: var(--font-body); font-weight: 600; font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding: 5px 11px; border-radius: 40px; background: rgba(255,255,255,.75); }
+.cat-card__flag--free { color: var(--pink-deep); }
+.cat-card__flag--open { color: var(--blue); }
+.m-card__lock { position: absolute; left: 14px; top: 14px; z-index: 2; padding: 7px 13px; border-radius: 40px; background: rgba(255,255,255,.92); box-shadow: var(--shadow-soft); font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.m-card__lock--free { color: var(--pink-deep); }
+.m-card.is-locked .m-card__media img { filter: saturate(.35) blur(3px); transform: scale(1.04); }
+a.m-card.is-locked:hover .m-card__media img { transform: scale(1.06); }
+
+.m-lock { padding: 34px 32px; border-radius: 26px; background: var(--g-mist); border: 1px solid var(--b-mist); }
+.m-lock h3 { font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.15; color: var(--ink-blue); margin: 10px 0 12px; }
+.m-lock p { font-size: 16px; line-height: 1.55; color: var(--text); }
+.m-lock .btn { margin-top: 22px; }
+[data-museum-item].is-locked .b-hero__photo img { filter: saturate(.4) blur(6px); }
+
+.modal--ticket .modal__card { max-width: 480px; text-align: left; }
+.modal--ticket h3 { font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.1; color: var(--ink); margin: 8px 0 0; }
+.ticket__price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin: 16px 0 20px; }
+.ticket__price b { font-family: var(--font-price); font-weight: 600; font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; font-size: 42px; line-height: 1; color: var(--pink-deep); }
+.ticket__price span { font-size: 14px; color: var(--muted); }
+.ticket__list { list-style: none; display: grid; gap: 12px; margin: 0 0 24px; padding: 0; }
+.ticket__list li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; font-size: 15px; line-height: 1.45; color: var(--text); }
+.ticket__list .bubble { width: 20px; height: 20px; margin-top: 2px; }
+.modal--ticket .btn { width: 100%; justify-content: center; }
+.modal--ticket .btn--ghost { margin-top: 10px; }
+.ticket__soon { margin: 10px 0 0; font-size: 13.5px; line-height: 1.4; color: var(--pink-deep); }
+@media (max-width: 760px) {
+  .modal--ticket .btn { padding-left: 16px; padding-right: 16px; font-size: 15px; }
+  .m-lock { padding: 24px 20px; }
+  .m-lock h3 { font-size: 23px; }
+  .modal--ticket h3 { font-size: 26px; }
+  .ticket__price b { font-size: 34px; }
+}

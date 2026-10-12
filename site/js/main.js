@@ -14,7 +14,7 @@
     { id: "bowls", n: "05", title: "Тибетские чаши и камертоны", desc: "Расслабление и восстановление", mod: "mint", art: "line-bowls.png", href: "bowls.html", tw: "196px", dw: "164px", meta: "3 практики бесплатно" },
     { id: "fitness", n: "06", title: "Фитнес мышц тазового дна", desc: "Тонус и бережное укрепление", mod: "sky", art: "line-fitness.png", href: "fitness.html", tw: "181px", dw: "210px", meta: "3 тренировки бесплатно" },
     { id: "birth", n: "07", title: "Мягкие роды", desc: "Подготовка и поддержка тела", mod: "violet", art: "line-birth.png", href: "birth.html", tw: "300px", dw: "210px", meta: "3 материала бесплатно" },
-    { id: "museum", n: "08", title: "Музей Кегеля", desc: "Бесплатная база знаний", mod: "mist", art: "line-museum.png", href: "museum.html", tw: "300px", dw: "210px", meta: "Полностью бесплатно" }
+    { id: "museum", n: "08", title: "Музей Кегеля", desc: "83 тренажёра со всего мира", mod: "mist", art: "line-museum.png", href: "museum.html", tw: "300px", dw: "210px", meta: "Раздел древности бесплатно" }
   ];
   window.DIRECTIONS = DIRECTIONS;
 
@@ -94,13 +94,13 @@
       "</div>" +
       /* музей */
       '<div class="mega__section mega__section--list" data-mega="museum">' +
-      '<div class="mega-intro" data-stagger><h3>Музей Кегеля</h3><p>Бесплатная база знаний: тренажёры для мышц тазового дна, принцип их действия и рекомендации.</p><a class="btn btn--sm" href="museum.html">Открыть музей <span class="arr">→</span></a></div>' +
+      '<div class="mega-intro" data-stagger><h3>Музей Кегеля</h3><p>83 тренажёра для мышц тазового дна в десяти разделах: как устроены, как работают и кому подходят.</p><a class="btn btn--sm" href="museum.html">Открыть музей <span class="arr">→</span></a></div>' +
       '<div class="mega-links" data-stagger>' +
       megaLink("museum.html", "База знаний", "Как устроены тренажёры", "mist", "01") +
       megaLink("museum.html#catalog", "Каталог тренажёров", "Принцип действия и категории", "sky", "02") +
       megaLink("museum.html#catalog", "Как выбрать тренажёр", "Рекомендации специалиста", "mint", "03") +
       "</div>" +
-      '<div class="mega-photo" style="--g:var(--g-mist)"><img src="' + IMG + 'photo-06756.jpg" alt=""><span><b>Бесплатно</b>Вся экспертная база открыта</span></div>' +
+      '<div class="mega-photo" style="--g:var(--g-mist)"><img src="' + IMG + 'photo-06756.jpg" alt=""><span><b>Вход 150 ₽</b>Раздел «История и спорные практики» — бесплатно</span></div>' +
       "</div>" +
       /* о центре */
       '<div class="mega__section mega__section--list" data-mega="about">' +
@@ -226,7 +226,28 @@
     '<p class="modal__note">Не открылся WhatsApp? Позвоните: <a href="tel:+' + ORDER_PHONE + '">+7 (903) 081-26-16</a></p>' +
     "</div></div></div>";
 
-  document.body.insertAdjacentHTML("beforeend", modalHTML + bookingHTML + orderHTML);
+  /* билет в музей: раздел «История и спорные практики» открыт, остальные — по билету */
+  const TICKET_PRICE = "150 ₽";
+  const ticketHTML =
+    '<div class="modal modal--ticket" id="ticket" role="dialog" aria-modal="true" aria-labelledby="ticket-title" aria-hidden="true">' +
+    '<div class="modal__backdrop" data-close></div>' +
+    '<div class="modal__card">' +
+    '<button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>' +
+    '<p class="eyebrow">Виртуальный билет</p>' +
+    '<h3 id="ticket-title">Билет в музей</h3>' +
+    '<p class="ticket__price"><b>' + TICKET_PRICE + '</b><span>разовый доступ ко всем разделам</span></p>' +
+    '<ul class="ticket__list">' +
+    '<li><span class="bubble" aria-hidden="true"></span><span>Раздел «История и спорные практики» открыт бесплатно — 7 экспонатов</span></li>' +
+    '<li><span class="bubble" aria-hidden="true"></span><span>По билету открываются остальные девять разделов — 76 экспонатов</span></li>' +
+    '<li><span class="bubble" aria-hidden="true"></span><span>Фотографии, устройство и принцип работы каждого тренажёра</span></li>' +
+    "</ul>" +
+    '<button class="btn ticket__pay" type="button" data-ticket-pay>Оплатить ' + TICKET_PRICE + ' <span class="arr">→</span></button>' +
+    '<p class="ticket__soon" data-ticket-soon hidden>Приём оплаты ещё не подключён — сайт в разработке.</p>' +
+    '<button class="btn btn--ghost" type="button" data-ticket-continue>Продолжить без оплаты <span class="arr">→</span></button>' +
+    '<p class="modal__note">Пока сайт в разработке, музей можно открыть целиком без оплаты.</p>' +
+    "</div></div>";
+
+  document.body.insertAdjacentHTML("beforeend", modalHTML + bookingHTML + orderHTML + ticketHTML);
 
   /* ---------- карточки направлений ---------- */
   document.querySelectorAll("[data-dir-grid]").forEach((grid) => {
@@ -365,6 +386,24 @@
     booking.querySelector("#booking-title").innerHTML = format && format.startsWith("pack") ? "Запись<br>на пакет" : format === "online" ? "Запись<br>на консультацию" : "Запись<br>на диагностику";
     openModal(booking);
   }
+  const ticket = document.getElementById("ticket");
+  const TICKET_KEY = "museum-ticket";
+  function hasTicket() {
+    try { return localStorage.getItem(TICKET_KEY) === "1"; } catch (err) { return false; }
+  }
+  function grantTicket() {
+    try { localStorage.setItem(TICKET_KEY, "1"); } catch (err) { /* приватный режим */ }
+  }
+  window.MUSEUM_TICKET = { has: hasTicket, open: () => { ticket.querySelector("[data-ticket-soon]").hidden = true; openModal(ticket, "[data-ticket-continue]"); } };
+  ticket.querySelector("[data-ticket-pay]").addEventListener("click", () => {
+    ticket.querySelector("[data-ticket-soon]").hidden = false;
+  });
+  ticket.querySelector("[data-ticket-continue]").addEventListener("click", () => {
+    grantTicket();
+    closeModal();
+    if (window.MUSEUM_UNLOCK) window.MUSEUM_UNLOCK();
+  });
+
   document.addEventListener("click", (e) => {
     const o = e.target.closest("[data-order]");
     if (o) { e.preventDefault(); openOrder(o); return; }
@@ -513,12 +552,16 @@
     const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
     const teaser = (it) => { const t = it.lead || ((it.blocks[0] || {}).p || "").split("\n")[0]; return t ? t[0].toUpperCase() + t.slice(1) : ""; };
     const cut = (t, n) => (t.length > n ? t.slice(0, t.lastIndexOf(" ", n)) + "…" : t);
+    const paid = (secId) => !secById(secId).free;
+    const locked = (secId) => paid(secId) && !(window.MUSEUM_TICKET && window.MUSEUM_TICKET.has());
     const cardHTML = (it, cls) => {
       const si = MZ.sections.findIndex((x) => x.id === it.section);
-      return '<a class="m-card" href="museum-item.html?id=' + it.id + '" data-cat="' + it.section +
+      const lk = locked(it.section);
+      return '<a class="m-card' + (lk ? " is-locked" : "") + '" href="museum-item.html?id=' + it.id + '" data-cat="' + it.section +
         '" data-name="' + esc((it.name + " " + teaser(it)).toLowerCase()) + '">' +
         '<div class="m-card__media m-card__media--photo" style="--g:var(--g-' + grad(si) + ')">' +
-        '<img src="assets/museum/' + it.photos[0] + '" alt="' + esc(it.name) + '" loading="lazy"></div>' +
+        '<img src="assets/museum/' + it.photos[0] + '" alt="' + esc(it.name) + '" loading="lazy">' +
+        (lk ? '<span class="m-card__lock">По билету</span>' : secById(it.section).free ? '<span class="m-card__lock m-card__lock--free">Бесплатно</span>' : "") + "</div>" +
         '<div class="m-card__body"><h3>' + esc(it.name) + "</h3>" +
         "<p>" + esc(cut(teaser(it), cls === "near" ? 110 : 150)) + "</p>" +
         (cls === "near" ? "" : '<div class="m-card__tags"><span>' + esc(secById(it.section).title) + "</span></div>") +
@@ -535,16 +578,31 @@
       const noteEl = document.querySelector("[data-museum-note]");
       const search = document.querySelector("[data-museum-search]");
 
-      secBar.innerHTML = MZ.sections.map((sec, i) => {
-        const n = MZ.items.filter((it) => it.section === sec.id).length;
-        return '<button class="cat-card" type="button" data-cat="' + sec.id + '" style="--g:var(--g-' + grad(i) + ');--bd:var(--b-' + grad(i) + ')">' +
-          "<span>" + esc(sec.title) + '</span><span class="cat-card__arr">' + n + "</span></button>";
-      }).join("");
+      const drawSections = () => {
+        secBar.innerHTML = MZ.sections.map((sec, i) => {
+          const n = MZ.items.filter((it) => it.section === sec.id).length;
+          const flag = sec.free ? '<small class="cat-card__flag cat-card__flag--free">Бесплатно</small>'
+            : locked(sec.id) ? '<small class="cat-card__flag">По билету</small>'
+            : '<small class="cat-card__flag cat-card__flag--open">Открыто</small>';
+          return '<button class="cat-card" type="button" data-cat="' + sec.id + '" style="--g:var(--g-' + grad(i) + ');--bd:var(--b-' + grad(i) + ')">' +
+            '<span class="cat-card__main"><span>' + esc(sec.title) + "</span>" + flag + "</span>" +
+            '<span class="cat-card__arr">' + n + "</span></button>";
+        }).join("");
+      };
+      drawSections();
 
       chips.innerHTML = '<button class="m-chip is-active" type="button" data-cat="all">Все экспонаты</button>' +
         MZ.sections.map((sec) => '<button class="m-chip" type="button" data-cat="' + sec.id + '">' + esc(sec.title) + "</button>").join("");
 
-      grid.innerHTML = MZ.items.map((it) => cardHTML(it)).join("");
+      const drawGrid = () => { grid.innerHTML = MZ.items.map((it) => cardHTML(it)).join(""); };
+      drawGrid();
+
+      grid.addEventListener("click", (e) => {
+        const card = e.target.closest(".m-card.is-locked");
+        if (!card) return;
+        e.preventDefault();
+        window.MUSEUM_TICKET.open();
+      });
 
       const apply = () => {
         const act = document.querySelector(".m-chip.is-active");
@@ -560,10 +618,12 @@
         emptyEl.hidden = shown > 0;
         if (noteEl) {
           const sec = cat === "all" ? null : secById(cat);
-          noteEl.innerHTML = sec ? "<b>" + esc(sec.title) + ".</b> " + esc(sec.sub)
-            : "Десять разделов: от того, чем пользовались до изобретения тренировок мышц тазового дна, до приборов, которые продаются сегодня.";
+          noteEl.innerHTML = sec
+            ? '<b class="m-sec-note__t">' + esc(sec.kicker || sec.title) + "</b><span>" + esc(sec.sub) + "</span>"
+            : '<b class="m-sec-note__t">Десять разделов</b><span>От того, чем пользовались до изобретения тренировок мышц тазового дна, до приборов, которые продаются сегодня. Раздел «История и спорные практики» открыт бесплатно, остальные — по билету.</span>';
         }
       };
+      window.MUSEUM_UNLOCK = () => { drawSections(); drawGrid(); apply(); };
       search.addEventListener("input", apply);
       document.addEventListener("click", (e) => { if (e.target.closest(".m-chip, .cat-card")) setTimeout(apply, 0); });
       apply();
@@ -581,28 +641,46 @@
       itemRoot.querySelector("[data-item-section]").textContent = it.name;
       itemRoot.querySelector("[data-item-kicker]").textContent = "Экспонат музея · " + sec.title;
       itemRoot.querySelector("[data-item-name]").innerHTML = '<span class="split-line"><span>' + esc(it.name) + "</span></span>";
-      const leadEl = itemRoot.querySelector("[data-item-lead]");
-      leadEl.textContent = it.lead;
-      leadEl.hidden = !it.lead;
       itemRoot.querySelector("[data-item-photos]").innerHTML = it.photos.map((p) => '<img src="assets/museum/' + p + '" alt="' + esc(it.name) + '">').join("");
       itemRoot.querySelector(".b-hero__media").style.setProperty("--g", "var(--g-" + grad(si) + ")");
 
       const para = (t) => t.split("\n").map((x) => "<p>" + esc(x) + "</p>").join("");
-      itemRoot.querySelector("[data-item-blocks]").innerHTML = it.blocks.map((b) => {
-        if (b.t === "Для специалиста") return '<div class="m-item__pro"><p class="m-item__label">' + esc(b.t) + "</p>" + para(b.p) + "</div>";
-        if (b.t === "Об изображении") return '<p class="m-item__caption">' + esc(b.p) + "</p>";
-        return (b.t ? '<p class="m-item__label">' + esc(b.t) + "</p>" : "") + para(b.p);
-      }).join("");
+      const renderItem = () => {
+        const lk = locked(it.section);
+        const leadEl = itemRoot.querySelector("[data-item-lead]");
+        leadEl.textContent = lk ? "Этот раздел музея открывается по билету. Раздел «История и спорные практики» можно смотреть бесплатно." : it.lead;
+        leadEl.hidden = !lk && !it.lead;
 
-      itemRoot.querySelector("[data-item-specs]").innerHTML = '<p class="specs__title">Коротко</p>' +
-        "<div><dt>Раздел музея</dt><dd>" + esc(sec.title) + "</dd></div>" +
-        "<div><dt>Фотографий</dt><dd>" + it.photos.length + "</dd></div>" +
-        "<div><dt>Доступ</dt><dd>Бесплатно</dd></div>";
+        itemRoot.querySelector("[data-item-blocks]").innerHTML = lk
+          ? '<div class="m-lock"><p class="eyebrow">Виртуальный билет</p><h3>Чтобы открыть экспонат, нужен билет</h3>' +
+            "<p>Билет открывает все девять платных разделов музея — 76 экспонатов с фотографиями, устройством и принципом работы.</p>" +
+            '<button class="btn" type="button" data-ticket-open>Посмотреть билет <span class="arr">→</span></button></div>'
+          : it.blocks.map((b) => {
+              if (b.t === "Для специалиста") return '<div class="m-item__pro"><p class="m-item__label">' + esc(b.t) + "</p>" + para(b.p) + "</div>";
+              if (b.t === "Об изображении") return '<p class="m-item__caption">' + esc(b.p) + "</p>";
+              return (b.t ? '<p class="m-item__label">' + esc(b.t) + "</p>" : "") + para(b.p);
+            }).join("");
 
-      const near = MZ.items.filter((x) => x.section === it.section && x.id !== it.id);
-      const start = Math.max(0, near.findIndex((x) => MZ.items.indexOf(x) > idx));
-      const pick = near.length > 3 ? near.slice(start, start + 3).concat(near.slice(0, 3)).slice(0, 3) : near;
-      itemRoot.querySelector("[data-item-near]").innerHTML = pick.map((n) => cardHTML(n, "near")).join("");
+        itemRoot.querySelector("[data-item-specs]").innerHTML = '<p class="specs__title">Коротко</p>' +
+          "<div><dt>Раздел музея</dt><dd>" + esc(sec.title) + "</dd></div>" +
+          "<div><dt>Фотографий</dt><dd>" + it.photos.length + "</dd></div>" +
+          "<div><dt>Доступ</dt><dd>" + (sec.free ? "Бесплатно" : lk ? "По билету" : "Открыт") + "</dd></div>";
+
+        const near = MZ.items.filter((x) => x.section === it.section && x.id !== it.id);
+        const start = Math.max(0, near.findIndex((x) => MZ.items.indexOf(x) > idx));
+        const pick = near.length > 3 ? near.slice(start, start + 3).concat(near.slice(0, 3)).slice(0, 3) : near;
+        itemRoot.querySelector("[data-item-near]").innerHTML = pick.map((n) => cardHTML(n, "near")).join("");
+        itemRoot.classList.toggle("is-locked", lk);
+      };
+      renderItem();
+      window.MUSEUM_UNLOCK = renderItem;
+
+      itemRoot.addEventListener("click", (e) => {
+        if (e.target.closest("[data-ticket-open]")) { window.MUSEUM_TICKET.open(); return; }
+        const card = e.target.closest(".m-card.is-locked");
+        if (card) { e.preventDefault(); window.MUSEUM_TICKET.open(); }
+      });
+      if (locked(it.section)) setTimeout(() => window.MUSEUM_TICKET.open(), 450);
     }
   }
 
